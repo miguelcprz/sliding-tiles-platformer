@@ -1,108 +1,442 @@
 [gd_scene format=3 uid="uid://cjiibwj7bhxun"]
 
+[ext_resource type="Script" uid="uid://svi3ff0i4iro" path="res://scenes/world.gd" id="1_k0juu"]
 [ext_resource type="Script" uid="uid://dryc4vt46j2fq" path="res://classes/Portrait.gd" id="1_nnsk1"]
 [ext_resource type="PackedScene" uid="uid://i6wxb0n2l15h" path="res://objects/sliding_tile.tscn" id="2_rwgxs"]
+[ext_resource type="Script" uid="uid://b4cghw0eeg1oj" path="res://objects/door.gd" id="3_4mrxx"]
+[ext_resource type="Script" uid="uid://bk5jgfyb61ysy" path="res://objects/sliding_mode_button.gd" id="3_4wyf3"]
+[ext_resource type="Texture2D" uid="uid://ekoiswn7w8ca" path="res://visual_assets/door.png" id="4_7r4gi"]
+[ext_resource type="Texture2D" uid="uid://bkoysr1wg87b6" path="res://visual_assets/player.png" id="4_71j4m"]
+[ext_resource type="Script" uid="uid://dfsch7g4xlkcq" path="res://objects/player.gd" id="4_qfnet"]
+[ext_resource type="Script" uid="uid://cbogsy5m6pi33" path="res://objects/player_killer.gd" id="6_i7141"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7iits"]
+size = Vector2(10, 15)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w7kh3"]
+resource_local_to_scene = true
+size = Vector2(8, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e3hyu"]
+resource_local_to_scene = true
+size = Vector2(16, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q5onr"]
+resource_local_to_scene = true
+size = Vector2(32, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jhx03"]
+resource_local_to_scene = true
+size = Vector2(16, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o8fc1"]
+resource_local_to_scene = true
+size = Vector2(16, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xo05s"]
+resource_local_to_scene = true
+size = Vector2(16, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dss4m"]
+resource_local_to_scene = true
+size = Vector2(32, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7t5mc"]
+resource_local_to_scene = true
+size = Vector2(16, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pm21f"]
+resource_local_to_scene = true
+size = Vector2(8, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2lf6f"]
+resource_local_to_scene = true
+size = Vector2(16, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oo54l"]
+resource_local_to_scene = true
+size = Vector2(16, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kpybi"]
+resource_local_to_scene = true
+size = Vector2(8, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ctatt"]
+resource_local_to_scene = true
+size = Vector2(8, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xgqkh"]
+resource_local_to_scene = true
+size = Vector2(16, 8)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_k0juu"]
+b = Vector2(0, 128)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_71j4m"]
+b = Vector2(128, 0)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_qfnet"]
+b = Vector2(0, 128)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_i7141"]
+b = Vector2(128, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lakw3"]
+size = Vector2(5, 7)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_4mrxx"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_i7141"]
+font_color = Color(0, 0, 0, 1)
 
 [node name="World" type="Node2D" unique_id=1711283331]
+texture_filter = 1
+script = ExtResource("1_k0juu")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=659264033]
-offset_left = -1920.0
+offset_left = -1914.0
 offset_top = -1800.0
-offset_right = 1920.0
+offset_right = 1926.0
 offset_bottom = 360.0
-color = Color(0, 0, 0, 1)
+color = Color(0.8627451, 0.8627451, 0.7137255, 1)
 
 [node name="Portrait1" type="Node2D" parent="." unique_id=1569704963 node_paths=PackedStringArray("tiles")]
+position = Vector2(248, 96)
 script = ExtResource("1_nnsk1")
-tiles = [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
+tiles = [NodePath("SlidingTile"), NodePath("SlidingTile2"), NodePath("SlidingTile3"), NodePath("SlidingTile4"), NodePath("SlidingTile5"), NodePath("SlidingTile7"), NodePath("SlidingTile8"), NodePath("SlidingTile9"), NodePath("SlidingTile10"), NodePath("SlidingTile11"), NodePath("SlidingTile12"), NodePath("SlidingTile13"), NodePath("SlidingTile14"), NodePath("SlidingTile15"), NodePath("SlidingTile16")]
 metadata/_custom_type_script = "uid://dryc4vt46j2fq"
 
-[node name="SlidingTile" parent="Portrait1" unique_id=767328442 node_paths=PackedStringArray("this_portrait") instance=ExtResource("2_rwgxs")]
+[node name="Door" type="Area2D" parent="Portrait1" unique_id=1229019573]
+position = Vector2(48, 48)
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("3_4mrxx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Portrait1/Door" unique_id=333727779]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_7iits")
+
+[node name="ColorRect" type="ColorRect" parent="Portrait1/Door" unique_id=1423786126]
+offset_left = -5.0
+offset_top = -8.0
+offset_right = 5.0
+offset_bottom = 7.0
+color = Color(0, 0.07450981, 1, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Door2" type="Sprite2D" parent="Portrait1/Door" unique_id=1521480271]
+position = Vector2(-5, -8)
+texture = ExtResource("4_7r4gi")
+centered = false
+
+[node name="SlidingTile" parent="Portrait1" unique_id=471830497 node_paths=PackedStringArray("this_portrait") instance=ExtResource("2_rwgxs")]
 grab_initial_focus = true
 this_portrait = NodePath("..")
 
-[node name="SlidingTile2" parent="Portrait1" unique_id=1497088598 node_paths=PackedStringArray("this_portrait") instance=ExtResource("2_rwgxs")]
-offset_left = 40.0
-offset_right = 80.0
+[node name="Platform" parent="Portrait1/SlidingTile" index="0" unique_id=455662471]
+offset_top = 0.0
+offset_right = 16.0
+offset_bottom = 32.0
+
+[node name="CollisionShape2D" parent="Portrait1/SlidingTile/Platform/StaticBody2D" parent_id_path=PackedInt32Array(471830497, 978466501) index="0" unique_id=1674171987]
+position = Vector2(4, 16)
+shape = SubResource("RectangleShape2D_w7kh3")
+
+[node name="SlidingTile2" parent="Portrait1" unique_id=712921170 node_paths=PackedStringArray("this_portrait") instance=ExtResource("2_rwgxs")]
+offset_left = 32.0
+offset_right = 64.0
 this_portrait = NodePath("..")
 
-[node name="SlidingTile3" parent="Portrait1" unique_id=1077141740 node_paths=PackedStringArray("this_portrait") instance=ExtResource("2_rwgxs")]
-offset_left = 80.0
-offset_right = 120.0
+[node name="Platform" parent="Portrait1/SlidingTile2" index="0" unique_id=455662471]
+offset_left = 16.0
+offset_top = 24.0
+offset_right = 32.0
+offset_bottom = 32.0
+
+[node name="CollisionShape2D" parent="Portrait1/SlidingTile2/Platform/StaticBody2D" parent_id_path=PackedInt32Array(712921170, 978466501) index="0" unique_id=1674171987]
+shape = SubResource("RectangleShape2D_e3hyu")
+
+[node name="SlidingTile3" parent="Portrait1" unique_id=1065909519 node_paths=PackedStringArray("this_portrait") instance=ExtResource("2_rwgxs")]
+offset_left = 64.0
+offset_right = 96.0
 this_portrait = NodePath("..")
 
-[node name="SlidingTile4" parent="Portrait1" unique_id=374338039 node_paths=PackedStringArray("this_portrait") instance=ExtResource("2_rwgxs")]
-offset_left = 120.0
-offset_right = 160.0
+[node name="Platform" parent="Portrait1/SlidingTile3" index="0" unique_id=455662471]
+offset_left = 0.0
+offset_top = 24.0
+offset_right = 32.0
+offset_bottom = 32.0
+
+[node name="CollisionShape2D" parent="Portrait1/SlidingTile3/Platform/StaticBody2D" parent_id_path=PackedInt32Array(1065909519, 978466501) index="0" unique_id=1674171987]
+position = Vector2(16, 4)
+shape = SubResource("RectangleShape2D_q5onr")
+
+[node name="SlidingTile4" parent="Portrait1" unique_id=606222307 node_paths=PackedStringArray("this_portrait") instance=ExtResource("2_rwgxs")]
+offset_left = 96.0
+offset_right = 128.0
 this_portrait = NodePath("..")
 
-[node name="SlidingTile5" parent="Portrait1" unique_id=1903608615 node_paths=PackedStringArray("this_portrait") instance=ExtResource("2_rwgxs")]
-offset_top = 40.0
-offset_bottom = 80.0
+[node name="Platform" parent="Portrait1/SlidingTile4" index="0" unique_id=455662471]
+offset_left = 16.0
+offset_top = 0.0
+offset_right = 32.0
+offset_bottom = 8.0
+
+[node name="CollisionShape2D" parent="Portrait1/SlidingTile4/Platform/StaticBody2D" parent_id_path=PackedInt32Array(606222307, 978466501) index="0" unique_id=1674171987]
+shape = SubResource("RectangleShape2D_jhx03")
+
+[node name="SlidingTile5" parent="Portrait1" unique_id=1644639579 node_paths=PackedStringArray("this_portrait") instance=ExtResource("2_rwgxs")]
+offset_top = 32.0
+offset_bottom = 64.0
 this_portrait = NodePath("..")
 
-[node name="SlidingTile7" parent="Portrait1" unique_id=142595683 node_paths=PackedStringArray("this_portrait") instance=ExtResource("2_rwgxs")]
-offset_left = 80.0
-offset_top = 40.0
-offset_right = 120.0
-offset_bottom = 80.0
+[node name="Platform" parent="Portrait1/SlidingTile5" index="0" unique_id=455662471]
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 16.0
+offset_bottom = 8.0
+
+[node name="CollisionShape2D" parent="Portrait1/SlidingTile5/Platform/StaticBody2D" parent_id_path=PackedInt32Array(1644639579, 978466501) index="0" unique_id=1674171987]
+shape = SubResource("RectangleShape2D_o8fc1")
+
+[node name="SlidingTile7" parent="Portrait1" unique_id=1798678301 node_paths=PackedStringArray("this_portrait") instance=ExtResource("2_rwgxs")]
+offset_left = 64.0
+offset_top = 32.0
+offset_right = 96.0
+offset_bottom = 64.0
 this_portrait = NodePath("..")
 
-[node name="SlidingTile8" parent="Portrait1" unique_id=2015393999 node_paths=PackedStringArray("this_portrait") instance=ExtResource("2_rwgxs")]
-offset_left = 120.0
-offset_top = 40.0
-offset_right = 160.0
-offset_bottom = 80.0
+[node name="Platform" parent="Portrait1/SlidingTile7" index="0" unique_id=455662471]
+offset_left = 0.0
+offset_top = 8.0
+offset_right = 16.0
+offset_bottom = 16.0
+
+[node name="CollisionShape2D" parent="Portrait1/SlidingTile7/Platform/StaticBody2D" parent_id_path=PackedInt32Array(1798678301, 978466501) index="0" unique_id=1674171987]
+shape = SubResource("RectangleShape2D_xo05s")
+
+[node name="SlidingTile8" parent="Portrait1" unique_id=1290381764 node_paths=PackedStringArray("this_portrait") instance=ExtResource("2_rwgxs")]
+offset_left = 96.0
+offset_top = 32.0
+offset_right = 128.0
+offset_bottom = 64.0
 this_portrait = NodePath("..")
 
-[node name="SlidingTile9" parent="Portrait1" unique_id=230209184 node_paths=PackedStringArray("this_portrait") instance=ExtResource("2_rwgxs")]
-offset_top = 80.0
-offset_bottom = 120.0
+[node name="Platform" parent="Portrait1/SlidingTile8" index="0" unique_id=455662471]
+offset_left = 0.0
+offset_top = 24.0
+offset_right = 32.0
+offset_bottom = 32.0
+
+[node name="CollisionShape2D" parent="Portrait1/SlidingTile8/Platform/StaticBody2D" parent_id_path=PackedInt32Array(1290381764, 978466501) index="0" unique_id=1674171987]
+position = Vector2(16, 4)
+shape = SubResource("RectangleShape2D_dss4m")
+
+[node name="SlidingTile9" parent="Portrait1" unique_id=126529236 node_paths=PackedStringArray("this_portrait") instance=ExtResource("2_rwgxs")]
+offset_top = 64.0
+offset_bottom = 96.0
 this_portrait = NodePath("..")
 
-[node name="SlidingTile10" parent="Portrait1" unique_id=722640608 node_paths=PackedStringArray("this_portrait") instance=ExtResource("2_rwgxs")]
-offset_left = 40.0
-offset_top = 80.0
-offset_right = 80.0
-offset_bottom = 120.0
+[node name="Platform" parent="Portrait1/SlidingTile9" index="0" unique_id=455662471]
+visible = false
+
+[node name="CollisionShape2D" parent="Portrait1/SlidingTile9/Platform/StaticBody2D" parent_id_path=PackedInt32Array(126529236, 978466501) index="0" unique_id=1674171987]
+shape = SubResource("RectangleShape2D_7t5mc")
+disabled = true
+
+[node name="SlidingTile10" parent="Portrait1" unique_id=650522300 node_paths=PackedStringArray("this_portrait") instance=ExtResource("2_rwgxs")]
+offset_left = 32.0
+offset_top = 64.0
+offset_right = 64.0
+offset_bottom = 96.0
 this_portrait = NodePath("..")
 
-[node name="SlidingTile11" parent="Portrait1" unique_id=836991473 node_paths=PackedStringArray("this_portrait") instance=ExtResource("2_rwgxs")]
-offset_left = 80.0
-offset_top = 80.0
-offset_right = 120.0
-offset_bottom = 120.0
+[node name="Platform" parent="Portrait1/SlidingTile10" index="0" unique_id=455662471]
+offset_left = 24.0
+offset_top = 0.0
+offset_right = 32.0
+offset_bottom = 32.0
+
+[node name="CollisionShape2D" parent="Portrait1/SlidingTile10/Platform/StaticBody2D" parent_id_path=PackedInt32Array(650522300, 978466501) index="0" unique_id=1674171987]
+position = Vector2(4, 16)
+shape = SubResource("RectangleShape2D_pm21f")
+
+[node name="SlidingTile11" parent="Portrait1" unique_id=630557298 node_paths=PackedStringArray("this_portrait") instance=ExtResource("2_rwgxs")]
+offset_left = 64.0
+offset_top = 64.0
+offset_right = 96.0
+offset_bottom = 96.0
 this_portrait = NodePath("..")
 
-[node name="SlidingTile12" parent="Portrait1" unique_id=723081610 node_paths=PackedStringArray("this_portrait") instance=ExtResource("2_rwgxs")]
-offset_left = 120.0
-offset_top = 80.0
-offset_right = 160.0
-offset_bottom = 120.0
+[node name="Platform" parent="Portrait1/SlidingTile11" index="0" unique_id=455662471]
+visible = false
+
+[node name="CollisionShape2D" parent="Portrait1/SlidingTile11/Platform/StaticBody2D" parent_id_path=PackedInt32Array(630557298, 978466501) index="0" unique_id=1674171987]
+shape = SubResource("RectangleShape2D_2lf6f")
+disabled = true
+
+[node name="SlidingTile12" parent="Portrait1" unique_id=425582424 node_paths=PackedStringArray("this_portrait") instance=ExtResource("2_rwgxs")]
+offset_left = 96.0
+offset_top = 64.0
+offset_right = 128.0
+offset_bottom = 96.0
 this_portrait = NodePath("..")
 
-[node name="SlidingTile13" parent="Portrait1" unique_id=1645834899 node_paths=PackedStringArray("this_portrait") instance=ExtResource("2_rwgxs")]
-offset_top = 120.0
-offset_bottom = 160.0
+[node name="SlidingTile13" parent="Portrait1" unique_id=297452134 node_paths=PackedStringArray("this_portrait") instance=ExtResource("2_rwgxs")]
+offset_top = 96.0
+offset_bottom = 128.0
 this_portrait = NodePath("..")
 
-[node name="SlidingTile14" parent="Portrait1" unique_id=619289409 node_paths=PackedStringArray("this_portrait") instance=ExtResource("2_rwgxs")]
-offset_left = 40.0
-offset_top = 120.0
-offset_right = 80.0
-offset_bottom = 160.0
+[node name="Platform" parent="Portrait1/SlidingTile13" index="0" unique_id=455662471]
+visible = false
+
+[node name="CollisionShape2D" parent="Portrait1/SlidingTile13/Platform/StaticBody2D" parent_id_path=PackedInt32Array(297452134, 978466501) index="0" unique_id=1674171987]
+shape = SubResource("RectangleShape2D_oo54l")
+disabled = true
+
+[node name="SlidingTile14" parent="Portrait1" unique_id=1669869787 node_paths=PackedStringArray("this_portrait") instance=ExtResource("2_rwgxs")]
+offset_left = 32.0
+offset_top = 96.0
+offset_right = 64.0
+offset_bottom = 128.0
 this_portrait = NodePath("..")
 
-[node name="SlidingTile15" parent="Portrait1" unique_id=971150186 node_paths=PackedStringArray("this_portrait") instance=ExtResource("2_rwgxs")]
-offset_left = 80.0
-offset_top = 120.0
-offset_right = 120.0
-offset_bottom = 160.0
+[node name="Platform" parent="Portrait1/SlidingTile14" index="0" unique_id=455662471]
+offset_right = 16.0
+
+[node name="CollisionShape2D" parent="Portrait1/SlidingTile14/Platform/StaticBody2D" parent_id_path=PackedInt32Array(1669869787, 978466501) index="0" unique_id=1674171987]
+position = Vector2(4, 4)
+shape = SubResource("RectangleShape2D_kpybi")
+
+[node name="SlidingTile15" parent="Portrait1" unique_id=1186660932 node_paths=PackedStringArray("this_portrait") instance=ExtResource("2_rwgxs")]
+offset_left = 64.0
+offset_top = 96.0
+offset_right = 96.0
+offset_bottom = 128.0
 this_portrait = NodePath("..")
 
-[node name="SlidingTile16" parent="Portrait1" unique_id=2024130854 node_paths=PackedStringArray("this_portrait") instance=ExtResource("2_rwgxs")]
-offset_left = 120.0
-offset_top = 120.0
-offset_right = 160.0
-offset_bottom = 160.0
+[node name="Platform" parent="Portrait1/SlidingTile15" index="0" unique_id=455662471]
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 8.0
+offset_bottom = 32.0
+
+[node name="CollisionShape2D" parent="Portrait1/SlidingTile15/Platform/StaticBody2D" parent_id_path=PackedInt32Array(1186660932, 978466501) index="0" unique_id=1674171987]
+position = Vector2(4, 16)
+shape = SubResource("RectangleShape2D_ctatt")
+
+[node name="SlidingTile16" parent="Portrait1" unique_id=33932349 node_paths=PackedStringArray("this_portrait") instance=ExtResource("2_rwgxs")]
+offset_left = 96.0
+offset_top = 96.0
+offset_right = 128.0
+offset_bottom = 128.0
 this_portrait = NodePath("..")
+
+[node name="Platform" parent="Portrait1/SlidingTile16" index="0" unique_id=455662471]
+offset_left = 16.0
+offset_top = 24.0
+offset_right = 32.0
+offset_bottom = 32.0
+
+[node name="CollisionShape2D" parent="Portrait1/SlidingTile16/Platform/StaticBody2D" parent_id_path=PackedInt32Array(33932349, 978466501) index="0" unique_id=1674171987]
+shape = SubResource("RectangleShape2D_xgqkh")
+
+[node name="LeftPuzzleLimit" type="StaticBody2D" parent="Portrait1" unique_id=2119483379]
+position = Vector2(-16, 0)
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Portrait1/LeftPuzzleLimit" unique_id=793999553]
+shape = SubResource("SegmentShape2D_k0juu")
+
+[node name="TopPuzzleLmit" type="StaticBody2D" parent="Portrait1" unique_id=610349927]
+position = Vector2(0, -16)
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Portrait1/TopPuzzleLmit" unique_id=1287604641]
+shape = SubResource("SegmentShape2D_71j4m")
+
+[node name="RightPuzzleLimit" type="StaticBody2D" parent="Portrait1" unique_id=1315741071]
+position = Vector2(144, 0)
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Portrait1/RightPuzzleLimit" unique_id=2128796718]
+shape = SubResource("SegmentShape2D_qfnet")
+
+[node name="BottomPuzzleLimit" type="StaticBody2D" parent="Portrait1" unique_id=1410165046]
+position = Vector2(0, 144)
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Portrait1/BottomPuzzleLimit" unique_id=172241666]
+shape = SubResource("SegmentShape2D_i7141")
+
+[node name="Player" type="CharacterBody2D" parent="Portrait1" unique_id=1814272191]
+position = Vector2(119, 107)
+collision_layer = 5
+script = ExtResource("4_qfnet")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Portrait1/Player" unique_id=962114576]
+position = Vector2(-0.5, 0.5)
+shape = SubResource("RectangleShape2D_lakw3")
+debug_color = Color(0.6213166, 0.53125185, 0.15755641, 0.41960785)
+
+[node name="PlayerSprite" type="Sprite2D" parent="Portrait1/Player" unique_id=485426571]
+position = Vector2(-3, -3)
+texture = ExtResource("4_71j4m")
+centered = false
+
+[node name="PlayerKiller" type="Area2D" parent="Portrait1" unique_id=1522698708]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("6_i7141")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Portrait1/PlayerKiller" unique_id=1531267597]
+position = Vector2(64, 160)
+shape = SubResource("WorldBoundaryShape2D_4mrxx")
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=2031980176]
+
+[node name="SlidingModeButton" type="CheckButton" parent="UI" unique_id=1338692214]
+offset_left = 32.0
+offset_top = 296.0
+offset_right = 206.0
+offset_bottom = 327.0
+focus_mode = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+button_mask = 0
+text = "sliding mode (Q)"
+script = ExtResource("3_4wyf3")
+
+[node name="Label" type="Label" parent="UI" unique_id=1805844282]
+offset_left = 32.0
+offset_top = 320.0
+offset_right = 342.0
+offset_bottom = 343.0
+text = "select/unselect tile/jump (SPACE/ENTER)"
+label_settings = SubResource("LabelSettings_i7141")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1697252118]
+position = Vector2(304, 160)
+zoom = Vector2(2, 2)
+
+[connection signal="body_entered" from="Portrait1/Door" to="Portrait1/Door" method="win_game"]
+[connection signal="body_entered" from="Portrait1/PlayerKiller" to="Portrait1/PlayerKiller" method="_on_body_entered"]
+
+[editable path="Portrait1/SlidingTile"]
+[editable path="Portrait1/SlidingTile2"]
+[editable path="Portrait1/SlidingTile3"]
+[editable path="Portrait1/SlidingTile4"]
+[editable path="Portrait1/SlidingTile5"]
+[editable path="Portrait1/SlidingTile7"]
+[editable path="Portrait1/SlidingTile8"]
+[editable path="Portrait1/SlidingTile9"]
+[editable path="Portrait1/SlidingTile10"]
+[editable path="Portrait1/SlidingTile11"]
+[editable path="Portrait1/SlidingTile13"]
+[editable path="Portrait1/SlidingTile14"]
+[editable path="Portrait1/SlidingTile15"]
+[editable path="Portrait1/SlidingTile16"]

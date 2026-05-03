@@ -19,27 +19,45 @@ const TILE_SIZE = Vector2i(32,32)
 ##Identifies the tile's [member neighbor_bottom].
 @export var bottom_raycast : RayCast2D
 
+@export var tile_focus_frame : Sprite2D
+
 var position_raycasts : Array[RayCast2D]
 
 ##if this is [code]false[/code] this tile can't be moved by the player.
-var is_locked : bool = false
+@export var is_locked : bool
+
+@export var player_detector_area : Area2D
+
+##Emiited when [member is_active] is changed to [code]true[/code]. it sends itself
+## as an argument.
+signal tile_selected
+##Emiited when [member is_active] is changed to [code]false[/code]. it sends itself
+## as an argument.
+signal tile_unselected
 
 ##if [code]true[/code], this is the tile being moved by the player.
 var is_active : bool = false:
 	set(value):
+		is_active = value
+		set_focus_frame_color_and_visibility()
 		if value == true:
+			tile_selected.emit(self)
 			focus_neighbor_bottom = self.get_path()
 			focus_neighbor_top = self.get_path()
 			focus_neighbor_left = self.get_path()
 			focus_neighbor_right = self.get_path()
 			
 		elif value == false:
-			update_neighbors()
+			tile_unselected.emit(self)
+			this_portrait.update_tiles_neighbors()
 
 func _ready() -> void:
-	focus_entered.connect(show_focus)
-	focus_exited.connect(show_focus)
-	
+	player_detector_area.body_entered.connect(lock_block)
+	player_detector_area.body_exited.connect(unlock_block)
+	GameManager.sliding_mode_changed.connect(change_focus_mode)
+	focus_entered.connect(set_focus_frame_color_and_visibility)
+	focus_entered.connect(this_portrait.set_current_tile.bind(self))
+	focus_exited.connect(set_focus_frame_color_and_visibility)
 	if grab_initial_focus == true:
 		grab_focus()
 		
@@ -52,29 +70,23 @@ func _ready() -> void:
 	
 	update_neighbors()
 
-func show_focus() -> void:
-	if has_focus():
-		modulate = Color.GREEN
-	else:
-		modulate = Color.WHITE
-
 func move_right() -> void:
 	if not right_raycast.is_colliding():
 		var tween = create_tween()
 		tween.tween_property(self,"position:x",position.x + TILE_SIZE.x,0.3).set_trans(Tween.TRANS_QUART)
 
 func move_left() -> void:
-	if not right_raycast.is_colliding():
+	if not left_raycast.is_colliding():
 		var tween = create_tween()
 		tween.tween_property(self,"position:x",position.x - TILE_SIZE.x,0.3).set_trans(Tween.TRANS_QUART)
 
 func move_top() -> void:
-	if not right_raycast.is_colliding():
+	if not top_raycast.is_colliding():
 		var tween = create_tween()
 		tween.tween_property(self,"position:y",position.y - TILE_SIZE.y,0.3).set_trans(Tween.TRANS_QUART)
 
 func move_bottom() -> void:
-	if not right_raycast.is_colliding():
+	if not bottom_raycast.is_colliding():
 		var tween = create_tween()
 		tween.tween_property(self,"position:y",position.y + TILE_SIZE.y,0.3).set_trans(Tween.TRANS_QUART)
 
@@ -92,38 +104,51 @@ func _input(event: InputEvent) -> void:
 		elif event.is_action_pressed("ui_down"):
 			move_bottom()
 	
-	elif has_focus() and !is_active and GameManager.sliding_mode_on and event.is_action_pressed("ui_accept"):
+		elif event.is_action_pressed("ui_accept"):
+			is_active = false
+			print("is active false")
+	
+	elif has_focus() and !is_active and !is_locked and GameManager.sliding_mode_on and event.is_action_pressed("ui_accept"):
 		is_active = true
+
 
 func update_right_neighbor() -> void:
 	if right_raycast.is_colliding():
-		var neighbor_tile = right_raycast.get_collider().get_parent() as SlidingTile
-		focus_neighbor_right = neighbor_tile.get_path()
-		
+		var neighbor_tile = right_raycast.get_collider()
+		if neighbor_tile.get_parent() is SlidingTile:
+			focus_neighbor_right = neighbor_tile.get_parent().get_path()
+		else:
+			focus_neighbor_right = self.get_path()
 	else:
 		focus_neighbor_right = self.get_path()
 	
 func update_left_neighbor() -> void:
 	if left_raycast.is_colliding():
-		var neighbor_tile = left_raycast.get_collider().get_parent() as SlidingTile
-		focus_neighbor_left = neighbor_tile.get_path()
-		
+		var neighbor_tile = left_raycast.get_collider()
+		if neighbor_tile.get_parent() is SlidingTile:
+			focus_neighbor_left = neighbor_tile.get_parent().get_path()
+		else:
+			focus_neighbor_left = self.get_path()
 	else:
 		focus_neighbor_left = self.get_path()
 
 func update_top_neighbor() -> void:
 	if top_raycast.is_colliding():
-		var neighbor_tile = top_raycast.get_collider().get_parent() as SlidingTile
-		focus_neighbor_top = neighbor_tile.get_path()
-		
+		var neighbor_tile = top_raycast.get_collider()
+		if neighbor_tile.get_parent() is SlidingTile:
+			focus_neighbor_top = neighbor_tile.get_parent().get_path()
+		else:
+			focus_neighbor_top = self.get_path()
 	else:
 		focus_neighbor_top = self.get_path()
 
 func update_bottom_neighbor() -> void:
 	if bottom_raycast.is_colliding():
-		var neighbor_tile = bottom_raycast.get_collider().get_parent() as SlidingTile
-		focus_neighbor_bottom = neighbor_tile.get_path()
-		
+		var neighbor_tile = bottom_raycast.get_collider()
+		if neighbor_tile.get_parent() is SlidingTile:
+			focus_neighbor_bottom = neighbor_tile.get_parent().get_path()
+		else:
+			focus_neighbor_bottom = self.get_path()
 	else:
 		focus_neighbor_bottom = self.get_path()
 
@@ -135,3 +160,33 @@ func update_neighbors() -> void:
 	update_left_neighbor()
 	update_right_neighbor()
 	update_top_neighbor()
+
+func change_focus_mode(sliding_mode_on : bool) -> void:
+	is_active = false
+	if sliding_mode_on == false:
+		focus_mode = Control.FOCUS_NONE
+
+	elif sliding_mode_on == true:
+		focus_mode = Control.FOCUS_ALL
+
+func set_focus_frame_color_and_visibility() -> void:
+	if not has_focus():
+		tile_focus_frame.hide()
+	
+	elif is_locked:
+		tile_focus_frame.show()
+		tile_focus_frame.modulate = Color.RED
+	
+	elif has_focus() and is_active:
+		tile_focus_frame.show()
+		tile_focus_frame.modulate = Color.GREEN
+		
+	elif has_focus():
+		tile_focus_frame.show()
+		tile_focus_frame.modulate = Color.WHITE
+
+func lock_block(_body) -> void:
+	is_locked = true
+
+func unlock_block(_body) -> void:
+	is_locked = false

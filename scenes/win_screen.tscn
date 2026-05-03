@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://8cn7eky7ufq"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_s508f"]
+font_size = 57
+font_color = Color(0, 0, 0, 1)
+
+[node name="WinScreen" type="Node2D" unique_id=836766773]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=203221069]
+offset_right = 640.0
+offset_bottom = 360.0
+color = Color(0.8627451, 0.8627451, 0.7137255, 1)
+
+[node name="Label" type="Label" parent="." unique_id=2053597]
+offset_left = 192.0
+offset_top = 128.0
+offset_right = 459.0
+offset_bottom = 206.0
+text = "YOU WIN!"
+label_settings = SubResource("LabelSettings_s508f")
