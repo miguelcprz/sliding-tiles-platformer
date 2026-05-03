@@ -37,7 +37,6 @@ var is_active : bool = false:
 			update_neighbors()
 
 func _ready() -> void:
-	ready.connect(update_neighbors)
 	focus_entered.connect(show_focus)
 	focus_exited.connect(show_focus)
 	
@@ -51,7 +50,7 @@ func _ready() -> void:
 		bottom_raycast
 	]
 	
-	
+	update_neighbors()
 
 func show_focus() -> void:
 	if has_focus():
@@ -129,6 +128,9 @@ func update_bottom_neighbor() -> void:
 		focus_neighbor_bottom = self.get_path()
 
 func update_neighbors() -> void:
+	for ray:RayCast2D in position_raycasts:
+		ray.force_raycast_update()
+	
 	update_bottom_neighbor()
 	update_left_neighbor()
 	update_right_neighbor()
