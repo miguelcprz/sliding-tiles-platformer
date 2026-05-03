@@ -1,0 +1,108 @@
+[gd_scene format=3 uid="uid://cjiibwj7bhxun"]
+
+[ext_resource type="Script" uid="uid://dryc4vt46j2fq" path="res://classes/Portrait.gd" id="1_nnsk1"]
+[ext_resource type="PackedScene" uid="uid://i6wxb0n2l15h" path="res://objects/sliding_tile.tscn" id="2_rwgxs"]
+
+[node name="World" type="Node2D" unique_id=1711283331]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=659264033]
+offset_left = -1920.0
+offset_top = -1800.0
+offset_right = 1920.0
+offset_bottom = 360.0
+color = Color(0, 0, 0, 1)
+
+[node name="Portrait1" type="Node2D" parent="." unique_id=1569704963 node_paths=PackedStringArray("tiles")]
+script = ExtResource("1_nnsk1")
+tiles = [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
+metadata/_custom_type_script = "uid://dryc4vt46j2fq"
+
+[node name="SlidingTile" parent="Portrait1" unique_id=767328442 node_paths=PackedStringArray("this_portrait") instance=ExtResource("2_rwgxs")]
+grab_initial_focus = true
+this_portrait = NodePath("..")
+
+[node name="SlidingTile2" parent="Portrait1" unique_id=1497088598 node_paths=PackedStringArray("this_portrait") instance=ExtResource("2_rwgxs")]
+offset_left = 40.0
+offset_right = 80.0
+this_portrait = NodePath("..")
+
+[node name="SlidingTile3" parent="Portrait1" unique_id=1077141740 node_paths=PackedStringArray("this_portrait") instance=ExtResource("2_rwgxs")]
+offset_left = 80.0
+offset_right = 120.0
+this_portrait = NodePath("..")
+
+[node name="SlidingTile4" parent="Portrait1" unique_id=374338039 node_paths=PackedStringArray("this_portrait") instance=ExtResource("2_rwgxs")]
+offset_left = 120.0
+offset_right = 160.0
+this_portrait = NodePath("..")
+
+[node name="SlidingTile5" parent="Portrait1" unique_id=1903608615 node_paths=PackedStringArray("this_portrait") instance=ExtResource("2_rwgxs")]
+offset_top = 40.0
+offset_bottom = 80.0
+this_portrait = NodePath("..")
+
+[node name="SlidingTile7" parent="Portrait1" unique_id=142595683 node_paths=PackedStringArray("this_portrait") instance=ExtResource("2_rwgxs")]
+offset_left = 80.0
+offset_top = 40.0
+offset_right = 120.0
+offset_bottom = 80.0
+this_portrait = NodePath("..")
+
+[node name="SlidingTile8" parent="Portrait1" unique_id=2015393999 node_paths=PackedStringArray("this_portrait") instance=ExtResource("2_rwgxs")]
+offset_left = 120.0
+offset_top = 40.0
+offset_right = 160.0
+offset_bottom = 80.0
+this_portrait = NodePath("..")
+
+[node name="SlidingTile9" parent="Portrait1" unique_id=230209184 node_paths=PackedStringArray("this_portrait") instance=ExtResource("2_rwgxs")]
+offset_top = 80.0
+offset_bottom = 120.0
+this_portrait = NodePath("..")
+
+[node name="SlidingTile10" parent="Portrait1" unique_id=722640608 node_paths=PackedStringArray("this_portrait") instance=ExtResource("2_rwgxs")]
+offset_left = 40.0
+offset_top = 80.0
+offset_right = 80.0
+offset_bottom = 120.0
+this_portrait = NodePath("..")
+
+[node name="SlidingTile11" parent="Portrait1" unique_id=836991473 node_paths=PackedStringArray("this_portrait") instance=ExtResource("2_rwgxs")]
+offset_left = 80.0
+offset_top = 80.0
+offset_right = 120.0
+offset_bottom = 120.0
+this_portrait = NodePath("..")
+
+[node name="SlidingTile12" parent="Portrait1" unique_id=723081610 node_paths=PackedStringArray("this_portrait") instance=ExtResource("2_rwgxs")]
+offset_left = 120.0
+offset_top = 80.0
+offset_right = 160.0
+offset_bottom = 120.0
+this_portrait = NodePath("..")
+
+[node name="SlidingTile13" parent="Portrait1" unique_id=1645834899 node_paths=PackedStringArray("this_portrait") instance=ExtResource("2_rwgxs")]
+offset_top = 120.0
+offset_bottom = 160.0
+this_portrait = NodePath("..")
+
+[node name="SlidingTile14" parent="Portrait1" unique_id=619289409 node_paths=PackedStringArray("this_portrait") instance=ExtResource("2_rwgxs")]
+offset_left = 40.0
+offset_top = 120.0
+offset_right = 80.0
+offset_bottom = 160.0
+this_portrait = NodePath("..")
+
+[node name="SlidingTile15" parent="Portrait1" unique_id=971150186 node_paths=PackedStringArray("this_portrait") instance=ExtResource("2_rwgxs")]
+offset_left = 80.0
+offset_top = 120.0
+offset_right = 120.0
+offset_bottom = 160.0
+this_portrait = NodePath("..")
+
+[node name="SlidingTile16" parent="Portrait1" unique_id=2024130854 node_paths=PackedStringArray("this_portrait") instance=ExtResource("2_rwgxs")]
+offset_left = 120.0
+offset_top = 120.0
+offset_right = 160.0
+offset_bottom = 160.0
+this_portrait = NodePath("..")

@@ -1,0 +1,84 @@
+[gd_scene format=3 uid="uid://i6wxb0n2l15h"]
+
+[ext_resource type="Texture2D" uid="uid://b8wjscppfs2ox" path="res://icon.svg" id="1_72fjc"]
+[ext_resource type="Script" uid="uid://0l5yokjca1eh" path="res://classes/sliding_tile.gd" id="2_g1tpc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_epfj7"]
+size = Vector2(24, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_72fjc"]
+size = Vector2(24, 24)
+
+[node name="SlidingTile" type="TextureRect" unique_id=471830497 node_paths=PackedStringArray("right_raycast", "left_raycast", "top_raycast", "bottom_raycast")]
+offset_right = 40.0
+offset_bottom = 40.0
+focus_mode = 2
+focus_behavior_recursive = 2
+texture = ExtResource("1_72fjc")
+expand_mode = 3
+script = ExtResource("2_g1tpc")
+right_raycast = NodePath("RightRaycast")
+left_raycast = NodePath("LeftRaycast")
+top_raycast = NodePath("TopRaycast")
+bottom_raycast = NodePath("BottomRaycast")
+metadata/_custom_type_script = "uid://0l5yokjca1eh"
+
+[node name="Platform" type="ColorRect" parent="." unique_id=455662471]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 16.0
+offset_right = 32.0
+offset_bottom = 24.0
+color = Color(1, 1, 0.6431373, 1)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Platform" unique_id=978466501]
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/StaticBody2D" unique_id=1674171987]
+position = Vector2(12, 4)
+shape = SubResource("RectangleShape2D_epfj7")
+
+[node name="TileDetectorArea" type="Area2D" parent="." unique_id=1882947960]
+collision_layer = 2
+collision_mask = 2
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileDetectorArea" unique_id=813020552]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_72fjc")
+
+[node name="BottomRaycast" type="RayCast2D" parent="." unique_id=570935355]
+position = Vector2(24, 40)
+target_position = Vector2(0, 24)
+collision_mask = 2
+hit_from_inside = true
+collide_with_areas = true
+collide_with_bodies = false
+metadata/_edit_lock_ = true
+
+[node name="TopRaycast" type="RayCast2D" parent="." unique_id=712657749]
+position = Vector2(16, 0)
+target_position = Vector2(0, -24)
+collision_mask = 2
+hit_from_inside = true
+collide_with_areas = true
+collide_with_bodies = false
+metadata/_edit_lock_ = true
+
+[node name="RightRaycast" type="RayCast2D" parent="." unique_id=798857242]
+position = Vector2(40, 24)
+target_position = Vector2(24, 0)
+collision_mask = 2
+hit_from_inside = true
+collide_with_areas = true
+collide_with_bodies = false
+metadata/_edit_lock_ = true
+
+[node name="LeftRaycast" type="RayCast2D" parent="." unique_id=441271293]
+position = Vector2(0, 16)
+target_position = Vector2(-24, 0)
+collision_mask = 2
+hit_from_inside = true
+collide_with_areas = true
+collide_with_bodies = false
+metadata/_edit_lock_ = true
