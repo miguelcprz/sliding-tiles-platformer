@@ -7,8 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bguet35w53t64" path="res://visual_assets/tile_focus_frame.png" id="4_7r4gi"]
 [ext_resource type="Texture2D" uid="uid://b80einx858yq3" path="res://visual_assets/debug_tileset_1x1.png" id="5_qfnet"]
 [ext_resource type="PackedScene" uid="uid://bb2fcn65ri607" path="res://objects/player.tscn" id="6_i7141"]
-[ext_resource type="Script" uid="uid://dryc4vt46j2fq" path="res://classes/Portrait.gd" id="9_w7kh3"]
-[ext_resource type="PackedScene" uid="uid://i6wxb0n2l15h" path="res://objects/sliding_tile.tscn" id="10_e3hyu"]
+[ext_resource type="PackedScene" uid="uid://duo8atld6maii" path="res://objects/portrait_3x_3.tscn" id="9_7r4gi"]
 [ext_resource type="Script" uid="uid://bees13fon7jnd" path="res://objects/debug_controllers.gd" id="10_w7kh3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qfnet"]
@@ -39,22 +38,6 @@ normal = Vector2(1, 0)
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_4mrxx"]
 normal = Vector2(-1, 0)
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_q5onr"]
-b = Vector2(144, 0)
-
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_jhx03"]
-a = Vector2(144, 8)
-b = Vector2(0, 8)
-
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_o8fc1"]
-b = Vector2(0, 144)
-
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_xo05s"]
-b = Vector2(0, 144)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_w7kh3"]
-size = Vector2(48, 48)
-
 [node name="World" type="Node2D" unique_id=1711283331]
 texture_filter = 1
 script = ExtResource("1_k0juu")
@@ -66,79 +49,79 @@ offset_right = 1926.0
 offset_bottom = 360.0
 color = Color(0.8627451, 0.8627451, 0.7137255, 1)
 
-[node name="Portrait4x4" parent="." unique_id=500186065 instance=ExtResource("2_k0juu")]
+[node name="Portrait4x4_1" parent="." unique_id=500186065 instance=ExtResource("2_k0juu")]
 position = Vector2(248, 96)
 
-[node name="SlidingTile" parent="Portrait4x4" index="0" unique_id=471830497]
+[node name="SlidingTile" parent="Portrait4x4_1" index="0" unique_id=471830497]
 metadata/_edit_lock_ = true
 
-[node name="SliderTileMap" parent="Portrait4x4/SlidingTile" index="1" unique_id=1903156260]
+[node name="SliderTileMap" parent="Portrait4x4_1/SlidingTile" index="1" unique_id=1903156260]
 tile_map_data = PackedByteArray()
 
-[node name="SlidingTile2" parent="Portrait4x4" index="1" unique_id=896217171]
+[node name="SlidingTile2" parent="Portrait4x4_1" index="1" unique_id=896217171]
 metadata/_edit_lock_ = true
 
-[node name="SlidingTile3" parent="Portrait4x4" index="2" unique_id=1468224563]
+[node name="SlidingTile3" parent="Portrait4x4_1" index="2" unique_id=1468224563]
 metadata/_edit_lock_ = true
 
-[node name="SlidingTile4" parent="Portrait4x4" index="3" unique_id=1420918182]
+[node name="SlidingTile4" parent="Portrait4x4_1" index="3" unique_id=1420918182]
 metadata/_edit_lock_ = true
 
-[node name="SliderTileMap" parent="Portrait4x4/SlidingTile4" index="1" unique_id=1903156260]
+[node name="SliderTileMap" parent="Portrait4x4_1/SlidingTile4" index="1" unique_id=1903156260]
 tile_map_data = PackedByteArray("AAACAAIAAAAAAAAAAAABAAIAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAEAAAAAAAAAAAABAAEAAAAAAAAAAAACAAEAAAAAAAAAAAA=")
 
-[node name="SlidingTile5" parent="Portrait4x4" index="4" unique_id=933644609]
+[node name="SlidingTile5" parent="Portrait4x4_1" index="4" unique_id=933644609]
 metadata/_edit_lock_ = true
 
-[node name="SlidingTile6" parent="Portrait4x4" index="5" unique_id=623643922]
+[node name="SlidingTile6" parent="Portrait4x4_1" index="5" unique_id=623643922]
 metadata/_edit_lock_ = true
 
-[node name="SlidingTile7" parent="Portrait4x4" index="6" unique_id=584188938]
+[node name="SlidingTile7" parent="Portrait4x4_1" index="6" unique_id=584188938]
 metadata/_edit_lock_ = true
 
-[node name="SliderTileMap" parent="Portrait4x4/SlidingTile7" index="1" unique_id=1903156260]
+[node name="SliderTileMap" parent="Portrait4x4_1/SlidingTile7" index="1" unique_id=1903156260]
 tile_map_data = PackedByteArray("AAAAAAIAAAABAAAAAAABAAIAAAABAAAAAAACAAIAAAABAAAAAAACAAEAAAABAAAAAAABAAEAAAABAAAAAAAAAAEAAAABAAAAAAA=")
 
-[node name="SlidingTile8" parent="Portrait4x4" index="7" unique_id=1131878500]
+[node name="SlidingTile8" parent="Portrait4x4_1" index="7" unique_id=1131878500]
 metadata/_edit_lock_ = true
 
-[node name="SlidingTile9" parent="Portrait4x4" index="8" unique_id=1103202720]
+[node name="SlidingTile9" parent="Portrait4x4_1" index="8" unique_id=1103202720]
 metadata/_edit_lock_ = true
 
-[node name="SlidingTile10" parent="Portrait4x4" index="9" unique_id=1857768745]
+[node name="SlidingTile10" parent="Portrait4x4_1" index="9" unique_id=1857768745]
 metadata/_edit_lock_ = true
 
-[node name="SliderTileMap" parent="Portrait4x4/SlidingTile10" index="1" unique_id=1903156260]
+[node name="SliderTileMap" parent="Portrait4x4_1/SlidingTile10" index="1" unique_id=1903156260]
 tile_map_data = PackedByteArray("AAAAAAIAAAABAAAAAAABAAIAAAABAAAAAAACAAIAAAABAAAAAAACAAEAAAABAAAAAAAAAAEAAAABAAAAAAABAAEAAAABAAAAAAA=")
 
-[node name="SlidingTile11" parent="Portrait4x4" index="10" unique_id=1953860156]
+[node name="SlidingTile11" parent="Portrait4x4_1" index="10" unique_id=1953860156]
 metadata/_edit_lock_ = true
 
-[node name="SlidingTile12" parent="Portrait4x4" index="11" unique_id=864962577]
+[node name="SlidingTile12" parent="Portrait4x4_1" index="11" unique_id=864962577]
 metadata/_edit_lock_ = true
 
-[node name="SlidingTile13" parent="Portrait4x4" index="12" unique_id=2142468203]
+[node name="SlidingTile13" parent="Portrait4x4_1" index="12" unique_id=2142468203]
 metadata/_edit_lock_ = true
 
-[node name="SliderTileMap" parent="Portrait4x4/SlidingTile13" index="1" unique_id=1903156260]
+[node name="SliderTileMap" parent="Portrait4x4_1/SlidingTile13" index="1" unique_id=1903156260]
 tile_map_data = PackedByteArray("AAAAAAIAAAAAAAAAAAABAAIAAAAAAAAAAAACAAIAAAAAAAAAAAACAAEAAAAAAAAAAAABAAEAAAAAAAAAAAAAAAEAAAAAAAAAAAACAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=")
 
-[node name="SlidingTile14" parent="Portrait4x4" index="13" unique_id=86091244]
+[node name="SlidingTile14" parent="Portrait4x4_1" index="13" unique_id=86091244]
 metadata/_edit_lock_ = true
 
-[node name="SlidingTile15" parent="Portrait4x4" index="14" unique_id=200632149]
+[node name="SlidingTile15" parent="Portrait4x4_1" index="14" unique_id=200632149]
 metadata/_edit_lock_ = true
 
-[node name="PortraitTrigger" type="Area2D" parent="Portrait4x4" unique_id=823631076 node_paths=PackedStringArray("portrait")]
+[node name="PortraitTrigger" type="Area2D" parent="Portrait4x4_1" unique_id=823631076 node_paths=PackedStringArray("portrait")]
 position = Vector2(-56, 184)
 script = ExtResource("3_4mrxx")
 portrait = NodePath("..")
 metadata/_custom_type_script = "uid://dwgrxvi8eh672"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Portrait4x4/PortraitTrigger" unique_id=798148523]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Portrait4x4_1/PortraitTrigger" unique_id=798148523]
 shape = SubResource("RectangleShape2D_qfnet")
 
-[node name="TileFocusFrame" type="Sprite2D" parent="Portrait4x4/PortraitTrigger" unique_id=951812381]
+[node name="TileFocusFrame" type="Sprite2D" parent="Portrait4x4_1/PortraitTrigger" unique_id=951812381]
 modulate = Color(0, 0, 1, 1)
 texture = ExtResource("4_7r4gi")
 
@@ -264,151 +247,35 @@ position = Vector2(736, 368)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBottomBoundary3" unique_id=2002495930]
 shape = SubResource("WorldBoundaryShape2D_4mrxx")
 
-[node name="Portrait3x3" type="Node2D" parent="." unique_id=1751532077 node_paths=PackedStringArray("tiles")]
+[node name="Portrait3x3_1" parent="." unique_id=599691390 instance=ExtResource("9_7r4gi")]
 position = Vector2(360, -208)
-script = ExtResource("9_w7kh3")
-tiles = [NodePath("SlidingTile"), NodePath("SlidingTile2"), NodePath("SlidingTile3"), NodePath("SlidingTile4"), NodePath("SlidingTile5"), NodePath("SlidingTile6"), NodePath("SlidingTile7"), NodePath("SlidingTile8")]
-metadata/_custom_type_script = "uid://dryc4vt46j2fq"
-
-[node name="SlidingTile" parent="Portrait3x3" unique_id=2018325502 node_paths=PackedStringArray("this_portrait") instance=ExtResource("10_e3hyu")]
-grab_initial_focus = true
-this_portrait = NodePath("..")
-
-[node name="SliderTileMap" parent="Portrait3x3/SlidingTile" index="1" unique_id=1903156260]
-tile_map_data = PackedByteArray("AAAAAAIAAAABAAAAAAAAAAEAAAABAAAAAAABAAEAAAABAAAAAAABAAIAAAABAAAAAAACAAIAAAABAAAAAAA=")
-
-[node name="SlidingTile2" parent="Portrait3x3" unique_id=775041679 node_paths=PackedStringArray("this_portrait") instance=ExtResource("10_e3hyu")]
-offset_left = 48.0
-offset_right = 96.0
-this_portrait = NodePath("..")
-
-[node name="SliderTileMap" parent="Portrait3x3/SlidingTile2" index="1" unique_id=1903156260]
-tile_map_data = PackedByteArray("AAAAAAIAAAABAAAAAAA=")
-
-[node name="SlidingTile3" parent="Portrait3x3" unique_id=889544878 node_paths=PackedStringArray("this_portrait") instance=ExtResource("10_e3hyu")]
-offset_left = 96.0
-offset_right = 144.0
-this_portrait = NodePath("..")
-
-[node name="SliderTileMap" parent="Portrait3x3/SlidingTile3" index="1" unique_id=1903156260]
-tile_map_data = PackedByteArray("AAACAAIAAAABAAAAAAACAAEAAAABAAAAAAACAAAAAAABAAAAAAA=")
-
-[node name="SlidingTile4" parent="Portrait3x3" unique_id=82513516 node_paths=PackedStringArray("this_portrait") instance=ExtResource("10_e3hyu")]
-offset_top = 48.0
-offset_bottom = 96.0
-this_portrait = NodePath("..")
-
-[node name="SliderTileMap" parent="Portrait3x3/SlidingTile4" index="1" unique_id=1903156260]
-tile_map_data = PackedByteArray("AAACAAIAAAABAAAAAAACAAEAAAABAAAAAAACAAAAAAABAAAAAAABAAAAAAABAAAAAAAAAAAAAAABAAAAAAAAAAEAAAABAAAAAAABAAIAAAABAAAAAAABAAEAAAABAAAAAAAAAAIAAAABAAAAAAA=")
-
-[node name="SlidingTile5" parent="Portrait3x3" unique_id=202598778 node_paths=PackedStringArray("this_portrait") instance=ExtResource("10_e3hyu")]
-offset_left = 48.0
-offset_top = 48.0
-offset_right = 96.0
-offset_bottom = 96.0
-this_portrait = NodePath("..")
-
-[node name="SliderTileMap" parent="Portrait3x3/SlidingTile5" index="1" unique_id=1903156260]
-tile_map_data = PackedByteArray("AAACAAIAAAABAAAAAAACAAEAAAABAAAAAAABAAEAAAABAAAAAAABAAIAAAABAAAAAAAAAAIAAAABAAAAAAAAAAEAAAABAAAAAAAAAAAAAAABAAAAAAA=")
-
-[node name="SlidingTile6" parent="Portrait3x3" unique_id=1707692830 node_paths=PackedStringArray("this_portrait") instance=ExtResource("10_e3hyu")]
-offset_left = 96.0
-offset_top = 48.0
-offset_right = 144.0
-offset_bottom = 96.0
-this_portrait = NodePath("..")
-
-[node name="SlidingTile7" parent="Portrait3x3" unique_id=565808354 node_paths=PackedStringArray("this_portrait") instance=ExtResource("10_e3hyu")]
-offset_left = 48.0
-offset_top = 96.0
-offset_right = 96.0
-offset_bottom = 144.0
-this_portrait = NodePath("..")
-
-[node name="SliderTileMap" parent="Portrait3x3/SlidingTile7" index="1" unique_id=1903156260]
-tile_map_data = PackedByteArray("AAACAAIAAAABAAAAAAACAAEAAAABAAAAAAACAAAAAAABAAAAAAABAAAAAAABAAAAAAAAAAAAAAABAAAAAAAAAAEAAAABAAAAAAAAAAIAAAABAAAAAAABAAIAAAABAAAAAAABAAEAAAABAAAAAAA=")
-
-[node name="SlidingTile8" parent="Portrait3x3" unique_id=1709876591 node_paths=PackedStringArray("this_portrait") instance=ExtResource("10_e3hyu")]
-offset_left = 96.0
-offset_top = 96.0
-offset_right = 144.0
-offset_bottom = 144.0
-this_portrait = NodePath("..")
-
-[node name="SliderTileMap" parent="Portrait3x3/SlidingTile8" index="1" unique_id=1903156260]
-tile_map_data = PackedByteArray("AAACAAIAAAABAAAAAAABAAIAAAABAAAAAAABAAEAAAABAAAAAAAAAAEAAAABAAAAAAAAAAIAAAABAAAAAAAAAAAAAAABAAAAAAABAAAAAAABAAAAAAA=")
-
-[node name="PortraitLimits" type="Node2D" parent="Portrait3x3" unique_id=350475812]
-
-[node name="TopLimit" type="StaticBody2D" parent="Portrait3x3/PortraitLimits" unique_id=1012218569]
-collision_layer = 2
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Portrait3x3/PortraitLimits/TopLimit" unique_id=2035951157]
-shape = SubResource("SegmentShape2D_q5onr")
-
-[node name="BottomLimit" type="StaticBody2D" parent="Portrait3x3/PortraitLimits" unique_id=923713009]
-position = Vector2(0, 144)
-collision_layer = 2
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Portrait3x3/PortraitLimits/BottomLimit" unique_id=2099641596]
-position = Vector2(0, -8)
-shape = SubResource("SegmentShape2D_jhx03")
-
-[node name="LeftLimit" type="StaticBody2D" parent="Portrait3x3/PortraitLimits" unique_id=225210663]
-collision_layer = 2
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Portrait3x3/PortraitLimits/LeftLimit" unique_id=273393352]
-shape = SubResource("SegmentShape2D_o8fc1")
-
-[node name="RightLimit" type="StaticBody2D" parent="Portrait3x3/PortraitLimits" unique_id=396425184]
-position = Vector2(144, 0)
-collision_layer = 2
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Portrait3x3/PortraitLimits/RightLimit" unique_id=284038829]
-shape = SubResource("SegmentShape2D_xo05s")
-
-[node name="PortraitTrigger" type="Area2D" parent="Portrait3x3" unique_id=1005678836 node_paths=PackedStringArray("portrait")]
-position = Vector2(208, 168)
-script = ExtResource("3_4mrxx")
-portrait = NodePath("..")
-metadata/_custom_type_script = "uid://dwgrxvi8eh672"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Portrait3x3/PortraitTrigger" unique_id=153258241]
-shape = SubResource("RectangleShape2D_w7kh3")
-
-[node name="TileFocusFrame" type="Sprite2D" parent="Portrait3x3/PortraitTrigger" unique_id=1050116213]
-modulate = Color(0, 0, 1, 1)
-texture = ExtResource("4_7r4gi")
 
 [connection signal="value_changed" from="UI/DebugControllers/SpeedSlider" to="UI/DebugControllers" method="_on_speed_slider_value_changed"]
 [connection signal="value_changed" from="UI/DebugControllers/GravitySlider" to="UI/DebugControllers" method="_on_gravity_slider_value_changed"]
 [connection signal="value_changed" from="UI/DebugControllers/JumpForceSlider" to="UI/DebugControllers" method="_on_jump_force_slider_value_changed"]
 
-[editable path="Portrait4x4"]
-[editable path="Portrait4x4/SlidingTile"]
-[editable path="Portrait4x4/SlidingTile2"]
-[editable path="Portrait4x4/SlidingTile3"]
-[editable path="Portrait4x4/SlidingTile4"]
-[editable path="Portrait4x4/SlidingTile5"]
-[editable path="Portrait4x4/SlidingTile6"]
-[editable path="Portrait4x4/SlidingTile7"]
-[editable path="Portrait4x4/SlidingTile8"]
-[editable path="Portrait4x4/SlidingTile9"]
-[editable path="Portrait4x4/SlidingTile10"]
-[editable path="Portrait4x4/SlidingTile11"]
-[editable path="Portrait4x4/SlidingTile12"]
-[editable path="Portrait4x4/SlidingTile13"]
-[editable path="Portrait4x4/SlidingTile14"]
-[editable path="Portrait4x4/SlidingTile15"]
-[editable path="Portrait3x3/SlidingTile"]
-[editable path="Portrait3x3/SlidingTile2"]
-[editable path="Portrait3x3/SlidingTile3"]
-[editable path="Portrait3x3/SlidingTile4"]
-[editable path="Portrait3x3/SlidingTile5"]
-[editable path="Portrait3x3/SlidingTile6"]
-[editable path="Portrait3x3/SlidingTile7"]
-[editable path="Portrait3x3/SlidingTile8"]
+[editable path="Portrait4x4_1"]
+[editable path="Portrait4x4_1/SlidingTile"]
+[editable path="Portrait4x4_1/SlidingTile2"]
+[editable path="Portrait4x4_1/SlidingTile3"]
+[editable path="Portrait4x4_1/SlidingTile4"]
+[editable path="Portrait4x4_1/SlidingTile5"]
+[editable path="Portrait4x4_1/SlidingTile6"]
+[editable path="Portrait4x4_1/SlidingTile7"]
+[editable path="Portrait4x4_1/SlidingTile8"]
+[editable path="Portrait4x4_1/SlidingTile9"]
+[editable path="Portrait4x4_1/SlidingTile10"]
+[editable path="Portrait4x4_1/SlidingTile11"]
+[editable path="Portrait4x4_1/SlidingTile12"]
+[editable path="Portrait4x4_1/SlidingTile13"]
+[editable path="Portrait4x4_1/SlidingTile14"]
+[editable path="Portrait4x4_1/SlidingTile15"]
+[editable path="Portrait3x3_1"]
+[editable path="Portrait3x3_1/SlidingTile"]
+[editable path="Portrait3x3_1/SlidingTile2"]
+[editable path="Portrait3x3_1/SlidingTile3"]
+[editable path="Portrait3x3_1/SlidingTile4"]
+[editable path="Portrait3x3_1/SlidingTile5"]
+[editable path="Portrait3x3_1/SlidingTile6"]
+[editable path="Portrait3x3_1/SlidingTile7"]
+[editable path="Portrait3x3_1/SlidingTile8"]
