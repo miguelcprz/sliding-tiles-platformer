@@ -1,23 +1,31 @@
 class_name SlidingTile extends TextureRect
 
-const TILE_SIZE = Vector2i(32,32)
+const TILE_SIZE = Vector2i(48,48)
 
 @export var grab_initial_focus : bool
 ##The portrait which this tile is in.
 @export var this_portrait : Portrait
-##Represents this tile correct position in the [Portrait] grid.
-@export var correct_position : Vector2i
-##Represents this tile initial position in the [Portrait] grid.
-@export var initial_position : Vector2i
+###Represents this tile correct position in the [Portrait] grid (NOT USING).
+#@export var correct_position : Vector2i
+###Represents this tile initial position in the [Portrait] grid (NOT USING).
+#@export var initial_position : Vector2i
 
 ##Identifies the tile's [member neighbor_right].
 @export var right_raycast : RayCast2D
+##Used to skip the puzzle hole and set the next tile as [member focus_neighbor_right].
+@export var long_right_raycast : RayCast2D
 ##Identifies the tile's [member neighbor_left].
 @export var left_raycast : RayCast2D
+##Used to skip the puzzle hole and set the next tile as [member focus_neighbor_left].
+@export var long_left_raycast : RayCast2D
 ##Identifies the tile's [member neighbor_top].
 @export var top_raycast : RayCast2D
+##Used to skip the puzzle hole and set the next tile as [member focus_neighbor_top].
+@export var long_top_raycast : RayCast2D
 ##Identifies the tile's [member neighbor_bottom].
 @export var bottom_raycast : RayCast2D
+##Used to skip the puzzle hole and set the next tile as [member focus_neighbor_bottom].
+@export var long_bottom_raycast : RayCast2D
 
 @export var tile_focus_frame : Sprite2D
 
@@ -25,6 +33,9 @@ var position_raycasts : Array[RayCast2D]
 
 ##if this is [code]false[/code] this tile can't be moved by the player.
 @export var is_locked : bool
+
+##used to avoid simultaneous movement calls.
+@export var is_moving : bool = false
 
 @export var player_detector_area : Area2D
 
@@ -54,44 +65,66 @@ var is_active : bool = false:
 func _ready() -> void:
 	player_detector_area.body_entered.connect(lock_block)
 	player_detector_area.body_exited.connect(unlock_block)
-	GameManager.sliding_mode_changed.connect(change_focus_mode)
+	this_portrait.sliding_mode_changed.connect(change_focus_mode)
 	focus_entered.connect(set_focus_frame_color_and_visibility)
 	focus_entered.connect(this_portrait.set_current_tile.bind(self))
 	focus_exited.connect(set_focus_frame_color_and_visibility)
-	if grab_initial_focus == true:
-		grab_focus()
 		
 	position_raycasts = [
 		right_raycast,
+		long_right_raycast,
 		left_raycast,
+		long_left_raycast,
 		top_raycast,
-		bottom_raycast
+		long_top_raycast,
+		bottom_raycast,
+		long_bottom_raycast,
 	]
 	
 	update_neighbors()
 
 func move_right() -> void:
-	if not right_raycast.is_colliding():
+	if not right_raycast.is_colliding() and not is_moving:
+		is_moving = true
 		var tween = create_tween()
 		tween.tween_property(self,"position:x",position.x + TILE_SIZE.x,0.3).set_trans(Tween.TRANS_QUART)
-
+		await tween.finished
+		this_portrait.update_tiles_neighbors()
+		is_active = false
+		is_moving = false
+		
 func move_left() -> void:
-	if not left_raycast.is_colliding():
+	if not left_raycast.is_colliding() and not is_moving:
+		is_moving = true
 		var tween = create_tween()
 		tween.tween_property(self,"position:x",position.x - TILE_SIZE.x,0.3).set_trans(Tween.TRANS_QUART)
-
+		await tween.finished
+		this_portrait.update_tiles_neighbors()
+		is_active = false
+		is_moving = false
+		
 func move_top() -> void:
-	if not top_raycast.is_colliding():
+	if not top_raycast.is_colliding() and not is_moving:
+		is_moving = true
 		var tween = create_tween()
 		tween.tween_property(self,"position:y",position.y - TILE_SIZE.y,0.3).set_trans(Tween.TRANS_QUART)
-
+		await tween.finished
+		this_portrait.update_tiles_neighbors()
+		is_active = false
+		is_moving = false
+		
 func move_bottom() -> void:
-	if not bottom_raycast.is_colliding():
+	if not bottom_raycast.is_colliding() and not is_moving:
+		is_moving = true
 		var tween = create_tween()
 		tween.tween_property(self,"position:y",position.y + TILE_SIZE.y,0.3).set_trans(Tween.TRANS_QUART)
-
+		await tween.finished
+		this_portrait.update_tiles_neighbors()
+		is_active = false
+		is_moving = false
+		
 func _input(event: InputEvent) -> void:
-	if is_active and GameManager.sliding_mode_on:
+	if is_active and this_portrait.sliding_mode_on:
 		if event.is_action_pressed("ui_right"):
 			move_right()
 	
@@ -106,49 +139,80 @@ func _input(event: InputEvent) -> void:
 	
 		elif event.is_action_pressed("ui_accept"):
 			is_active = false
-			print("is active false")
 	
-	elif has_focus() and !is_active and !is_locked and GameManager.sliding_mode_on and event.is_action_pressed("ui_accept"):
+	elif has_focus() and !is_active and !is_locked and this_portrait.sliding_mode_on and event.is_action_pressed("ui_accept"):
 		is_active = true
 
 
 func update_right_neighbor() -> void:
 	if right_raycast.is_colliding():
 		var neighbor_tile = right_raycast.get_collider()
-		if neighbor_tile.get_parent() is SlidingTile:
-			focus_neighbor_right = neighbor_tile.get_parent().get_path()
+		if neighbor_tile is TileDetectorArea:
+			focus_neighbor_right = neighbor_tile.this_tile.get_path()
 		else:
 			focus_neighbor_right = self.get_path()
+	
+	elif long_right_raycast.is_colliding():
+		var neighbor_tile = long_right_raycast.get_collider()
+		if neighbor_tile is TileDetectorArea:
+			focus_neighbor_right = neighbor_tile.this_tile.get_path()
+		else:
+			focus_neighbor_right = self.get_path()
+	
 	else:
 		focus_neighbor_right = self.get_path()
 	
 func update_left_neighbor() -> void:
 	if left_raycast.is_colliding():
 		var neighbor_tile = left_raycast.get_collider()
-		if neighbor_tile.get_parent() is SlidingTile:
-			focus_neighbor_left = neighbor_tile.get_parent().get_path()
+		if neighbor_tile is TileDetectorArea:
+			focus_neighbor_left = neighbor_tile.this_tile.get_path()
 		else:
 			focus_neighbor_left = self.get_path()
+	
+	elif long_left_raycast.is_colliding():
+		var neighbor_tile = long_left_raycast.get_collider()
+		if neighbor_tile is TileDetectorArea:
+			focus_neighbor_left = neighbor_tile.this_tile.get_path()
+		else:
+			focus_neighbor_left = self.get_path()
+	
 	else:
 		focus_neighbor_left = self.get_path()
 
 func update_top_neighbor() -> void:
 	if top_raycast.is_colliding():
 		var neighbor_tile = top_raycast.get_collider()
-		if neighbor_tile.get_parent() is SlidingTile:
-			focus_neighbor_top = neighbor_tile.get_parent().get_path()
+		if neighbor_tile is TileDetectorArea:
+			focus_neighbor_top = neighbor_tile.this_tile.get_path()
 		else:
 			focus_neighbor_top = self.get_path()
+	
+	elif long_top_raycast.is_colliding():
+		var neighbor_tile = long_top_raycast.get_collider()
+		if neighbor_tile is TileDetectorArea:
+			focus_neighbor_top = neighbor_tile.this_tile.get_path()
+		else:
+			focus_neighbor_top = self.get_path()
+	
 	else:
 		focus_neighbor_top = self.get_path()
 
 func update_bottom_neighbor() -> void:
 	if bottom_raycast.is_colliding():
 		var neighbor_tile = bottom_raycast.get_collider()
-		if neighbor_tile.get_parent() is SlidingTile:
-			focus_neighbor_bottom = neighbor_tile.get_parent().get_path()
+		if neighbor_tile is TileDetectorArea:
+			focus_neighbor_bottom = neighbor_tile.this_tile.get_path()
 		else:
 			focus_neighbor_bottom = self.get_path()
+	
+	elif long_bottom_raycast.is_colliding():
+		var neighbor_tile = long_bottom_raycast.get_collider()
+		if neighbor_tile is TileDetectorArea:
+			focus_neighbor_bottom = neighbor_tile.this_tile.get_path()
+		else:
+			focus_neighbor_bottom = self.get_path()
+	
 	else:
 		focus_neighbor_bottom = self.get_path()
 

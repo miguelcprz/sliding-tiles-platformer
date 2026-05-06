@@ -1,103 +1,165 @@
 [gd_scene format=3 uid="uid://i6wxb0n2l15h"]
 
-[ext_resource type="Texture2D" uid="uid://dv1o8empxripy" path="res://visual_assets/tile_bg.png" id="1_g1tpc"]
 [ext_resource type="Script" uid="uid://0l5yokjca1eh" path="res://classes/sliding_tile.gd" id="2_g1tpc"]
+[ext_resource type="Script" uid="uid://leblikb1ql03" path="res://objects/tile_detector_area.gd" id="2_qrlgn"]
 [ext_resource type="Texture2D" uid="uid://bguet35w53t64" path="res://visual_assets/tile_focus_frame.png" id="3_g1tpc"]
+[ext_resource type="Script" uid="uid://bx3o5fg6visyj" path="res://objects/slider_tile_map.gd" id="4_4xnam"]
+[ext_resource type="Texture2D" uid="uid://ty3pqjdjig6w" path="res://visual_assets/tile_frame.png" id="4_epfj7"]
+[ext_resource type="Texture2D" uid="uid://bkloqsu8xbog6" path="res://visual_assets/debug_tileset_2x1.png" id="4_qrlgn"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_epfj7"]
-resource_local_to_scene = true
-size = Vector2(16, 8)
+[sub_resource type="Gradient" id="Gradient_4xnam"]
+colors = PackedColorArray(0.7019608, 1, 0.87058824, 0.39215687, 0.7019608, 1, 0.87058824, 0.39215687)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_u70ed"]
+gradient = SubResource("Gradient_4xnam")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_72fjc"]
-size = Vector2(16, 16)
+size = Vector2(24, 24)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g1tpc"]
-size = Vector2(32, 32)
+size = Vector2(48, 48)
 
-[node name="SlidingTile" type="TextureRect" unique_id=471830497 node_paths=PackedStringArray("right_raycast", "left_raycast", "top_raycast", "bottom_raycast", "tile_focus_frame", "player_detector_area")]
-offset_right = 32.0
-offset_bottom = 32.0
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4xnam"]
+texture = ExtResource("4_qrlgn")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_u70ed"]
+physics_layer_0/collision_layer = 1
+terrain_set_0/mode = 0
+sources/0 = SubResource("TileSetAtlasSource_4xnam")
+
+[node name="SlidingTile" type="TextureRect" unique_id=471830497 node_paths=PackedStringArray("right_raycast", "long_right_raycast", "left_raycast", "long_left_raycast", "top_raycast", "long_top_raycast", "bottom_raycast", "long_bottom_raycast", "tile_focus_frame", "player_detector_area")]
+offset_right = 48.0
+offset_bottom = 48.0
 focus_mode = 2
 focus_behavior_recursive = 2
-texture = ExtResource("1_g1tpc")
+texture = SubResource("GradientTexture2D_u70ed")
 expand_mode = 3
 script = ExtResource("2_g1tpc")
-right_raycast = NodePath("RightRaycast")
-left_raycast = NodePath("LeftRaycast")
-top_raycast = NodePath("TopRaycast")
-bottom_raycast = NodePath("BottomRaycast")
-tile_focus_frame = NodePath("TileFocusFrame")
-player_detector_area = NodePath("PlayerDetectorArea")
+right_raycast = NodePath("PhysicsElements/RightRaycast")
+long_right_raycast = NodePath("PhysicsElements/LongRightRaycast")
+left_raycast = NodePath("PhysicsElements/LeftRaycast")
+long_left_raycast = NodePath("PhysicsElements/LongLeftRaycast")
+top_raycast = NodePath("PhysicsElements/TopRaycast")
+long_top_raycast = NodePath("PhysicsElements/LongTopRaycast")
+bottom_raycast = NodePath("PhysicsElements/BottomRaycast")
+long_bottom_raycast = NodePath("PhysicsElements/LongBottomRaycast")
+tile_focus_frame = NodePath("UITextures/TileFocusFrame")
+player_detector_area = NodePath("PhysicsElements/PlayerDetectorArea")
 metadata/_custom_type_script = "uid://0l5yokjca1eh"
 
-[node name="Platform" type="ColorRect" parent="." unique_id=455662471]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 16.0
-offset_right = 24.0
-offset_bottom = 24.0
-color = Color(1, 0, 0, 1)
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Platform" unique_id=978466501]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/StaticBody2D" unique_id=1674171987]
-position = Vector2(8, 4)
-shape = SubResource("RectangleShape2D_epfj7")
-debug_color = Color(0.827451, 0, 0.9490196, 1)
-
-[node name="TileDetectorArea" type="Area2D" parent="." unique_id=1882947960]
-collision_layer = 2
-collision_mask = 2
+[node name="PhysicsElements" type="Node2D" parent="." unique_id=1655729585]
+visible = false
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TileDetectorArea" unique_id=813020552]
-position = Vector2(16, 16)
+[node name="TileDetectorArea" type="Area2D" parent="PhysicsElements" unique_id=1348044981 node_paths=PackedStringArray("this_tile")]
+position = Vector2(24, 24)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("2_qrlgn")
+this_tile = NodePath("../..")
+metadata/_custom_type_script = "uid://leblikb1ql03"
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PhysicsElements/TileDetectorArea" unique_id=813020552]
 shape = SubResource("RectangleShape2D_72fjc")
 metadata/_edit_lock_ = true
 
-[node name="BottomRaycast" type="RayCast2D" parent="." unique_id=570935355]
-position = Vector2(16, 32)
+[node name="BottomRaycast" type="RayCast2D" parent="PhysicsElements" unique_id=570935355]
+position = Vector2(24, 48)
 target_position = Vector2(0, 16)
 collision_mask = 2
 hit_from_inside = true
 collide_with_areas = true
 metadata/_edit_lock_ = true
 
-[node name="TopRaycast" type="RayCast2D" parent="." unique_id=712657749]
-position = Vector2(16, 0)
+[node name="LongBottomRaycast" type="RayCast2D" parent="PhysicsElements" unique_id=573192098]
+position = Vector2(24, 48)
+target_position = Vector2(0, 64)
+collision_mask = 2
+hit_from_inside = true
+collide_with_areas = true
+metadata/_edit_lock_ = true
+
+[node name="TopRaycast" type="RayCast2D" parent="PhysicsElements" unique_id=712657749]
+position = Vector2(24, 0)
 target_position = Vector2(0, -16)
 collision_mask = 2
 hit_from_inside = true
 collide_with_areas = true
 metadata/_edit_lock_ = true
 
-[node name="RightRaycast" type="RayCast2D" parent="." unique_id=798857242]
-position = Vector2(32, 16)
+[node name="LongTopRaycast" type="RayCast2D" parent="PhysicsElements" unique_id=1091003085]
+position = Vector2(24, 0)
+target_position = Vector2(0, -64)
+collision_mask = 2
+hit_from_inside = true
+collide_with_areas = true
+metadata/_edit_lock_ = true
+
+[node name="RightRaycast" type="RayCast2D" parent="PhysicsElements" unique_id=798857242]
+position = Vector2(48, 24)
 target_position = Vector2(16, 0)
 collision_mask = 2
 hit_from_inside = true
 collide_with_areas = true
 metadata/_edit_lock_ = true
 
-[node name="LeftRaycast" type="RayCast2D" parent="." unique_id=441271293]
-position = Vector2(0, 16)
+[node name="LongRightRaycast" type="RayCast2D" parent="PhysicsElements" unique_id=1407162546]
+position = Vector2(48, 24)
+target_position = Vector2(64, 0)
+collision_mask = 2
+hit_from_inside = true
+collide_with_areas = true
+metadata/_edit_lock_ = true
+
+[node name="LeftRaycast" type="RayCast2D" parent="PhysicsElements" unique_id=441271293]
+position = Vector2(0, 24)
 target_position = Vector2(-16, 0)
 collision_mask = 2
 hit_from_inside = true
 collide_with_areas = true
 metadata/_edit_lock_ = true
 
-[node name="TileFocusFrame" type="Sprite2D" parent="." unique_id=110146855]
-visible = false
-position = Vector2(16, 16)
-texture = ExtResource("3_g1tpc")
+[node name="LongLeftRaycast" type="RayCast2D" parent="PhysicsElements" unique_id=311532197]
+position = Vector2(0, 24)
+target_position = Vector2(-64, 0)
+collision_mask = 2
+hit_from_inside = true
+collide_with_areas = true
 metadata/_edit_lock_ = true
 
-[node name="PlayerDetectorArea" type="Area2D" parent="." unique_id=877505637]
+[node name="PlayerDetectorArea" type="Area2D" parent="PhysicsElements" unique_id=877505637]
+position = Vector2(24, 24)
 collision_layer = 4
 collision_mask = 4
+metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetectorArea" unique_id=828964911]
-position = Vector2(16, 16)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PhysicsElements/PlayerDetectorArea" unique_id=828964911]
 shape = SubResource("RectangleShape2D_g1tpc")
 debug_color = Color(0.48521996, 0.5875104, 0, 0.37254903)
+metadata/_edit_lock_ = true
+
+[node name="SliderTileMap" type="TileMapLayer" parent="." unique_id=1903156260]
+tile_set = SubResource("TileSet_u70ed")
+script = ExtResource("4_4xnam")
+metadata/_custom_type_script = "uid://bx3o5fg6visyj"
+metadata/_edit_lock_ = true
+
+[node name="UITextures" type="Node2D" parent="." unique_id=1770419221]
+metadata/_edit_lock_ = true
+
+[node name="TileFrame" type="Sprite2D" parent="UITextures" unique_id=1451650505]
+modulate = Color(0.31431612, 0.31431612, 0.3143161, 1)
+texture = ExtResource("4_epfj7")
+centered = false
+metadata/_edit_lock_ = true
+
+[node name="TileFocusFrame" type="Sprite2D" parent="UITextures" unique_id=110146855]
+visible = false
+texture = ExtResource("3_g1tpc")
+centered = false
+metadata/_edit_lock_ = true
