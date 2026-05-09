@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://gnvydj8gi6h"]
+
+[ext_resource type="Script" uid="uid://yg1ejak5gpy4" path="res://scenes/menu.gd" id="1_4ytvr"]
+[ext_resource type="Texture2D" uid="uid://d1pn6u7hb4q0m" path="res://ui_assets/sound_icon.png" id="1_mhnvy"]
+[ext_resource type="Script" uid="uid://bf57w0kfn260f" path="res://scenes/sound_slider.gd" id="2_4ytvr"]
+[ext_resource type="Texture2D" uid="uid://df6p6eb63053h" path="res://ui_assets/play_icon.png" id="3_g3eks"]
+[ext_resource type="Texture2D" uid="uid://cysoodlc1ou2g" path="res://ui_assets/exit_icon.png" id="4_v86rl"]
+
+[node name="Menu" type="CanvasLayer" unique_id=1864113270]
+process_mode = 3
+script = ExtResource("1_4ytvr")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1654008111]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.6156863)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2063714298]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 35
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1605163669]
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer" unique_id=1361394738]
+layout_mode = 2
+texture = ExtResource("1_mhnvy")
+
+[node name="SoundSlider" type="HSlider" parent="VBoxContainer/HBoxContainer" unique_id=1065659909]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+focus_mode = 0
+max_value = 1.0
+step = 0.1
+script = ExtResource("2_4ytvr")
+
+[node name="ResumeButton" type="TextureButton" parent="VBoxContainer" unique_id=642574020]
+layout_mode = 2
+size_flags_horizontal = 4
+focus_mode = 0
+shortcut_in_tooltip = false
+texture_normal = ExtResource("3_g3eks")
+
+[node name="QuitButton" type="TextureButton" parent="VBoxContainer" unique_id=961496447]
+layout_mode = 2
+size_flags_horizontal = 4
+focus_mode = 0
+texture_normal = ExtResource("4_v86rl")
+
+[connection signal="value_changed" from="VBoxContainer/HBoxContainer/SoundSlider" to="VBoxContainer/HBoxContainer/SoundSlider" method="_on_value_changed"]
+[connection signal="pressed" from="VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

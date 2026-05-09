@@ -9,6 +9,12 @@ var sliding_mode_on : bool = false:
 	set(value):
 		sliding_mode_on = value
 		GameManager.sliding_mode_on = value
+		var cam = get_viewport().get_camera_2d()
+		var tween = create_tween()
+		if value == true:
+			tween.tween_property(cam,"offset",self.global_position - cam.global_position,0.5)
+		elif value == false:
+			tween.tween_property(cam,"offset",Vector2.ZERO,0.5)
 		sliding_mode_changed.emit(value)
 
 signal sliding_mode_changed

@@ -1,7 +1,7 @@
 class_name SlidingTile extends TextureRect
 
 const TILE_SIZE = Vector2i(48,48)
-
+const SLIDER_MOVE_TIME = 0.2
 @export var grab_initial_focus : bool
 ##The portrait which this tile is in.
 @export var this_portrait : Portrait
@@ -86,8 +86,9 @@ func _ready() -> void:
 func move_right() -> void:
 	if not right_raycast.is_colliding() and not is_moving:
 		is_moving = true
+		AudioManager.play_tile_slide()
 		var tween = create_tween()
-		tween.tween_property(self,"position:x",position.x + TILE_SIZE.x,0.3).set_trans(Tween.TRANS_QUART)
+		tween.tween_property(self,"position:x",position.x + TILE_SIZE.x,SLIDER_MOVE_TIME).set_trans(Tween.TRANS_EXPO)
 		await tween.finished
 		this_portrait.update_tiles_neighbors()
 		is_active = false
@@ -96,8 +97,9 @@ func move_right() -> void:
 func move_left() -> void:
 	if not left_raycast.is_colliding() and not is_moving:
 		is_moving = true
+		AudioManager.play_tile_slide()
 		var tween = create_tween()
-		tween.tween_property(self,"position:x",position.x - TILE_SIZE.x,0.3).set_trans(Tween.TRANS_QUART)
+		tween.tween_property(self,"position:x",position.x - TILE_SIZE.x,SLIDER_MOVE_TIME).set_trans(Tween.TRANS_EXPO)
 		await tween.finished
 		this_portrait.update_tiles_neighbors()
 		is_active = false
@@ -106,8 +108,9 @@ func move_left() -> void:
 func move_top() -> void:
 	if not top_raycast.is_colliding() and not is_moving:
 		is_moving = true
+		AudioManager.play_tile_slide()
 		var tween = create_tween()
-		tween.tween_property(self,"position:y",position.y - TILE_SIZE.y,0.3).set_trans(Tween.TRANS_QUART)
+		tween.tween_property(self,"position:y",position.y - TILE_SIZE.y,SLIDER_MOVE_TIME).set_trans(Tween.TRANS_EXPO)
 		await tween.finished
 		this_portrait.update_tiles_neighbors()
 		is_active = false
@@ -116,8 +119,9 @@ func move_top() -> void:
 func move_bottom() -> void:
 	if not bottom_raycast.is_colliding() and not is_moving:
 		is_moving = true
+		AudioManager.play_tile_slide()
 		var tween = create_tween()
-		tween.tween_property(self,"position:y",position.y + TILE_SIZE.y,0.3).set_trans(Tween.TRANS_QUART)
+		tween.tween_property(self,"position:y",position.y + TILE_SIZE.y,SLIDER_MOVE_TIME).set_trans(Tween.TRANS_EXPO)
 		await tween.finished
 		this_portrait.update_tiles_neighbors()
 		is_active = false

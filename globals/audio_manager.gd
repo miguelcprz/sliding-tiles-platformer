@@ -3,6 +3,7 @@ extends Node
 @onready var music: AudioStreamPlayer = %Music
 @onready var jump: AudioStreamPlayer = %Jump
 @onready var tile_slide: AudioStreamPlayer = %TileSlide
+@onready var knockback: AudioStreamPlayer = $Knockback
 
 
 
@@ -11,6 +12,9 @@ func play_jump() -> void:
 
 func play_tile_slide() -> void:
 	tile_slide.play()
+
+func play_knockback() -> void:
+	knockback.play()
 
 func switch_song(new_song_idx : int) -> void:
 	var playback : AudioStreamPlaybackInteractive = music.get_stream_playback()

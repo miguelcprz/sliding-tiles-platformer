@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://1r00i7ktcmwi"]
+
+[ext_resource type="Script" uid="uid://xcr1bj1p3ran" path="res://classes/knockback_enemy.gd" id="1_0bcul"]
+[ext_resource type="Texture2D" uid="uid://boksj2q53a3u0" path="res://visual_assets/enemy.png" id="2_0bcul"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o8fc1"]
+size = Vector2(24, 30)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jhx03"]
+size = Vector2(47, 42)
+
+[node name="KnockbackEnemy" type="CharacterBody2D" unique_id=971086217 node_paths=PackedStringArray("right_raycast", "left_raycast", "player_detect_area")]
+script = ExtResource("1_0bcul")
+right_raycast = NodePath("RightRay")
+left_raycast = NodePath("LeftRay")
+player_detect_area = NodePath("KnockArea")
+metadata/_custom_type_script = "uid://xcr1bj1p3ran"
+
+[node name="Enemy" type="Sprite2D" parent="." unique_id=417983458]
+position = Vector2(0, 6.5)
+scale = Vector2(1, 0.796875)
+texture = ExtResource("2_0bcul")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1236720881]
+position = Vector2(0, 12)
+shape = SubResource("RectangleShape2D_o8fc1")
+
+[node name="LeftRay" type="RayCast2D" parent="." unique_id=1879974775]
+position = Vector2(-18, 27)
+target_position = Vector2(0, 16)
+hit_from_inside = true
+
+[node name="RightRay" type="RayCast2D" parent="." unique_id=742627635]
+position = Vector2(17, 27)
+target_position = Vector2(0, 16)
+hit_from_inside = true
+
+[node name="KnockArea" type="Area2D" parent="." unique_id=1893755030]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KnockArea" unique_id=853320926]
+position = Vector2(0.5, 6)
+shape = SubResource("RectangleShape2D_jhx03")

@@ -78,7 +78,7 @@ metadata/_edit_lock_ = true
 
 [node name="LongBottomRaycast" type="RayCast2D" parent="PhysicsElements" unique_id=573192098]
 position = Vector2(24, 48)
-target_position = Vector2(0, 64)
+target_position = Vector2(0, 112)
 collision_mask = 2
 hit_from_inside = true
 collide_with_areas = true
@@ -94,7 +94,7 @@ metadata/_edit_lock_ = true
 
 [node name="LongTopRaycast" type="RayCast2D" parent="PhysicsElements" unique_id=1091003085]
 position = Vector2(24, 0)
-target_position = Vector2(0, -64)
+target_position = Vector2(0, -112)
 collision_mask = 2
 hit_from_inside = true
 collide_with_areas = true
@@ -110,7 +110,7 @@ metadata/_edit_lock_ = true
 
 [node name="LongRightRaycast" type="RayCast2D" parent="PhysicsElements" unique_id=1407162546]
 position = Vector2(48, 24)
-target_position = Vector2(64, 0)
+target_position = Vector2(112, 0)
 collision_mask = 2
 hit_from_inside = true
 collide_with_areas = true
@@ -126,7 +126,7 @@ metadata/_edit_lock_ = true
 
 [node name="LongLeftRaycast" type="RayCast2D" parent="PhysicsElements" unique_id=311532197]
 position = Vector2(0, 24)
-target_position = Vector2(-64, 0)
+target_position = Vector2(-112, 0)
 collision_mask = 2
 hit_from_inside = true
 collide_with_areas = true

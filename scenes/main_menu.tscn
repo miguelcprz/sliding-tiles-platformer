@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://bqhahdbvff3ka"]
+
+[ext_resource type="Script" uid="uid://bvrcfmm2v3c41" path="res://scenes/main_menu.gd" id="1_wu84c"]
+[ext_resource type="Texture2D" uid="uid://d1pn6u7hb4q0m" path="res://ui_assets/sound_icon.png" id="2_8ln24"]
+[ext_resource type="Script" uid="uid://bf57w0kfn260f" path="res://scenes/sound_slider.gd" id="3_rtw2f"]
+[ext_resource type="Texture2D" uid="uid://df6p6eb63053h" path="res://ui_assets/play_icon.png" id="4_oa1go"]
+
+[node name="MainMenu" type="Node2D" unique_id=632505114]
+process_mode = 3
+script = ExtResource("1_wu84c")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1510423679]
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer" unique_id=2112932595]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 35
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/VBoxContainer2" unique_id=248604840]
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/VBoxContainer2/HBoxContainer" unique_id=728759260]
+layout_mode = 2
+texture = ExtResource("2_8ln24")
+
+[node name="SoundSlider" type="HSlider" parent="CanvasLayer/VBoxContainer2/HBoxContainer" unique_id=822929652]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+focus_mode = 0
+max_value = 1.0
+step = 0.1
+script = ExtResource("3_rtw2f")
+
+[node name="PlayButton" type="TextureButton" parent="CanvasLayer/VBoxContainer2" unique_id=1456440145]
+layout_mode = 2
+size_flags_horizontal = 4
+focus_mode = 0
+shortcut_in_tooltip = false
+texture_normal = ExtResource("4_oa1go")
+
+[connection signal="value_changed" from="CanvasLayer/VBoxContainer2/HBoxContainer/SoundSlider" to="CanvasLayer/VBoxContainer2/HBoxContainer/SoundSlider" method="_on_value_changed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer2/PlayButton" to="." method="_on_play_button_pressed"]
