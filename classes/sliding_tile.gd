@@ -35,7 +35,10 @@ var position_raycasts : Array[RayCast2D]
 @export var is_locked : bool
 
 ##used to avoid simultaneous movement calls.
-@export var is_moving : bool = false
+@export var is_moving : bool = false:
+	set(value):
+		is_moving = value
+		moved.emit()
 
 @export var player_detector_area : Area2D
 
@@ -45,6 +48,8 @@ signal tile_selected
 ##Emiited when [member is_active] is changed to [code]false[/code]. it sends itself
 ## as an argument.
 signal tile_unselected
+
+signal moved
 
 ##if [code]true[/code], this is the tile being moved by the player.
 var is_active : bool = false:

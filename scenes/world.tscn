@@ -17,6 +17,8 @@
 [ext_resource type="Script" uid="uid://cm3dkjyyli6e6" path="res://objects/turtle.gd" id="15_7t5mc"]
 [ext_resource type="Script" uid="uid://cqx8gvjcuw311" path="res://objects/cut_scene_camera.gd" id="15_dss4m"]
 [ext_resource type="PackedScene" uid="uid://gnvydj8gi6h" path="res://scenes/menu.tscn" id="16_dss4m"]
+[ext_resource type="Script" uid="uid://wh53ukaaaf0l" path="res://classes/door_portrait.gd" id="18_pm21f"]
+[ext_resource type="PackedScene" uid="uid://i6wxb0n2l15h" path="res://objects/sliding_tile.tscn" id="19_2lf6f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qfnet"]
 size = Vector2(48, 48)
@@ -540,6 +542,123 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(1, 1, 1, 0)
+
+[node name="DoorPortrait" type="Node2D" parent="." unique_id=2109470408 node_paths=PackedStringArray("tiles")]
+position = Vector2(-565, 105)
+script = ExtResource("18_pm21f")
+tiles = [NodePath("SlidingTile"), NodePath("SlidingTile2"), NodePath("SlidingTile3"), NodePath("SlidingTile4"), NodePath("SlidingTile5"), NodePath("SlidingTile6"), NodePath("SlidingTile7"), NodePath("SlidingTile8"), NodePath("SlidingTile9"), NodePath("SlidingTile10"), NodePath("SlidingTile11"), NodePath("SlidingTile12"), NodePath("SlidingTile13"), NodePath("SlidingTile14"), NodePath("SlidingTile15")]
+metadata/_custom_type_script = "uid://wh53ukaaaf0l"
+
+[node name="SlidingTile" parent="DoorPortrait" unique_id=994098550 node_paths=PackedStringArray("this_portrait") instance=ExtResource("19_2lf6f")]
+this_portrait = NodePath("..")
+
+[node name="SlidingTile2" parent="DoorPortrait" unique_id=1110487620 node_paths=PackedStringArray("this_portrait") instance=ExtResource("19_2lf6f")]
+offset_left = 48.0
+offset_right = 96.0
+this_portrait = NodePath("..")
+
+[node name="SlidingTile3" parent="DoorPortrait" unique_id=560058871 node_paths=PackedStringArray("this_portrait") instance=ExtResource("19_2lf6f")]
+offset_left = 96.0
+offset_right = 144.0
+this_portrait = NodePath("..")
+
+[node name="SlidingTile4" parent="DoorPortrait" unique_id=512828432 node_paths=PackedStringArray("this_portrait") instance=ExtResource("19_2lf6f")]
+offset_top = 48.0
+offset_bottom = 96.0
+this_portrait = NodePath("..")
+
+[node name="SlidingTile5" parent="DoorPortrait" unique_id=97901875 node_paths=PackedStringArray("this_portrait") instance=ExtResource("19_2lf6f")]
+offset_left = 48.0
+offset_top = 48.0
+offset_right = 96.0
+offset_bottom = 96.0
+this_portrait = NodePath("..")
+
+[node name="SlidingTile6" parent="DoorPortrait" unique_id=135747746 node_paths=PackedStringArray("this_portrait") instance=ExtResource("19_2lf6f")]
+offset_left = 96.0
+offset_top = 48.0
+offset_right = 144.0
+offset_bottom = 96.0
+this_portrait = NodePath("..")
+
+[node name="SlidingTile7" parent="DoorPortrait" unique_id=472362365 node_paths=PackedStringArray("this_portrait") instance=ExtResource("19_2lf6f")]
+offset_left = 144.0
+offset_top = 48.0
+offset_right = 192.0
+offset_bottom = 96.0
+this_portrait = NodePath("..")
+
+[node name="SlidingTile8" parent="DoorPortrait" unique_id=694902440 node_paths=PackedStringArray("this_portrait") instance=ExtResource("19_2lf6f")]
+offset_top = 96.0
+offset_bottom = 144.0
+this_portrait = NodePath("..")
+
+[node name="SlidingTile9" parent="DoorPortrait" unique_id=2019682002 node_paths=PackedStringArray("this_portrait") instance=ExtResource("19_2lf6f")]
+offset_left = 48.0
+offset_top = 96.0
+offset_right = 96.0
+offset_bottom = 144.0
+this_portrait = NodePath("..")
+
+[node name="SlidingTile10" parent="DoorPortrait" unique_id=520908502 node_paths=PackedStringArray("this_portrait") instance=ExtResource("19_2lf6f")]
+offset_left = 96.0
+offset_top = 96.0
+offset_right = 144.0
+offset_bottom = 144.0
+this_portrait = NodePath("..")
+
+[node name="SlidingTile11" parent="DoorPortrait" unique_id=1985768677 node_paths=PackedStringArray("this_portrait") instance=ExtResource("19_2lf6f")]
+offset_left = 144.0
+offset_top = 96.0
+offset_right = 192.0
+offset_bottom = 144.0
+this_portrait = NodePath("..")
+
+[node name="SlidingTile12" parent="DoorPortrait" unique_id=482311254 node_paths=PackedStringArray("this_portrait") instance=ExtResource("19_2lf6f")]
+offset_top = 144.0
+offset_bottom = 192.0
+this_portrait = NodePath("..")
+
+[node name="SlidingTile13" parent="DoorPortrait" unique_id=32319035 node_paths=PackedStringArray("this_portrait") instance=ExtResource("19_2lf6f")]
+offset_left = 48.0
+offset_top = 144.0
+offset_right = 96.0
+offset_bottom = 192.0
+this_portrait = NodePath("..")
+
+[node name="SlidingTile14" parent="DoorPortrait" unique_id=1302410385 node_paths=PackedStringArray("this_portrait") instance=ExtResource("19_2lf6f")]
+offset_left = 96.0
+offset_top = 144.0
+offset_right = 144.0
+offset_bottom = 192.0
+this_portrait = NodePath("..")
+
+[node name="SlidingTile15" parent="DoorPortrait" unique_id=615449657 node_paths=PackedStringArray("this_portrait") instance=ExtResource("19_2lf6f")]
+offset_left = 144.0
+offset_top = 144.0
+offset_right = 192.0
+offset_bottom = 192.0
+this_portrait = NodePath("..")
+
+[node name="PortraitTrigger" type="Area2D" parent="DoorPortrait" unique_id=1287523021 node_paths=PackedStringArray("portrait")]
+position = Vector2(245, 176)
+script = ExtResource("3_4mrxx")
+portrait = NodePath("..")
+metadata/_custom_type_script = "uid://dwgrxvi8eh672"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorPortrait/PortraitTrigger" unique_id=1488543803]
+shape = SubResource("RectangleShape2D_qfnet")
+
+[node name="TileFocusFrame" type="Sprite2D" parent="DoorPortrait/PortraitTrigger" unique_id=1437239070]
+modulate = Color(0, 0, 1, 1)
+texture = ExtResource("4_7r4gi")
+
+[node name="SliderTriggerPrompt" type="Sprite2D" parent="DoorPortrait/PortraitTrigger" unique_id=9036134 node_paths=PackedStringArray("this_trigger")]
+position = Vector2(0, -46)
+scale = Vector2(1.895, 1.895)
+texture = SubResource("AtlasTexture_xo05s")
+script = ExtResource("6_o8fc1")
+this_trigger = NodePath("..")
 
 [connection signal="value_changed" from="UI/DebugControllers/SpeedSlider" to="UI/DebugControllers" method="_on_speed_slider_value_changed"]
 [connection signal="value_changed" from="UI/DebugControllers/GravitySlider" to="UI/DebugControllers" method="_on_gravity_slider_value_changed"]
