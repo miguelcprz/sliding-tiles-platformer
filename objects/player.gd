@@ -3,7 +3,7 @@ var gravity := 185
 var speed := 450
 var jump_force := 650
 var is_knocked : bool = true
-
+var ignore_gravity : bool = false
 const KNOCK_FORCE = Vector2(300,-200)
 
 @export var player_sprite : Sprite2D
@@ -33,12 +33,12 @@ func get_knocked(enemy : KnockbackEnemy) -> void:
 		else:
 			velocity.x = KNOCK_FORCE.x
 			
-		await get_tree().create_timer(0.8,false).timeout
+		await get_tree().create_timer(0.5,false).timeout
 		create_tween().tween_property(self,"velocity:x",0,0.3)
 		is_knocked = false
 
 func apply_gravity(delta:float) -> void:
-	if !is_on_floor():
+	if !is_on_floor() and !ignore_gravity:
 		if velocity.y >= 0:
 			velocity.y += 2*gravity*delta
 		else:

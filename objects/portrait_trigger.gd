@@ -10,4 +10,5 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("toggle_silder_mode") and has_overlapping_bodies():
 		if get_overlapping_bodies()[0] is Player:
-			portrait.sliding_mode_on = !portrait.sliding_mode_on
+			if get_overlapping_bodies()[0].velocity == Vector2.ZERO:
+				portrait.sliding_mode_on = !portrait.sliding_mode_on

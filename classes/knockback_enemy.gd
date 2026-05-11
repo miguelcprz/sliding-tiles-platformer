@@ -17,7 +17,7 @@ func _physics_process(_delta: float) -> void:
 	
 func knock_back(body) -> void:
 	if body is Player:
-		if not body.is_knocked:
+		#if not body.is_knocked:
 			body.get_knocked(self)
 
 func turn_around() -> void:
