@@ -4,14 +4,20 @@ extends Node
 @onready var jump: AudioStreamPlayer = %Jump
 @onready var tile_slide: AudioStreamPlayer = %TileSlide
 @onready var knockback: AudioStreamPlayer = $Knockback
+@onready var door_open: AudioStreamPlayer = $DoorOpen
+
+var cut_sceen_ready : bool = false
 
 
+func play_door_open() -> void:
+	door_open.play()
 
 func play_jump() -> void:
 	jump.play()
 
 func play_tile_slide() -> void:
-	tile_slide.play()
+	if cut_sceen_ready == true:
+		tile_slide.play()
 
 func play_knockback() -> void:
 	knockback.play()

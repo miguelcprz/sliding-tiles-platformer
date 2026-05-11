@@ -11,6 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://dogi6pj6iye66" path="res://audio_assets/sfx/SFX - Slide 1.wav" id="7_e7vr3"]
 [ext_resource type="AudioStream" uid="uid://dd2m75amxndki" path="res://audio_assets/sfx/SFX - Slide 2.wav" id="8_gc6mj"]
 [ext_resource type="AudioStream" uid="uid://dvvtp4ycap0y4" path="res://audio_assets/sfx/SFX - Slide 3.wav" id="9_abrrb"]
+[ext_resource type="AudioStream" uid="uid://wujgsfbvcggb" path="res://audio_assets/sfx/15419__pagancow__dorm-door-opening.wav" id="12_gc6mj"]
 
 [sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_ay5dq"]
 clip_count = 5
@@ -113,3 +114,7 @@ bus = &"Environment"
 stream = ExtResource("5_ifagb")
 pitch_scale = 2.69
 bus = &"PlayerSounds"
+
+[node name="DoorOpen" type="AudioStreamPlayer" parent="." unique_id=415414180]
+stream = ExtResource("12_gc6mj")
+bus = &"SFX"
