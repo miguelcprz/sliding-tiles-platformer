@@ -97,6 +97,7 @@ func move_right() -> void:
 		await tween.finished
 		this_portrait.update_tiles_neighbors()
 		is_active = false
+		update_raycasts()
 		is_moving = false
 		
 func move_left() -> void:
@@ -108,6 +109,7 @@ func move_left() -> void:
 		await tween.finished
 		this_portrait.update_tiles_neighbors()
 		is_active = false
+		update_raycasts()
 		is_moving = false
 		
 func move_top() -> void:
@@ -119,6 +121,7 @@ func move_top() -> void:
 		await tween.finished
 		this_portrait.update_tiles_neighbors()
 		is_active = false
+		update_raycasts()
 		is_moving = false
 		
 func move_bottom() -> void:
@@ -130,6 +133,7 @@ func move_bottom() -> void:
 		await tween.finished
 		this_portrait.update_tiles_neighbors()
 		is_active = false
+		update_raycasts()
 		is_moving = false
 		
 func _input(event: InputEvent) -> void:
@@ -263,3 +267,7 @@ func lock_block(_body) -> void:
 
 func unlock_block(_body) -> void:
 	is_locked = false
+
+func update_raycasts() -> void:
+	for ray:RayCast2D in position_raycasts:
+		ray.force_raycast_update()

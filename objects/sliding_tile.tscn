@@ -52,7 +52,6 @@ player_detector_area = NodePath("PhysicsElements/PlayerDetectorArea")
 metadata/_custom_type_script = "uid://0l5yokjca1eh"
 
 [node name="PhysicsElements" type="Node2D" parent="." unique_id=1655729585]
-visible = false
 metadata/_edit_lock_ = true
 
 [node name="TileDetectorArea" type="Area2D" parent="PhysicsElements" unique_id=1348044981 node_paths=PackedStringArray("this_tile")]
@@ -77,6 +76,7 @@ collide_with_areas = true
 metadata/_edit_lock_ = true
 
 [node name="BlankBottomRaycast" type="RayCast2D" parent="PhysicsElements" unique_id=573192098]
+visible = false
 position = Vector2(24, 48)
 target_position = Vector2(0, 24)
 collision_mask = 8
@@ -93,6 +93,7 @@ collide_with_areas = true
 metadata/_edit_lock_ = true
 
 [node name="BlankTopRaycast" type="RayCast2D" parent="PhysicsElements" unique_id=1091003085]
+visible = false
 position = Vector2(24, 0)
 target_position = Vector2(0, -24)
 collision_mask = 8
@@ -109,6 +110,7 @@ collide_with_areas = true
 metadata/_edit_lock_ = true
 
 [node name="BlankRightRaycast" type="RayCast2D" parent="PhysicsElements" unique_id=1407162546]
+visible = false
 position = Vector2(48, 24)
 target_position = Vector2(24, 0)
 collision_mask = 8
@@ -125,6 +127,7 @@ collide_with_areas = true
 metadata/_edit_lock_ = true
 
 [node name="BlankLeftRaycast" type="RayCast2D" parent="PhysicsElements" unique_id=311532197]
+visible = false
 position = Vector2(0, 24)
 target_position = Vector2(-24, 0)
 collision_mask = 8

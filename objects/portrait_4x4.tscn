@@ -108,6 +108,7 @@ centered = false
 position = Vector2(-96, -96)
 
 [node name="LeftPuzzleLimit" type="StaticBody2D" parent="PortraitPhysics" unique_id=2097380731]
+position = Vector2(-11, 0)
 collision_layer = 2
 collision_mask = 0
 
@@ -115,6 +116,7 @@ collision_mask = 0
 shape = SubResource("SegmentShape2D_k0juu")
 
 [node name="TopPuzzleLmit" type="StaticBody2D" parent="PortraitPhysics" unique_id=47160110]
+position = Vector2(0, -8)
 collision_layer = 2
 collision_mask = 0
 
@@ -122,7 +124,7 @@ collision_mask = 0
 shape = SubResource("SegmentShape2D_71j4m")
 
 [node name="RightPuzzleLimit" type="StaticBody2D" parent="PortraitPhysics" unique_id=246783739]
-position = Vector2(192, 0)
+position = Vector2(204, 0)
 collision_layer = 2
 collision_mask = 0
 
@@ -130,7 +132,7 @@ collision_mask = 0
 shape = SubResource("SegmentShape2D_qfnet")
 
 [node name="BottomPuzzleLimit" type="StaticBody2D" parent="PortraitPhysics" unique_id=976417304]
-position = Vector2(0, 192)
+position = Vector2(0, 203)
 collision_layer = 2
 collision_mask = 0
 

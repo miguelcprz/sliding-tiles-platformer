@@ -1026,6 +1026,7 @@ offset_bottom = 144.0
 this_portrait = NodePath("..")
 
 [node name="LeftBound" type="StaticBody2D" parent="DoorPortrait" unique_id=490019820]
+position = Vector2(-11, 0)
 collision_layer = 2
 collision_mask = 0
 
@@ -1033,6 +1034,7 @@ collision_mask = 0
 shape = SubResource("SegmentShape2D_2lf6f")
 
 [node name="TopBound" type="StaticBody2D" parent="DoorPortrait" unique_id=92574698]
+position = Vector2(0, -12)
 collision_layer = 2
 collision_mask = 0
 
@@ -1040,7 +1042,7 @@ collision_mask = 0
 shape = SubResource("SegmentShape2D_7iits")
 
 [node name="BottomBound" type="StaticBody2D" parent="DoorPortrait" unique_id=1183124140]
-position = Vector2(0, 144)
+position = Vector2(0, 154)
 collision_layer = 2
 collision_mask = 0
 
@@ -1048,7 +1050,7 @@ collision_mask = 0
 shape = SubResource("SegmentShape2D_oo54l")
 
 [node name="RightBound" type="StaticBody2D" parent="DoorPortrait" unique_id=1827492424]
-position = Vector2(144, 0)
+position = Vector2(156, 0)
 collision_layer = 2
 collision_mask = 0
 

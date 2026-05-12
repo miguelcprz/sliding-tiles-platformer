@@ -108,6 +108,7 @@ tile_map_data = PackedByteArray("AAACAAIAAAABAAAAAAABAAIAAAABAAAAAAABAAEAAAABAAA
 position = Vector2(-72, -72)
 
 [node name="TopLimit" type="StaticBody2D" parent="PortraitLimits" unique_id=48265058]
+position = Vector2(0, -11)
 collision_layer = 2
 collision_mask = 0
 
@@ -115,7 +116,7 @@ collision_mask = 0
 shape = SubResource("SegmentShape2D_q5onr")
 
 [node name="BottomLimit" type="StaticBody2D" parent="PortraitLimits" unique_id=1289871116]
-position = Vector2(0, 144)
+position = Vector2(0, 156)
 collision_layer = 2
 collision_mask = 0
 
@@ -124,6 +125,7 @@ position = Vector2(0, -8)
 shape = SubResource("SegmentShape2D_jhx03")
 
 [node name="LeftLimit" type="StaticBody2D" parent="PortraitLimits" unique_id=1310984716]
+position = Vector2(-11, 0)
 collision_layer = 2
 collision_mask = 0
 
@@ -131,7 +133,7 @@ collision_mask = 0
 shape = SubResource("SegmentShape2D_o8fc1")
 
 [node name="RightLimit" type="StaticBody2D" parent="PortraitLimits" unique_id=277940274]
-position = Vector2(144, 0)
+position = Vector2(157, 0)
 collision_layer = 2
 collision_mask = 0
 
