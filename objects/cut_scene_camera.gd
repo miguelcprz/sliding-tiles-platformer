@@ -16,6 +16,7 @@ func _ready() -> void:
 	player.is_knocked = false
 	main_camera.enabled = true
 	main_camera.make_current()
+	AudioManager.cut_sceen_ready = true
 
 
 func play_teleport_cutscene(final_pos_marker : Marker2D) -> void:
