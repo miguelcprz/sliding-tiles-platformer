@@ -3,10 +3,46 @@
 [ext_resource type="Script" uid="uid://8v5orm3kbgbq" path="res://classes/blank_tile.gd" id="1_pxpfj"]
 [ext_resource type="Script" uid="uid://leblikb1ql03" path="res://objects/tile_detector_area.gd" id="2_3qa2w"]
 [ext_resource type="Texture2D" uid="uid://ty3pqjdjig6w" path="res://visual_assets/tile_frame.png" id="3_2rpgy"]
-[ext_resource type="Texture2D" uid="uid://bguet35w53t64" path="res://visual_assets/tile_focus_frame.png" id="4_2rpgy"]
+[ext_resource type="Texture2D" uid="uid://dyfhkge1pdcn5" path="res://visual_assets/tile_focus_frame-sheet.png" id="4_2rpgy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pxpfj"]
 size = Vector2(24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u70ed"]
+atlas = ExtResource("4_2rpgy")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_un22p"]
+atlas = ExtResource("4_2rpgy")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bt64i"]
+atlas = ExtResource("4_2rpgy")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_luc14"]
+atlas = ExtResource("4_2rpgy")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gk7gh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u70ed")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_un22p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bt64i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_luc14")
+}],
+"loop": true,
+"name": &"default",
+"speed": 13.0
+}]
 
 [node name="BlankTile" type="TextureRect" unique_id=1307859991 node_paths=PackedStringArray("right_raycast", "blank_right_raycast", "left_raycast", "blank_left_raycast", "top_raycast", "blank_top_raycast", "bottom_raycast", "blank_bottom_raycast", "tile_focus_frame")]
 custom_minimum_size = Vector2(48, 48)
@@ -105,7 +141,12 @@ collision_mask = 8
 hit_from_inside = true
 collide_with_areas = true
 
-[node name="TileFocusFrame" type="Sprite2D" parent="." unique_id=578611058]
+[node name="TileFocusFrame" type="AnimatedSprite2D" parent="." unique_id=305932397]
 visible = false
-position = Vector2(24, 24)
-texture = ExtResource("4_2rpgy")
+z_index = 2
+position = Vector2(-8, -8)
+sprite_frames = SubResource("SpriteFrames_gk7gh")
+autoplay = "default"
+frame_progress = 0.50624484
+centered = false
+metadata/_edit_lock_ = true

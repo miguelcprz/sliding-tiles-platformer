@@ -27,7 +27,7 @@ const SLIDER_MOVE_TIME = 0.2
 ##Used to skip the puzzle hole and set the next tile as [member focus_neighbor_bottom].
 @export var blank_bottom_raycast : RayCast2D
 
-@export var tile_focus_frame : Sprite2D
+@export var tile_focus_frame : AnimatedSprite2D
 
 var position_raycasts : Array[RayCast2D]
 

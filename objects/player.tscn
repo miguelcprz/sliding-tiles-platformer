@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bb2fcn65ri607"]
 
 [ext_resource type="Script" uid="uid://dfsch7g4xlkcq" path="res://objects/player.gd" id="1_ykyjo"]
-[ext_resource type="Texture2D" uid="uid://dsldaicbs1gna" path="res://visual_assets/debug_player_sprite.png" id="2_ykyjo"]
+[ext_resource type="Texture2D" uid="uid://bkoysr1wg87b6" path="res://visual_assets/player.png" id="2_ykyjo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lakw3"]
 size = Vector2(21, 27)
@@ -9,12 +9,12 @@ size = Vector2(21, 27)
 [node name="Player" type="CharacterBody2D" unique_id=1805631389 node_paths=PackedStringArray("player_sprite") groups=["player"]]
 collision_layer = 5
 script = ExtResource("1_ykyjo")
-player_sprite = NodePath("DebugPlayerSprite")
-
-[node name="DebugPlayerSprite" type="Sprite2D" parent="." unique_id=2048719808]
-texture = ExtResource("2_ykyjo")
+player_sprite = NodePath("Player")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=467547529]
 position = Vector2(-1.5, 2.5)
 shape = SubResource("RectangleShape2D_lakw3")
 debug_color = Color(0.6213166, 0.53125185, 0.15755641, 0.41960785)
+
+[node name="Player" type="Sprite2D" parent="." unique_id=1889255433]
+texture = ExtResource("2_ykyjo")
