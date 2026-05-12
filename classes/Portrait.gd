@@ -1,6 +1,8 @@
 class_name Portrait extends Node2D
 
 @export var tiles : Array[SlidingTile]
+@export var blank_tiles : Array[BlankTile]
+var all_tiles : Array
 @export var portrait_center : Vector2
 var current_tile : SlidingTile
 ##If [code]true[/code], this portrait [SlidingTile]s can be moved.
@@ -18,6 +20,8 @@ var sliding_mode_on : bool = false:
 
 signal sliding_mode_changed
 func _ready() -> void:
+	all_tiles.append_array(tiles)
+	all_tiles.append_array(blank_tiles)
 	sliding_mode_changed.connect(give_focus_to_current_tile)
 	update_tiles_neighbors()
 	shuffle_tiles()
@@ -26,7 +30,7 @@ func _ready() -> void:
 			current_tile = tile
 
 func update_tiles_neighbors() -> void:
-	for tile in tiles:
+	for tile in all_tiles:
 		tile.update_neighbors()
 
 func set_current_tile(tile : SlidingTile) -> void:

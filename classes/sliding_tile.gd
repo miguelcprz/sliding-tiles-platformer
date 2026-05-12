@@ -13,19 +13,19 @@ const SLIDER_MOVE_TIME = 0.2
 ##Identifies the tile's [member neighbor_right].
 @export var right_raycast : RayCast2D
 ##Used to skip the puzzle hole and set the next tile as [member focus_neighbor_right].
-@export var long_right_raycast : RayCast2D
+@export var blank_right_raycast : RayCast2D
 ##Identifies the tile's [member neighbor_left].
 @export var left_raycast : RayCast2D
 ##Used to skip the puzzle hole and set the next tile as [member focus_neighbor_left].
-@export var long_left_raycast : RayCast2D
+@export var blank_left_raycast : RayCast2D
 ##Identifies the tile's [member neighbor_top].
 @export var top_raycast : RayCast2D
 ##Used to skip the puzzle hole and set the next tile as [member focus_neighbor_top].
-@export var long_top_raycast : RayCast2D
+@export var blank_top_raycast : RayCast2D
 ##Identifies the tile's [member neighbor_bottom].
 @export var bottom_raycast : RayCast2D
 ##Used to skip the puzzle hole and set the next tile as [member focus_neighbor_bottom].
-@export var long_bottom_raycast : RayCast2D
+@export var blank_bottom_raycast : RayCast2D
 
 @export var tile_focus_frame : Sprite2D
 
@@ -77,13 +77,13 @@ func _ready() -> void:
 		
 	position_raycasts = [
 		right_raycast,
-		long_right_raycast,
+		blank_right_raycast,
 		left_raycast,
-		long_left_raycast,
+		blank_left_raycast,
 		top_raycast,
-		long_top_raycast,
+		blank_top_raycast,
 		bottom_raycast,
-		long_bottom_raycast,
+		blank_bottom_raycast,
 	]
 	
 	update_neighbors()
@@ -161,8 +161,8 @@ func update_right_neighbor() -> void:
 		else:
 			focus_neighbor_right = self.get_path()
 	
-	elif long_right_raycast.is_colliding():
-		var neighbor_tile = long_right_raycast.get_collider()
+	elif blank_right_raycast.is_colliding():
+		var neighbor_tile = blank_right_raycast.get_collider()
 		if neighbor_tile is TileDetectorArea:
 			focus_neighbor_right = neighbor_tile.this_tile.get_path()
 		else:
@@ -179,8 +179,8 @@ func update_left_neighbor() -> void:
 		else:
 			focus_neighbor_left = self.get_path()
 	
-	elif long_left_raycast.is_colliding():
-		var neighbor_tile = long_left_raycast.get_collider()
+	elif blank_left_raycast.is_colliding():
+		var neighbor_tile = blank_left_raycast.get_collider()
 		if neighbor_tile is TileDetectorArea:
 			focus_neighbor_left = neighbor_tile.this_tile.get_path()
 		else:
@@ -197,16 +197,16 @@ func update_top_neighbor() -> void:
 		else:
 			focus_neighbor_top = self.get_path()
 	
-	elif long_top_raycast.is_colliding():
-		var neighbor_tile = long_top_raycast.get_collider()
+	elif blank_top_raycast.is_colliding():
+		var neighbor_tile = blank_top_raycast.get_collider()
 		if neighbor_tile is TileDetectorArea:
 			focus_neighbor_top = neighbor_tile.this_tile.get_path()
 		else:
 			focus_neighbor_top = self.get_path()
-	
+
 	else:
 		focus_neighbor_top = self.get_path()
-
+		
 func update_bottom_neighbor() -> void:
 	if bottom_raycast.is_colliding():
 		var neighbor_tile = bottom_raycast.get_collider()
@@ -215,8 +215,8 @@ func update_bottom_neighbor() -> void:
 		else:
 			focus_neighbor_bottom = self.get_path()
 	
-	elif long_bottom_raycast.is_colliding():
-		var neighbor_tile = long_bottom_raycast.get_collider()
+	elif blank_bottom_raycast.is_colliding():
+		var neighbor_tile = blank_bottom_raycast.get_collider()
 		if neighbor_tile is TileDetectorArea:
 			focus_neighbor_bottom = neighbor_tile.this_tile.get_path()
 		else:

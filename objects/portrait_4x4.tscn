@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dryc4vt46j2fq" path="res://classes/Portrait.gd" id="1_aer25"]
 [ext_resource type="PackedScene" uid="uid://i6wxb0n2l15h" path="res://objects/sliding_tile.tscn" id="3_qyjod"]
 [ext_resource type="Texture2D" uid="uid://fbr4pnu1kx71" path="res://visual_assets/puzzle_frame_4x4.png" id="4_myssb"]
+[ext_resource type="PackedScene" uid="uid://tsrojiescwgx" path="res://objects/blank_tile.tscn" id="4_rl3fe"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_k0juu"]
 b = Vector2(0, 192)
@@ -16,9 +17,10 @@ b = Vector2(0, 192)
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_i7141"]
 b = Vector2(192, 0)
 
-[node name="Portrait" type="Node2D" unique_id=500186065 node_paths=PackedStringArray("tiles")]
+[node name="Portrait" type="Node2D" unique_id=500186065 node_paths=PackedStringArray("tiles", "blank_tiles")]
 script = ExtResource("1_aer25")
-tiles = [NodePath("SlidingTile"), NodePath(""), NodePath(""), NodePath("SlidingTile4"), NodePath("SlidingTile5"), NodePath("SlidingTile6"), NodePath("SlidingTile7"), NodePath("SlidingTile8"), NodePath("SlidingTile9"), NodePath("SlidingTile10"), NodePath("SlidingTile11"), NodePath("SlidingTile12"), NodePath("SlidingTile13"), NodePath("SlidingTile14"), NodePath("")]
+tiles = [NodePath("SlidingTile"), null, null, NodePath("SlidingTile4"), NodePath("SlidingTile5"), NodePath("SlidingTile6"), NodePath("SlidingTile7"), NodePath("SlidingTile8"), NodePath("SlidingTile9"), NodePath("SlidingTile10"), NodePath("SlidingTile11"), NodePath("SlidingTile12"), NodePath("SlidingTile13"), NodePath("SlidingTile14"), null]
+blank_tiles = [NodePath("BlankTile"), NodePath("BlankTile2"), NodePath("BlankTile3"), NodePath("BlankTile4"), NodePath("BlankTile5"), NodePath("BlankTile6"), NodePath("BlankTile7"), NodePath("BlankTile8"), NodePath("BlankTile9"), NodePath("BlankTile10"), NodePath("BlankTile11"), NodePath("BlankTile12"), NodePath("BlankTile13"), NodePath("BlankTile14"), NodePath("BlankTile15"), NodePath("BlankTile16")]
 metadata/_custom_type_script = "uid://dryc4vt46j2fq"
 
 [node name="SlidingTile" parent="." unique_id=471830497 node_paths=PackedStringArray("this_portrait") instance=ExtResource("3_qyjod")]
@@ -134,5 +136,109 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PortraitPhysics/BottomPuzzleLimit" unique_id=1050814851]
 shape = SubResource("SegmentShape2D_i7141")
+
+[node name="BlankTile" parent="." unique_id=1307859991 node_paths=PackedStringArray("this_portrait") instance=ExtResource("4_rl3fe")]
+offset_left = -96.0
+offset_top = -96.0
+offset_right = -48.0
+offset_bottom = -48.0
+this_portrait = NodePath("..")
+
+[node name="BlankTile2" parent="." unique_id=854735909 node_paths=PackedStringArray("this_portrait") instance=ExtResource("4_rl3fe")]
+offset_left = -48.0
+offset_top = -96.0
+offset_right = 0.0
+offset_bottom = -48.0
+this_portrait = NodePath("..")
+
+[node name="BlankTile3" parent="." unique_id=2025836206 node_paths=PackedStringArray("this_portrait") instance=ExtResource("4_rl3fe")]
+offset_top = -96.0
+offset_right = 48.0
+offset_bottom = -48.0
+this_portrait = NodePath("..")
+
+[node name="BlankTile4" parent="." unique_id=2010343562 node_paths=PackedStringArray("this_portrait") instance=ExtResource("4_rl3fe")]
+offset_left = 48.0
+offset_top = -96.0
+offset_right = 96.0
+offset_bottom = -48.0
+this_portrait = NodePath("..")
+
+[node name="BlankTile5" parent="." unique_id=2021474031 node_paths=PackedStringArray("this_portrait") instance=ExtResource("4_rl3fe")]
+offset_left = -96.0
+offset_top = -48.0
+offset_right = -48.0
+offset_bottom = 0.0
+this_portrait = NodePath("..")
+
+[node name="BlankTile6" parent="." unique_id=720133588 node_paths=PackedStringArray("this_portrait") instance=ExtResource("4_rl3fe")]
+offset_left = -48.0
+offset_top = -48.0
+offset_right = 0.0
+offset_bottom = 0.0
+this_portrait = NodePath("..")
+
+[node name="BlankTile7" parent="." unique_id=724058980 node_paths=PackedStringArray("this_portrait") instance=ExtResource("4_rl3fe")]
+offset_top = -48.0
+offset_right = 48.0
+offset_bottom = 0.0
+this_portrait = NodePath("..")
+
+[node name="BlankTile8" parent="." unique_id=1927059658 node_paths=PackedStringArray("this_portrait") instance=ExtResource("4_rl3fe")]
+offset_left = 48.0
+offset_top = -48.0
+offset_right = 96.0
+offset_bottom = 0.0
+this_portrait = NodePath("..")
+
+[node name="BlankTile9" parent="." unique_id=1037295827 node_paths=PackedStringArray("this_portrait") instance=ExtResource("4_rl3fe")]
+offset_left = -96.0
+offset_right = -48.0
+offset_bottom = 48.0
+this_portrait = NodePath("..")
+
+[node name="BlankTile10" parent="." unique_id=39300553 node_paths=PackedStringArray("this_portrait") instance=ExtResource("4_rl3fe")]
+offset_left = -48.0
+offset_right = 0.0
+offset_bottom = 48.0
+this_portrait = NodePath("..")
+
+[node name="BlankTile11" parent="." unique_id=1458538423 node_paths=PackedStringArray("this_portrait") instance=ExtResource("4_rl3fe")]
+offset_right = 48.0
+offset_bottom = 48.0
+this_portrait = NodePath("..")
+
+[node name="BlankTile12" parent="." unique_id=2073205632 node_paths=PackedStringArray("this_portrait") instance=ExtResource("4_rl3fe")]
+offset_left = 48.0
+offset_right = 96.0
+offset_bottom = 48.0
+this_portrait = NodePath("..")
+
+[node name="BlankTile13" parent="." unique_id=1651895949 node_paths=PackedStringArray("this_portrait") instance=ExtResource("4_rl3fe")]
+offset_left = -96.0
+offset_top = 48.0
+offset_right = -48.0
+offset_bottom = 96.0
+this_portrait = NodePath("..")
+
+[node name="BlankTile14" parent="." unique_id=869566528 node_paths=PackedStringArray("this_portrait") instance=ExtResource("4_rl3fe")]
+offset_left = -48.0
+offset_top = 48.0
+offset_right = 0.0
+offset_bottom = 96.0
+this_portrait = NodePath("..")
+
+[node name="BlankTile15" parent="." unique_id=840847322 node_paths=PackedStringArray("this_portrait") instance=ExtResource("4_rl3fe")]
+offset_top = 48.0
+offset_right = 48.0
+offset_bottom = 96.0
+this_portrait = NodePath("..")
+
+[node name="BlankTile16" parent="." unique_id=1615297747 node_paths=PackedStringArray("this_portrait") instance=ExtResource("4_rl3fe")]
+offset_left = 48.0
+offset_top = 48.0
+offset_right = 96.0
+offset_bottom = 96.0
+this_portrait = NodePath("..")
 
 [editable path="SlidingTile"]

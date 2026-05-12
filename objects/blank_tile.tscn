@@ -1,0 +1,111 @@
+[gd_scene format=3 uid="uid://tsrojiescwgx"]
+
+[ext_resource type="Script" uid="uid://8v5orm3kbgbq" path="res://classes/blank_tile.gd" id="1_pxpfj"]
+[ext_resource type="Script" uid="uid://leblikb1ql03" path="res://objects/tile_detector_area.gd" id="2_3qa2w"]
+[ext_resource type="Texture2D" uid="uid://ty3pqjdjig6w" path="res://visual_assets/tile_frame.png" id="3_2rpgy"]
+[ext_resource type="Texture2D" uid="uid://bguet35w53t64" path="res://visual_assets/tile_focus_frame.png" id="4_2rpgy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pxpfj"]
+size = Vector2(24, 24)
+
+[node name="BlankTile" type="TextureRect" unique_id=1307859991 node_paths=PackedStringArray("right_raycast", "blank_right_raycast", "left_raycast", "blank_left_raycast", "top_raycast", "blank_top_raycast", "bottom_raycast", "blank_bottom_raycast", "tile_focus_frame")]
+custom_minimum_size = Vector2(48, 48)
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_pxpfj")
+right_raycast = NodePath("RightRaycast")
+blank_right_raycast = NodePath("RightRaycastBlank")
+left_raycast = NodePath("LeftRaycast")
+blank_left_raycast = NodePath("LeftRaycastBlank")
+top_raycast = NodePath("TopRaycast")
+blank_top_raycast = NodePath("TopRaycastBlank")
+bottom_raycast = NodePath("BottomRaycast")
+blank_bottom_raycast = NodePath("BottomRaycastBlank")
+tile_focus_frame = NodePath("TileFocusFrame")
+is_locked = true
+metadata/_custom_type_script = "uid://8v5orm3kbgbq"
+
+[node name="BlankTileDetector" type="Area2D" parent="." unique_id=689153167 node_paths=PackedStringArray("this_tile")]
+visible = false
+position = Vector2(24, 24)
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("2_3qa2w")
+this_tile = NodePath("..")
+metadata/_custom_type_script = "uid://leblikb1ql03"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BlankTileDetector" unique_id=2028919390]
+shape = SubResource("RectangleShape2D_pxpfj")
+
+[node name="TileFrame" type="Sprite2D" parent="." unique_id=18990997]
+position = Vector2(24, 24)
+texture = ExtResource("3_2rpgy")
+
+[node name="LeftRaycast" type="RayCast2D" parent="." unique_id=1217515048]
+visible = false
+position = Vector2(0, 24)
+target_position = Vector2(-16, 0)
+collision_mask = 2
+hit_from_inside = true
+collide_with_areas = true
+
+[node name="RightRaycast" type="RayCast2D" parent="." unique_id=631823012]
+visible = false
+position = Vector2(48, 24)
+target_position = Vector2(16, 0)
+collision_mask = 2
+hit_from_inside = true
+collide_with_areas = true
+
+[node name="TopRaycast" type="RayCast2D" parent="." unique_id=2064933114]
+visible = false
+position = Vector2(24, 0)
+target_position = Vector2(0, -16)
+collision_mask = 2
+hit_from_inside = true
+collide_with_areas = true
+
+[node name="BottomRaycast" type="RayCast2D" parent="." unique_id=251048752]
+visible = false
+position = Vector2(24, 48)
+target_position = Vector2(0, 16)
+collision_mask = 2
+hit_from_inside = true
+collide_with_areas = true
+
+[node name="LeftRaycastBlank" type="RayCast2D" parent="." unique_id=1299053414]
+visible = false
+position = Vector2(0, 24)
+target_position = Vector2(-24, 0)
+collision_mask = 8
+hit_from_inside = true
+collide_with_areas = true
+
+[node name="RightRaycastBlank" type="RayCast2D" parent="." unique_id=1116896328]
+visible = false
+position = Vector2(48, 24)
+target_position = Vector2(24, 0)
+collision_mask = 8
+hit_from_inside = true
+collide_with_areas = true
+
+[node name="TopRaycastBlank" type="RayCast2D" parent="." unique_id=1492991503]
+visible = false
+position = Vector2(24, 0)
+target_position = Vector2(0, -24)
+collision_mask = 8
+hit_from_inside = true
+collide_with_areas = true
+
+[node name="BottomRaycastBlank" type="RayCast2D" parent="." unique_id=1441071012]
+visible = false
+position = Vector2(24, 48)
+target_position = Vector2(0, 24)
+collision_mask = 8
+hit_from_inside = true
+collide_with_areas = true
+
+[node name="TileFocusFrame" type="Sprite2D" parent="." unique_id=578611058]
+visible = false
+position = Vector2(24, 24)
+texture = ExtResource("4_2rpgy")
