@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://d4lijkj6q44y8" path="res://ui_assets/sound_button_tile_focused.png" id="10_flqon"]
 [ext_resource type="Texture2D" uid="uid://bns8rgvrukjn5" path="res://ui_assets/circle.png" id="11_flqon"]
 [ext_resource type="Script" uid="uid://36glk701fxm3" path="res://objects/main_menu_volume_slider.gd" id="11_lgwnu"]
+[ext_resource type="Script" uid="uid://cfgh8swjcsbf7" path="res://objects/main_menu_anim.gd" id="11_rcqid"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8ln24"]
 size = Vector2(90, 90)
@@ -90,10 +91,46 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector2(272, 136)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PlayButton6:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(176, 136)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PlayButton:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(176, 40)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("PlayButton2:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(272, 40)]
+}
 
 [sub_resource type="Animation" id="Animation_lgwnu"]
 resource_name = "move_tiles"
-length = 10.0
+length = 12.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -101,7 +138,7 @@ tracks/0/path = NodePath("AudioButton:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 2, 2.3),
+"times": PackedFloat32Array(0, 1.1, 1.4),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(368, 136), Vector2(368, 136), Vector2(368, 232)]
@@ -113,10 +150,10 @@ tracks/1/path = NodePath("Blank:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1.99, 2, 3.8, 3.801),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 1.09, 1.1, 2.9, 2.901, 4.89, 4.9, 6.233333, 6.3, 7.8, 7.82, 9.1836405, 9.2, 10.523641, 10.56),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(368, 232), Vector2(368, 232), Vector2(368, 136), Vector2(368, 136), Vector2(272, 136)]
+"values": [Vector2(368, 232), Vector2(368, 232), Vector2(368, 136), Vector2(368, 136), Vector2(272, 136), Vector2(272, 136), Vector2(176, 136), Vector2(176, 136), Vector2(176, 40), Vector2(176, 40), Vector2(272, 40), Vector2(272, 40), Vector2(272, 136), Vector2(272, 136), Vector2(176, 136)]
 }
 tracks/2/type = "method"
 tracks/2/imported = false
@@ -125,9 +162,42 @@ tracks/2/path = NodePath(".")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(2.301, 3.81),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(1.4010001, 2.4333334, 2.9499998, 4.366667, 4.9333334, 5.866667, 6.36, 7.2, 7.88, 8.933333, 9.45, 10.1, 10.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "values": [{
+"args": [],
+"method": &"update_all_buttons"
+}, {
+"args": [],
+"method": &"update_all_buttons"
+}, {
+"args": [],
+"method": &"update_all_buttons"
+}, {
+"args": [],
+"method": &"update_all_buttons"
+}, {
+"args": [],
+"method": &"update_all_buttons"
+}, {
+"args": [],
+"method": &"update_all_buttons"
+}, {
+"args": [],
+"method": &"update_all_buttons"
+}, {
+"args": [],
+"method": &"update_all_buttons"
+}, {
+"args": [],
+"method": &"update_all_buttons"
+}, {
+"args": [],
+"method": &"update_all_buttons"
+}, {
+"args": [],
+"method": &"update_all_buttons"
+}, {
 "args": [],
 "method": &"update_all_buttons"
 }, {
@@ -142,10 +212,46 @@ tracks/3/path = NodePath("PlayButton4:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(3.5, 3.8),
+"times": PackedFloat32Array(2.6, 2.9),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(272, 136), Vector2(368, 136)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PlayButton6:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(4.6, 4.9, 9.1, 9.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(176, 136), Vector2(272, 136), Vector2(272, 136), Vector2(272, 40)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("PlayButton:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(5.9276433, 6.3, 10.2, 10.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(176, 40), Vector2(176, 136), Vector2(176, 136), Vector2(272, 136)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("PlayButton2:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(7.5, 7.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(272, 40), Vector2(176, 40)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_flqon"]
@@ -197,7 +303,7 @@ color = Color(0.0030197038, 0.027560327, 0.06637781, 1)
 offset_left = 176.0
 offset_top = 40.0
 offset_right = 272.0
-offset_bottom = 136.0
+offset_bottom = 136.00002
 texture_normal = ExtResource("2_8ln24")
 texture_pressed = ExtResource("3_rtw2f")
 texture_hover = ExtResource("4_oa1go")
@@ -247,7 +353,7 @@ autoplay = "default"
 [node name="PlayButton2" type="TextureButton" parent="." unique_id=10153270 node_paths=PackedStringArray("right_ray", "top_ray", "left_ray", "bottom_ray", "focus_anim")]
 offset_left = 272.0
 offset_top = 40.0
-offset_right = 368.0
+offset_right = 368.00006
 offset_bottom = 136.0
 texture_normal = ExtResource("7_oa1go")
 texture_pressed = ExtResource("7_oa1go")
@@ -548,7 +654,7 @@ autoplay = "default"
 offset_left = 368.0
 offset_top = 136.0
 offset_right = 464.0
-offset_bottom = 232.00012
+offset_bottom = 232.00015
 texture_normal = ExtResource("8_5dd4i")
 texture_pressed = ExtResource("9_lgwnu")
 texture_hover = ExtResource("10_flqon")
@@ -656,9 +762,10 @@ mouse_filter = 2
 color = Color(0, 0, 0, 1)
 metadata/_edit_lock_ = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1631519742]
+[node name="MainMenuAnim" type="AnimationPlayer" parent="." unique_id=1631519742]
 libraries/ = SubResource("AnimationLibrary_flqon")
 autoplay = &"move_tiles"
+script = ExtResource("11_rcqid")
 
 [node name="MainMenuVolumeSlider" type="VSlider" parent="." unique_id=2036409372]
 visible = false
@@ -681,4 +788,5 @@ script = ExtResource("11_lgwnu")
 
 [connection signal="pressed" from="PlayButton" to="." method="start_game"]
 [connection signal="pressed" from="AudioButton" to="MainMenuVolumeSlider" method="change_visibility"]
+[connection signal="animation_finished" from="MainMenuAnim" to="MainMenuAnim" method="_on_animation_finished"]
 [connection signal="value_changed" from="MainMenuVolumeSlider" to="MainMenuVolumeSlider" method="_on_value_changed"]

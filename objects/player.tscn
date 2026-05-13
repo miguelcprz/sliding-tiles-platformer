@@ -6,15 +6,106 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lakw3"]
 size = Vector2(21, 27)
 
-[node name="Player" type="CharacterBody2D" unique_id=1805631389 node_paths=PackedStringArray("player_sprite") groups=["player"]]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ykyjo"]
+atlas = ExtResource("2_ykyjo")
+region = Rect2(320, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uxov2"]
+atlas = ExtResource("2_ykyjo")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i8sra"]
+atlas = ExtResource("2_ykyjo")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nmc1l"]
+atlas = ExtResource("2_ykyjo")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f46kd"]
+atlas = ExtResource("2_ykyjo")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3rerk"]
+atlas = ExtResource("2_ykyjo")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i825w"]
+atlas = ExtResource("2_ykyjo")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3rfka"]
+atlas = ExtResource("2_ykyjo")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i8sra"]
+animations = [{
+"frames": [{
+"duration": 5.0,
+"texture": SubResource("AtlasTexture_ykyjo")
+}],
+"loop": false,
+"name": &"hurt",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uxov2")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i8sra")
+}],
+"loop": true,
+"name": &"jump_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nmc1l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f46kd")
+}],
+"loop": false,
+"name": &"jump_up",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 5.0,
+"texture": SubResource("AtlasTexture_3rerk")
+}],
+"loop": false,
+"name": &"land",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i825w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3rfka")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 6.0
+}]
+
+[node name="Player" type="CharacterBody2D" unique_id=1805631389 node_paths=PackedStringArray("player_anim") groups=["player"]]
 collision_layer = 5
 script = ExtResource("1_ykyjo")
-player_sprite = NodePath("Player")
+player_anim = NodePath("PlayerAnim")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=467547529]
 position = Vector2(-1.5, 2.5)
 shape = SubResource("RectangleShape2D_lakw3")
 debug_color = Color(0.6213166, 0.53125185, 0.15755641, 0.41960785)
 
-[node name="Player" type="Sprite2D" parent="." unique_id=1889255433]
-texture = ExtResource("2_ykyjo")
+[node name="PlayerAnim" type="AnimatedSprite2D" parent="." unique_id=266137770]
+sprite_frames = SubResource("SpriteFrames_i8sra")
+animation = &"jump_down"
+autoplay = "idle"

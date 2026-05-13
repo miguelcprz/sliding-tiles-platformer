@@ -2,11 +2,16 @@ class_name Player extends CharacterBody2D
 var gravity := 185
 var speed := 450
 var jump_force := 650
-var is_knocked : bool = true
+var is_knocked : bool = true:
+	set(value):
+		is_knocked = value
+		if value == false:
+			player_anim.play("idle")
+
 var ignore_gravity : bool = false
 const KNOCK_FORCE = Vector2(300,-200)
-
-@export var player_sprite : Sprite2D
+var waiting_anim : bool = false
+@export var player_anim : AnimatedSprite2D
 
 func _ready() -> void:
 	gravity = DevMode.gravity
@@ -17,6 +22,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	apply_gravity(delta)
 	movement_methods(delta)
+	manage_animations()
 
 func movement_methods(_delta:float) -> void:
 	if not GameManager.sliding_mode_on and not is_knocked:
@@ -24,8 +30,36 @@ func movement_methods(_delta:float) -> void:
 		jump()
 		flip_sprite()
 
+func manage_animations() -> void:
+	if is_knocked or waiting_anim:
+		return
+		
+	if is_on_floor() and velocity == Vector2.ZERO:
+		if player_anim.animation == "jump_down":
+			player_anim.animation = "land"
+			waiting_anim = true
+			await  get_tree().create_timer(0.1,false).timeout
+			waiting_anim = false
+			
+		player_anim.animation = "idle"
+		
+	elif is_on_floor() and velocity != Vector2.ZERO:
+		if player_anim.animation == "jump_down":
+			player_anim.animation = "land"
+			waiting_anim = true
+			await  get_tree().create_timer(0.1,false).timeout
+			waiting_anim = false
+		player_anim.animation = "walk"
+		
+	elif not is_on_floor() and velocity.y < 0:
+		player_anim.animation = "jump_up"
+		
+	elif not is_on_floor() and velocity.y >= 0:
+		player_anim.animation = "jump_down"
+	
 func get_knocked(enemy : KnockbackEnemy) -> void:
 		is_knocked = true
+		player_anim.play("hurt")
 		AudioManager.play_knockback()
 		if enemy.global_position.x > global_position.x:
 			velocity.x = -KNOCK_FORCE.x
@@ -59,7 +93,7 @@ func flip_sprite() -> void:
 		return
 		
 	if velocity.x > 0:
-		player_sprite.flip_h = false
+		player_anim.flip_h = false
 		
 	elif velocity.x < 0:
-		player_sprite.flip_h = true
+		player_anim.flip_h = true
