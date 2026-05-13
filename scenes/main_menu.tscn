@@ -1,48 +1,684 @@
 [gd_scene format=3 uid="uid://bqhahdbvff3ka"]
 
 [ext_resource type="Script" uid="uid://bvrcfmm2v3c41" path="res://scenes/main_menu.gd" id="1_wu84c"]
-[ext_resource type="Texture2D" uid="uid://d1pn6u7hb4q0m" path="res://ui_assets/sound_icon.png" id="2_8ln24"]
-[ext_resource type="Script" uid="uid://bf57w0kfn260f" path="res://scenes/sound_slider.gd" id="3_rtw2f"]
-[ext_resource type="Texture2D" uid="uid://df6p6eb63053h" path="res://ui_assets/play_icon.png" id="4_oa1go"]
+[ext_resource type="Texture2D" uid="uid://blc4xn5in0bsh" path="res://ui_assets/play_button_tile.png" id="2_8ln24"]
+[ext_resource type="Texture2D" uid="uid://dhflyptwaxcgy" path="res://ui_assets/play_button_tile_pressed.png" id="3_rtw2f"]
+[ext_resource type="Texture2D" uid="uid://b1dnopnqiibi7" path="res://ui_assets/play_button_tile_focused.png" id="4_oa1go"]
+[ext_resource type="Script" uid="uid://bhhifottnbv1q" path="res://classes/main_menu_button.gd" id="5_tbmy8"]
+[ext_resource type="Texture2D" uid="uid://dyfhkge1pdcn5" path="res://visual_assets/tile_focus_frame-sheet.png" id="6_rtw2f"]
+[ext_resource type="Texture2D" uid="uid://dbvyphx4mraji" path="res://ui_assets/empty_tile.png" id="7_oa1go"]
+[ext_resource type="Texture2D" uid="uid://4emujurtfw4a" path="res://ui_assets/sound_button_tile.png" id="8_5dd4i"]
+[ext_resource type="Texture2D" uid="uid://cwu6kqkqkte0u" path="res://ui_assets/sound_button_tile_pressed.png" id="9_lgwnu"]
+[ext_resource type="Texture2D" uid="uid://d4lijkj6q44y8" path="res://ui_assets/sound_button_tile_focused.png" id="10_flqon"]
+[ext_resource type="Texture2D" uid="uid://bns8rgvrukjn5" path="res://ui_assets/circle.png" id="11_flqon"]
+[ext_resource type="Script" uid="uid://36glk701fxm3" path="res://objects/main_menu_volume_slider.gd" id="11_lgwnu"]
 
-[node name="MainMenu" type="Node2D" unique_id=632505114]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8ln24"]
+size = Vector2(90, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oa1go"]
+atlas = ExtResource("6_rtw2f")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tbmy8"]
+atlas = ExtResource("6_rtw2f")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jk1qb"]
+atlas = ExtResource("6_rtw2f")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5dd4i"]
+atlas = ExtResource("6_rtw2f")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lgwnu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oa1go")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tbmy8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jk1qb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5dd4i")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="Animation" id="Animation_5dd4i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioButton:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(368, 136)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Blank:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(368, 232)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PlayButton4:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(272, 136)]
+}
+
+[sub_resource type="Animation" id="Animation_lgwnu"]
+resource_name = "move_tiles"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioButton:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 2.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(368, 136), Vector2(368, 136), Vector2(368, 232)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Blank:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.99, 2, 3.8, 3.801),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(368, 232), Vector2(368, 232), Vector2(368, 136), Vector2(368, 136), Vector2(272, 136)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(2.301, 3.81),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"update_all_buttons"
+}, {
+"args": [],
+"method": &"update_all_buttons"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PlayButton4:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(3.5, 3.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(272, 136), Vector2(368, 136)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_flqon"]
+_data = {
+&"RESET": SubResource("Animation_5dd4i"),
+&"move_tiles": SubResource("Animation_lgwnu")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rcqid"]
+bg_color = Color(0.022503233, 0.21163884, 0.19122016, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+expand_margin_left = 4.0
+expand_margin_right = 4.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_flqon"]
+bg_color = Color(0.106928594, 0.52741027, 0.48446423, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+expand_margin_left = 4.0
+expand_margin_right = 4.0
+
+[node name="MainMenu" type="Node2D" unique_id=632505114 node_paths=PackedStringArray("menu_tiles")]
 process_mode = 3
 script = ExtResource("1_wu84c")
+menu_tiles = [NodePath("PlayButton"), NodePath("PlayButton2"), NodePath("PlayButton3"), NodePath("PlayButton4"), NodePath("PlayButton6"), NodePath("PlayButton7"), NodePath("PlayButton8"), NodePath("AudioButton"), NodePath("Blank")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1510423679]
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer" unique_id=2112932595]
-anchors_preset = 14
-anchor_top = 0.5
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1459373090]
+anchors_preset = 15
 anchor_right = 1.0
-anchor_bottom = 0.5
+anchor_bottom = 1.0
+offset_right = 640.0
+offset_bottom = 360.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 35
-alignment = 1
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0.0030197038, 0.027560327, 0.06637781, 1)
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/VBoxContainer2" unique_id=248604840]
-layout_mode = 2
-alignment = 1
+[node name="PlayButton" type="TextureButton" parent="." unique_id=1540417794 node_paths=PackedStringArray("right_ray", "top_ray", "left_ray", "bottom_ray", "focus_anim")]
+offset_left = 176.0
+offset_top = 40.0
+offset_right = 272.0
+offset_bottom = 136.0
+texture_normal = ExtResource("2_8ln24")
+texture_pressed = ExtResource("3_rtw2f")
+texture_hover = ExtResource("4_oa1go")
+texture_focused = ExtResource("4_oa1go")
+script = ExtResource("5_tbmy8")
+right_ray = NodePath("RightRay")
+top_ray = NodePath("TopRay")
+left_ray = NodePath("LeftRay")
+bottom_ray = NodePath("BottomRay")
+grab_initial_focus = true
+focus_anim = NodePath("AnimatedFrame")
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/VBoxContainer2/HBoxContainer" unique_id=728759260]
-layout_mode = 2
-texture = ExtResource("2_8ln24")
+[node name="RightRay" type="RayCast2D" parent="PlayButton" unique_id=617276486]
+position = Vector2(96, 48)
+target_position = Vector2(20, 0)
+hit_from_inside = true
+collide_with_areas = true
 
-[node name="SoundSlider" type="HSlider" parent="CanvasLayer/VBoxContainer2/HBoxContainer" unique_id=822929652]
-custom_minimum_size = Vector2(150, 0)
-layout_mode = 2
+[node name="LeftRay" type="RayCast2D" parent="PlayButton" unique_id=205220109]
+position = Vector2(0, 48)
+target_position = Vector2(-20, 0)
+collide_with_areas = true
+
+[node name="TopRay" type="RayCast2D" parent="PlayButton" unique_id=1764170964]
+position = Vector2(48, 0)
+target_position = Vector2(0, -20)
+collide_with_areas = true
+
+[node name="BottomRay" type="RayCast2D" parent="PlayButton" unique_id=1390901405]
+position = Vector2(48, 96)
+target_position = Vector2(0, 20)
+collide_with_areas = true
+
+[node name="Area2D" type="Area2D" parent="PlayButton" unique_id=1195779077]
+position = Vector2(48, 48)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayButton/Area2D" unique_id=1105352971]
+shape = SubResource("RectangleShape2D_8ln24")
+
+[node name="AnimatedFrame" type="AnimatedSprite2D" parent="PlayButton" unique_id=1425456842]
+visible = false
+position = Vector2(48, 48)
+scale = Vector2(1.64, 1.64)
+sprite_frames = SubResource("SpriteFrames_lgwnu")
+autoplay = "default"
+
+[node name="PlayButton2" type="TextureButton" parent="." unique_id=10153270 node_paths=PackedStringArray("right_ray", "top_ray", "left_ray", "bottom_ray", "focus_anim")]
+offset_left = 272.0
+offset_top = 40.0
+offset_right = 368.0
+offset_bottom = 136.0
+texture_normal = ExtResource("7_oa1go")
+texture_pressed = ExtResource("7_oa1go")
+texture_hover = ExtResource("7_oa1go")
+texture_focused = ExtResource("7_oa1go")
+script = ExtResource("5_tbmy8")
+right_ray = NodePath("RightRay")
+top_ray = NodePath("TopRay")
+left_ray = NodePath("LeftRay")
+bottom_ray = NodePath("BottomRay")
+focus_anim = NodePath("AnimatedFrame")
+
+[node name="RightRay" type="RayCast2D" parent="PlayButton2" unique_id=1063002773]
+position = Vector2(96, 48)
+target_position = Vector2(20, 0)
+hit_from_inside = true
+collide_with_areas = true
+
+[node name="LeftRay" type="RayCast2D" parent="PlayButton2" unique_id=2086947353]
+position = Vector2(0, 48)
+target_position = Vector2(-20, 0)
+collide_with_areas = true
+
+[node name="TopRay" type="RayCast2D" parent="PlayButton2" unique_id=1367588272]
+position = Vector2(48, 0)
+target_position = Vector2(0, -20)
+collide_with_areas = true
+
+[node name="BottomRay" type="RayCast2D" parent="PlayButton2" unique_id=76407111]
+position = Vector2(48, 96)
+target_position = Vector2(0, 20)
+collide_with_areas = true
+
+[node name="Area2D" type="Area2D" parent="PlayButton2" unique_id=2141074201]
+position = Vector2(48, 48)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayButton2/Area2D" unique_id=795356426]
+shape = SubResource("RectangleShape2D_8ln24")
+
+[node name="AnimatedFrame" type="AnimatedSprite2D" parent="PlayButton2" unique_id=713229342]
+visible = false
+position = Vector2(48, 48)
+scale = Vector2(1.64, 1.64)
+sprite_frames = SubResource("SpriteFrames_lgwnu")
+autoplay = "default"
+
+[node name="PlayButton3" type="TextureButton" parent="." unique_id=230965725 node_paths=PackedStringArray("right_ray", "top_ray", "left_ray", "bottom_ray", "focus_anim")]
+offset_left = 368.0
+offset_top = 40.0
+offset_right = 464.0
+offset_bottom = 136.0
+texture_normal = ExtResource("7_oa1go")
+texture_pressed = ExtResource("7_oa1go")
+texture_hover = ExtResource("7_oa1go")
+texture_focused = ExtResource("7_oa1go")
+script = ExtResource("5_tbmy8")
+right_ray = NodePath("RightRay")
+top_ray = NodePath("TopRay")
+left_ray = NodePath("LeftRay")
+bottom_ray = NodePath("BottomRay")
+focus_anim = NodePath("AnimatedFrame")
+
+[node name="RightRay" type="RayCast2D" parent="PlayButton3" unique_id=1064175079]
+position = Vector2(96, 48)
+target_position = Vector2(20, 0)
+hit_from_inside = true
+collide_with_areas = true
+
+[node name="LeftRay" type="RayCast2D" parent="PlayButton3" unique_id=1824768378]
+position = Vector2(0, 48)
+target_position = Vector2(-20, 0)
+collide_with_areas = true
+
+[node name="TopRay" type="RayCast2D" parent="PlayButton3" unique_id=379795742]
+position = Vector2(48, 0)
+target_position = Vector2(0, -20)
+collide_with_areas = true
+
+[node name="BottomRay" type="RayCast2D" parent="PlayButton3" unique_id=1941538097]
+position = Vector2(48, 96)
+target_position = Vector2(0, 20)
+collide_with_areas = true
+
+[node name="Area2D" type="Area2D" parent="PlayButton3" unique_id=1203121445]
+position = Vector2(48, 48)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayButton3/Area2D" unique_id=1578481747]
+shape = SubResource("RectangleShape2D_8ln24")
+
+[node name="AnimatedFrame" type="AnimatedSprite2D" parent="PlayButton3" unique_id=1511741032]
+visible = false
+position = Vector2(48, 48)
+scale = Vector2(1.64, 1.64)
+sprite_frames = SubResource("SpriteFrames_lgwnu")
+autoplay = "default"
+
+[node name="PlayButton4" type="TextureButton" parent="." unique_id=582391910 node_paths=PackedStringArray("right_ray", "top_ray", "left_ray", "bottom_ray", "focus_anim")]
+offset_left = 272.0
+offset_top = 136.0
+offset_right = 368.0
+offset_bottom = 232.0
+texture_normal = ExtResource("7_oa1go")
+texture_pressed = ExtResource("7_oa1go")
+texture_hover = ExtResource("7_oa1go")
+texture_focused = ExtResource("7_oa1go")
+script = ExtResource("5_tbmy8")
+right_ray = NodePath("RightRay")
+top_ray = NodePath("TopRay")
+left_ray = NodePath("LeftRay")
+bottom_ray = NodePath("BottomRay")
+focus_anim = NodePath("AnimatedFrame")
+
+[node name="RightRay" type="RayCast2D" parent="PlayButton4" unique_id=655340663]
+position = Vector2(96, 48)
+target_position = Vector2(20, 0)
+hit_from_inside = true
+collide_with_areas = true
+
+[node name="LeftRay" type="RayCast2D" parent="PlayButton4" unique_id=145126294]
+position = Vector2(0, 48)
+target_position = Vector2(-20, 0)
+collide_with_areas = true
+
+[node name="TopRay" type="RayCast2D" parent="PlayButton4" unique_id=1622958291]
+position = Vector2(48, 0)
+target_position = Vector2(0, -20)
+collide_with_areas = true
+
+[node name="BottomRay" type="RayCast2D" parent="PlayButton4" unique_id=1296484463]
+position = Vector2(48, 96)
+target_position = Vector2(0, 20)
+collide_with_areas = true
+
+[node name="Area2D" type="Area2D" parent="PlayButton4" unique_id=1942307982]
+position = Vector2(48, 48)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayButton4/Area2D" unique_id=76703047]
+shape = SubResource("RectangleShape2D_8ln24")
+
+[node name="AnimatedFrame" type="AnimatedSprite2D" parent="PlayButton4" unique_id=453380374]
+visible = false
+position = Vector2(48, 48)
+scale = Vector2(1.64, 1.64)
+sprite_frames = SubResource("SpriteFrames_lgwnu")
+autoplay = "default"
+
+[node name="PlayButton6" type="TextureButton" parent="." unique_id=1754178994 node_paths=PackedStringArray("right_ray", "top_ray", "left_ray", "bottom_ray", "focus_anim")]
+offset_left = 176.0
+offset_top = 136.0
+offset_right = 272.0
+offset_bottom = 232.0
+texture_normal = ExtResource("7_oa1go")
+texture_pressed = ExtResource("7_oa1go")
+texture_hover = ExtResource("7_oa1go")
+texture_focused = ExtResource("7_oa1go")
+script = ExtResource("5_tbmy8")
+right_ray = NodePath("RightRay")
+top_ray = NodePath("TopRay")
+left_ray = NodePath("LeftRay")
+bottom_ray = NodePath("BottomRay")
+focus_anim = NodePath("AnimatedFrame")
+
+[node name="RightRay" type="RayCast2D" parent="PlayButton6" unique_id=1463205373]
+position = Vector2(96, 48)
+target_position = Vector2(20, 0)
+hit_from_inside = true
+collide_with_areas = true
+
+[node name="LeftRay" type="RayCast2D" parent="PlayButton6" unique_id=1797746119]
+position = Vector2(0, 48)
+target_position = Vector2(-20, 0)
+collide_with_areas = true
+
+[node name="TopRay" type="RayCast2D" parent="PlayButton6" unique_id=1648201500]
+position = Vector2(48, 0)
+target_position = Vector2(0, -20)
+collide_with_areas = true
+
+[node name="BottomRay" type="RayCast2D" parent="PlayButton6" unique_id=2133959357]
+position = Vector2(48, 96)
+target_position = Vector2(0, 20)
+collide_with_areas = true
+
+[node name="Area2D" type="Area2D" parent="PlayButton6" unique_id=1584661320]
+position = Vector2(48, 48)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayButton6/Area2D" unique_id=325833403]
+shape = SubResource("RectangleShape2D_8ln24")
+
+[node name="AnimatedFrame" type="AnimatedSprite2D" parent="PlayButton6" unique_id=644684532]
+visible = false
+position = Vector2(48, 48)
+scale = Vector2(1.64, 1.64)
+sprite_frames = SubResource("SpriteFrames_lgwnu")
+autoplay = "default"
+
+[node name="PlayButton7" type="TextureButton" parent="." unique_id=1108227259 node_paths=PackedStringArray("right_ray", "top_ray", "left_ray", "bottom_ray", "focus_anim")]
+offset_left = 272.0
+offset_top = 232.0
+offset_right = 368.0
+offset_bottom = 328.0
+texture_normal = ExtResource("7_oa1go")
+texture_pressed = ExtResource("7_oa1go")
+texture_hover = ExtResource("7_oa1go")
+texture_focused = ExtResource("7_oa1go")
+script = ExtResource("5_tbmy8")
+right_ray = NodePath("RightRay")
+top_ray = NodePath("TopRay")
+left_ray = NodePath("LeftRay")
+bottom_ray = NodePath("BottomRay")
+focus_anim = NodePath("AnimatedFrame")
+
+[node name="RightRay" type="RayCast2D" parent="PlayButton7" unique_id=572773740]
+position = Vector2(96, 48)
+target_position = Vector2(20, 0)
+hit_from_inside = true
+collide_with_areas = true
+
+[node name="LeftRay" type="RayCast2D" parent="PlayButton7" unique_id=2073434458]
+position = Vector2(0, 48)
+target_position = Vector2(-20, 0)
+collide_with_areas = true
+
+[node name="TopRay" type="RayCast2D" parent="PlayButton7" unique_id=1381820186]
+position = Vector2(48, 0)
+target_position = Vector2(0, -20)
+collide_with_areas = true
+
+[node name="BottomRay" type="RayCast2D" parent="PlayButton7" unique_id=1699683720]
+position = Vector2(48, 96)
+target_position = Vector2(0, 20)
+collide_with_areas = true
+
+[node name="Area2D" type="Area2D" parent="PlayButton7" unique_id=1859919338]
+position = Vector2(48, 48)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayButton7/Area2D" unique_id=749115317]
+shape = SubResource("RectangleShape2D_8ln24")
+
+[node name="AnimatedFrame" type="AnimatedSprite2D" parent="PlayButton7" unique_id=1521478839]
+visible = false
+position = Vector2(48, 48)
+scale = Vector2(1.64, 1.64)
+sprite_frames = SubResource("SpriteFrames_lgwnu")
+autoplay = "default"
+
+[node name="PlayButton8" type="TextureButton" parent="." unique_id=959627956 node_paths=PackedStringArray("right_ray", "top_ray", "left_ray", "bottom_ray", "focus_anim")]
+offset_left = 176.0
+offset_top = 232.0
+offset_right = 272.0
+offset_bottom = 328.0
+texture_normal = ExtResource("7_oa1go")
+texture_pressed = ExtResource("7_oa1go")
+texture_hover = ExtResource("7_oa1go")
+texture_focused = ExtResource("7_oa1go")
+script = ExtResource("5_tbmy8")
+right_ray = NodePath("RightRay")
+top_ray = NodePath("TopRay")
+left_ray = NodePath("LeftRay")
+bottom_ray = NodePath("BottomRay")
+focus_anim = NodePath("AnimatedFrame")
+
+[node name="RightRay" type="RayCast2D" parent="PlayButton8" unique_id=669127287]
+position = Vector2(96, 48)
+target_position = Vector2(20, 0)
+hit_from_inside = true
+collide_with_areas = true
+
+[node name="LeftRay" type="RayCast2D" parent="PlayButton8" unique_id=1537370648]
+position = Vector2(0, 48)
+target_position = Vector2(-20, 0)
+collide_with_areas = true
+
+[node name="TopRay" type="RayCast2D" parent="PlayButton8" unique_id=990735891]
+position = Vector2(48, 0)
+target_position = Vector2(0, -20)
+collide_with_areas = true
+
+[node name="BottomRay" type="RayCast2D" parent="PlayButton8" unique_id=2078648192]
+position = Vector2(48, 96)
+target_position = Vector2(0, 20)
+collide_with_areas = true
+
+[node name="Area2D" type="Area2D" parent="PlayButton8" unique_id=6996013]
+position = Vector2(48, 48)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayButton8/Area2D" unique_id=751731438]
+shape = SubResource("RectangleShape2D_8ln24")
+
+[node name="AnimatedFrame" type="AnimatedSprite2D" parent="PlayButton8" unique_id=430971852]
+visible = false
+position = Vector2(48, 48)
+scale = Vector2(1.64, 1.64)
+sprite_frames = SubResource("SpriteFrames_lgwnu")
+autoplay = "default"
+
+[node name="AudioButton" type="TextureButton" parent="." unique_id=1998599807 node_paths=PackedStringArray("right_ray", "top_ray", "left_ray", "bottom_ray", "focus_anim")]
+offset_left = 368.0
+offset_top = 136.0
+offset_right = 464.0
+offset_bottom = 232.00012
+texture_normal = ExtResource("8_5dd4i")
+texture_pressed = ExtResource("9_lgwnu")
+texture_hover = ExtResource("10_flqon")
+texture_focused = ExtResource("10_flqon")
+script = ExtResource("5_tbmy8")
+right_ray = NodePath("RightRay")
+top_ray = NodePath("TopRay")
+left_ray = NodePath("LeftRay")
+bottom_ray = NodePath("BottomRay")
+focus_anim = NodePath("AnimatedFrame")
+
+[node name="RightRay" type="RayCast2D" parent="AudioButton" unique_id=990675111]
+position = Vector2(96, 48)
+target_position = Vector2(20, 0)
+hit_from_inside = true
+collide_with_areas = true
+
+[node name="LeftRay" type="RayCast2D" parent="AudioButton" unique_id=813977081]
+position = Vector2(0, 48)
+target_position = Vector2(-20, 0)
+collide_with_areas = true
+
+[node name="TopRay" type="RayCast2D" parent="AudioButton" unique_id=1211764081]
+position = Vector2(48, 0)
+target_position = Vector2(0, -20)
+collide_with_areas = true
+
+[node name="BottomRay" type="RayCast2D" parent="AudioButton" unique_id=1918889075]
+position = Vector2(48, 96)
+target_position = Vector2(0, 20)
+collide_with_areas = true
+
+[node name="Area2D" type="Area2D" parent="AudioButton" unique_id=904389634]
+position = Vector2(48, 48)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AudioButton/Area2D" unique_id=954116761]
+shape = SubResource("RectangleShape2D_8ln24")
+
+[node name="AnimatedFrame" type="AnimatedSprite2D" parent="AudioButton" unique_id=1647153793]
+visible = false
+position = Vector2(48, 48)
+scale = Vector2(1.64, 1.64)
+sprite_frames = SubResource("SpriteFrames_lgwnu")
+autoplay = "default"
+
+[node name="Blank" type="TextureButton" parent="." unique_id=1973669664 node_paths=PackedStringArray("right_ray", "top_ray", "left_ray", "bottom_ray", "focus_anim")]
+offset_left = 368.0
+offset_top = 232.0
+offset_right = 464.0
+offset_bottom = 328.0003
+script = ExtResource("5_tbmy8")
+right_ray = NodePath("RightRay")
+top_ray = NodePath("TopRay")
+left_ray = NodePath("LeftRay")
+bottom_ray = NodePath("BottomRay")
+focus_anim = NodePath("AnimatedFrame")
+
+[node name="RightRay" type="RayCast2D" parent="Blank" unique_id=1489275865]
+position = Vector2(96, 48)
+target_position = Vector2(20, 0)
+hit_from_inside = true
+collide_with_areas = true
+
+[node name="LeftRay" type="RayCast2D" parent="Blank" unique_id=1483328265]
+position = Vector2(0, 48)
+target_position = Vector2(-20, 0)
+collide_with_areas = true
+
+[node name="TopRay" type="RayCast2D" parent="Blank" unique_id=1691951975]
+position = Vector2(48, 0)
+target_position = Vector2(0, -20)
+collide_with_areas = true
+
+[node name="BottomRay" type="RayCast2D" parent="Blank" unique_id=687254188]
+position = Vector2(48, 96)
+target_position = Vector2(0, 20)
+collide_with_areas = true
+
+[node name="Area2D" type="Area2D" parent="Blank" unique_id=1708602137]
+position = Vector2(48, 48)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Blank/Area2D" unique_id=2119841473]
+shape = SubResource("RectangleShape2D_8ln24")
+
+[node name="AnimatedFrame" type="AnimatedSprite2D" parent="Blank" unique_id=81042263]
+visible = false
+position = Vector2(48, 48)
+scale = Vector2(1.64, 1.64)
+sprite_frames = SubResource("SpriteFrames_lgwnu")
+autoplay = "default"
+frame_progress = 0.2580642
+
+[node name="BlackOut" type="ColorRect" parent="." unique_id=1085563924]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 640.0
+offset_bottom = 360.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1631519742]
+libraries/ = SubResource("AnimationLibrary_flqon")
+autoplay = &"move_tiles"
+
+[node name="MainMenuVolumeSlider" type="VSlider" parent="." unique_id=2036409372]
+visible = false
+custom_minimum_size = Vector2(0, 200)
+offset_left = 552.0
+offset_top = 88.0
+offset_right = 568.0
+offset_bottom = 288.0
 focus_mode = 0
+theme_override_icons/grabber = ExtResource("11_flqon")
+theme_override_icons/grabber_highlight = ExtResource("11_flqon")
+theme_override_icons/grabber_disabled = ExtResource("11_flqon")
+theme_override_styles/slider = SubResource("StyleBoxFlat_rcqid")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_flqon")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_flqon")
 max_value = 1.0
 step = 0.1
-script = ExtResource("3_rtw2f")
+value = 0.5
+script = ExtResource("11_lgwnu")
 
-[node name="PlayButton" type="TextureButton" parent="CanvasLayer/VBoxContainer2" unique_id=1456440145]
-layout_mode = 2
-size_flags_horizontal = 4
-focus_mode = 0
-shortcut_in_tooltip = false
-texture_normal = ExtResource("4_oa1go")
-
-[connection signal="value_changed" from="CanvasLayer/VBoxContainer2/HBoxContainer/SoundSlider" to="CanvasLayer/VBoxContainer2/HBoxContainer/SoundSlider" method="_on_value_changed"]
-[connection signal="pressed" from="CanvasLayer/VBoxContainer2/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="PlayButton" to="." method="start_game"]
+[connection signal="pressed" from="AudioButton" to="MainMenuVolumeSlider" method="change_visibility"]
+[connection signal="value_changed" from="MainMenuVolumeSlider" to="MainMenuVolumeSlider" method="_on_value_changed"]
