@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://dd2m75amxndki" path="res://audio_assets/sfx/SFX - Slide 2.wav" id="8_gc6mj"]
 [ext_resource type="AudioStream" uid="uid://dvvtp4ycap0y4" path="res://audio_assets/sfx/SFX - Slide 3.wav" id="9_abrrb"]
 [ext_resource type="AudioStream" uid="uid://wujgsfbvcggb" path="res://audio_assets/sfx/15419__pagancow__dorm-door-opening.wav" id="12_gc6mj"]
+[ext_resource type="AudioStream" uid="uid://cme7cqkm2ncad" path="res://audio_assets/sfx/whoosh.mp3" id="13_abrrb"]
 
 [sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_ay5dq"]
 clip_count = 5
@@ -118,3 +119,11 @@ bus = &"PlayerSounds"
 [node name="DoorOpen" type="AudioStreamPlayer" parent="." unique_id=415414180]
 stream = ExtResource("12_gc6mj")
 bus = &"SFX"
+
+[node name="Whoosh" type="AudioStreamPlayer" parent="." unique_id=548687395]
+stream = ExtResource("13_abrrb")
+volume_db = -8.0
+bus = &"PlayerSounds"
+
+[node name="JumpTimer" type="Timer" parent="." unique_id=180856782]
+one_shot = true

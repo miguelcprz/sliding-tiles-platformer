@@ -51,10 +51,6 @@ func move() -> void:
 func jump() -> void:
 	if is_on_floor() and Input.is_action_just_pressed("ui_accept"):
 		velocity.y = -jump_force
-		run_jump_sound_chance()
-
-func run_jump_sound_chance() -> void:
-	if 0.5 >= randf_range(0,1):
 		AudioManager.play_jump()
 	
 
