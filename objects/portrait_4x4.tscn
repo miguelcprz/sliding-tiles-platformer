@@ -19,20 +19,9 @@ b = Vector2(192, 0)
 
 [node name="Portrait" type="Node2D" unique_id=500186065 node_paths=PackedStringArray("tiles", "blank_tiles")]
 script = ExtResource("1_aer25")
-tiles = [NodePath("SlidingTile"), null, null, NodePath("SlidingTile4"), NodePath("SlidingTile5"), NodePath("SlidingTile6"), NodePath("SlidingTile7"), NodePath("SlidingTile8"), NodePath("SlidingTile9"), NodePath("SlidingTile10"), NodePath("SlidingTile11"), NodePath("SlidingTile12"), NodePath("SlidingTile13"), NodePath("SlidingTile14"), null]
+tiles = [NodePath("SlidingTile4"), NodePath("SlidingTile7"), NodePath("SlidingTile9"), NodePath("SlidingTile10"), NodePath("SlidingTile11"), NodePath("SlidingTile12"), NodePath("SlidingTile13"), NodePath("SlidingTile14")]
 blank_tiles = [NodePath("BlankTile"), NodePath("BlankTile2"), NodePath("BlankTile3"), NodePath("BlankTile4"), NodePath("BlankTile5"), NodePath("BlankTile6"), NodePath("BlankTile7"), NodePath("BlankTile8"), NodePath("BlankTile9"), NodePath("BlankTile10"), NodePath("BlankTile11"), NodePath("BlankTile12"), NodePath("BlankTile13"), NodePath("BlankTile14"), NodePath("BlankTile15"), NodePath("BlankTile16")]
 metadata/_custom_type_script = "uid://dryc4vt46j2fq"
-
-[node name="SlidingTile" parent="." unique_id=471830497 node_paths=PackedStringArray("this_portrait") instance=ExtResource("3_qyjod")]
-offset_left = -96.0
-offset_top = -96.0
-offset_right = -48.0
-offset_bottom = -48.0
-grab_initial_focus = true
-this_portrait = NodePath("..")
-
-[node name="SliderTileMap" parent="SlidingTile" index="1" unique_id=1903156260]
-tile_map_data = PackedByteArray(0, 0, 2, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 
 [node name="SlidingTile4" parent="." unique_id=1420918182 node_paths=PackedStringArray("this_portrait") instance=ExtResource("3_qyjod")]
 offset_left = 48.0
@@ -41,30 +30,10 @@ offset_right = 96.0
 offset_bottom = -48.0
 this_portrait = NodePath("..")
 
-[node name="SlidingTile5" parent="." unique_id=933644609 node_paths=PackedStringArray("this_portrait") instance=ExtResource("3_qyjod")]
-offset_left = -96.0
-offset_top = -48.0
-offset_right = -48.0
-offset_bottom = 0.0
-this_portrait = NodePath("..")
-
-[node name="SlidingTile6" parent="." unique_id=623643922 node_paths=PackedStringArray("this_portrait") instance=ExtResource("3_qyjod")]
-offset_left = -48.0
-offset_top = -48.0
-offset_right = 0.0
-offset_bottom = 0.0
-this_portrait = NodePath("..")
-
 [node name="SlidingTile7" parent="." unique_id=584188938 node_paths=PackedStringArray("this_portrait") instance=ExtResource("3_qyjod")]
 offset_top = -48.0
 offset_bottom = 0.0
-this_portrait = NodePath("..")
-
-[node name="SlidingTile8" parent="." unique_id=1131878500 node_paths=PackedStringArray("this_portrait") instance=ExtResource("3_qyjod")]
-offset_left = 48.0
-offset_top = -48.0
-offset_right = 96.0
-offset_bottom = 0.0
+grab_initial_focus = true
 this_portrait = NodePath("..")
 
 [node name="SlidingTile9" parent="." unique_id=1103202720 node_paths=PackedStringArray("this_portrait") instance=ExtResource("3_qyjod")]
@@ -242,5 +211,3 @@ offset_top = 48.0
 offset_right = 96.0
 offset_bottom = 96.0
 this_portrait = NodePath("..")
-
-[editable path="SlidingTile"]

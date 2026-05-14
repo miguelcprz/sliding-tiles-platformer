@@ -30,7 +30,7 @@ func play_teleport_cutscene(final_pos_marker : Marker2D) -> void:
 	await tween.finished
 	
 	tween = create_tween().set_parallel()
-	tween.tween_property(player,"global_position",final_pos_marker.global_position,5.0).set_trans(Tween.TRANS_CUBIC)
+	tween.tween_property(player,"global_position",final_pos_marker.global_position,5.0)
 	await tween.finished
 
 	tween = create_tween().set_parallel()
