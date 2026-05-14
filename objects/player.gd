@@ -1,7 +1,7 @@
 class_name Player extends CharacterBody2D
 var gravity := 750
 var speed := 180
-var jump_force := 310
+var jump_force := 300
 var is_knocked : bool = true:
 	set(value):
 		is_knocked = value
@@ -13,8 +13,19 @@ const KNOCK_FORCE = Vector2(300,-200)
 var waiting_anim : bool = false
 @export var player_anim : AnimatedSprite2D
 
+@export_enum("level_1","level_2","level_3","level_4") var start_location = "level_1"
+
+@export var level_1_marker : Marker2D
+
+@export var level_2_marker : Marker2D
+
+@export var level_3_marker : Marker2D
+
+@export var level_4_marker : Marker2D
+
 func _ready() -> void:
 	player_anim.animation_changed.connect(func(): player_anim.play())
+	set_initial_location()
 	
 func _physics_process(delta: float) -> void:
 	move_and_slide()
@@ -85,6 +96,19 @@ func jump() -> void:
 		velocity.y = -jump_force
 		AudioManager.play_jump()
 	
+
+func set_initial_location() -> void:
+	if not OS.has_feature("editor"):
+		global_position = level_1_marker.global_position
+	
+	elif start_location == "level_2":
+		global_position = level_2_marker.global_position
+	elif start_location == "level_3":
+		global_position = level_3_marker.global_position
+	elif start_location == "level_4":
+		global_position = level_4_marker.global_position
+	else:
+		global_position = level_1_marker.global_position
 
 func flip_sprite() -> void:
 	if velocity.x == 0:

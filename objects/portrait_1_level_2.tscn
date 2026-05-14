@@ -1,0 +1,263 @@
+[gd_scene format=4 uid="uid://duo8atld6maii"]
+
+[ext_resource type="Script" uid="uid://dryc4vt46j2fq" path="res://classes/Portrait.gd" id="1_j2ljk"]
+[ext_resource type="Texture2D" uid="uid://fbr4pnu1kx71" path="res://visual_assets/puzzle_frame_4x4.png" id="2_wktpe"]
+[ext_resource type="PackedScene" uid="uid://i6wxb0n2l15h" path="res://objects/sliding_tile.tscn" id="2_yjy8q"]
+[ext_resource type="Script" uid="uid://dwgrxvi8eh672" path="res://objects/portrait_trigger.gd" id="3_wktpe"]
+[ext_resource type="Texture2D" uid="uid://bguet35w53t64" path="res://visual_assets/tile_focus_frame.png" id="4_b8cr2"]
+[ext_resource type="PackedScene" uid="uid://tsrojiescwgx" path="res://objects/blank_tile.tscn" id="6_b8cr2"]
+[ext_resource type="Texture2D" uid="uid://db5terwynwi15" path="res://ui_assets/input_tilemap.png" id="6_dihrs"]
+[ext_resource type="Script" uid="uid://cym4nq58rpi0s" path="res://objects/slider_trigger_prompt.gd" id="7_tnlxu"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_q5onr"]
+b = Vector2(192, 0)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_jhx03"]
+a = Vector2(192, 8)
+b = Vector2(0, 8)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_o8fc1"]
+b = Vector2(0, 192)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_xo05s"]
+b = Vector2(0, 192)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w7kh3"]
+size = Vector2(48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xo05s"]
+atlas = ExtResource("6_dihrs")
+region = Rect2(341, 69, 13, 14)
+
+[node name="Portrait1Level2" type="Node2D" unique_id=599691390 node_paths=PackedStringArray("tiles", "blank_tiles")]
+script = ExtResource("1_j2ljk")
+tiles = [NodePath("SlidingTile2"), NodePath("SlidingTile3"), NodePath("SlidingTile4"), NodePath("SlidingTile5")]
+blank_tiles = [NodePath("BlankTile"), NodePath("BlankTile2"), NodePath("BlankTile3"), NodePath("BlankTile4"), NodePath("BlankTile5"), NodePath("BlankTile6"), NodePath("BlankTile7"), NodePath("BlankTile8"), NodePath("BlankTile9"), NodePath("BlankTile10"), NodePath("BlankTile11"), NodePath("BlankTile12"), NodePath("BlankTile13"), NodePath("BlankTile14"), NodePath("BlankTile15"), NodePath("BlankTile16")]
+portrait_center = Vector2(96, 96)
+metadata/_custom_type_script = "uid://dryc4vt46j2fq"
+
+[node name="PuzzleFrame4x4" type="Sprite2D" parent="." unique_id=1220158038]
+modulate = Color(1, 1, 1, 0.27058825)
+scale = Vector2(0.9846939, 0.9846939)
+texture = ExtResource("2_wktpe")
+centered = false
+
+[node name="SlidingTile2" parent="." unique_id=998443073 node_paths=PackedStringArray("this_portrait") instance=ExtResource("2_yjy8q")]
+offset_top = 48.0
+offset_bottom = 96.0
+this_portrait = NodePath("..")
+
+[node name="SliderTileMap" parent="SlidingTile2" index="1" unique_id=1903156260]
+tile_map_data = PackedByteArray("AAAAAAIAAAABAAAAAAABAAIAAAABAAAAAAACAAIAAAABAAAAAAACAAEAAAABAAAAAAACAAAAAAABAAAAAAABAAAAAAABAAAAAAAAAAAAAAABAAAAAAAAAAEAAAABAAAAAAABAAEAAAABAAAAAAA=")
+
+[node name="SlidingTile3" parent="." unique_id=1763460708 node_paths=PackedStringArray("this_portrait") instance=ExtResource("2_yjy8q")]
+offset_left = 144.0
+offset_top = 48.0
+offset_right = 192.0
+offset_bottom = 96.0
+grab_initial_focus = true
+this_portrait = NodePath("..")
+
+[node name="SliderTileMap" parent="SlidingTile3" index="1" unique_id=1903156260]
+tile_map_data = PackedByteArray("AAACAAIAAAABAAAAAAABAAIAAAABAAAAAAAAAAIAAAABAAAAAAA=")
+
+[node name="SlidingTile4" parent="." unique_id=674100777 node_paths=PackedStringArray("this_portrait") instance=ExtResource("2_yjy8q")]
+offset_left = 48.0
+offset_top = 96.0
+offset_right = 96.0
+offset_bottom = 144.0
+this_portrait = NodePath("..")
+
+[node name="SliderTileMap" parent="SlidingTile4" index="1" unique_id=1903156260]
+tile_map_data = PackedByteArray("AAACAAIAAAABAAAAAAABAAIAAAABAAAAAAAAAAIAAAABAAAAAAA=")
+
+[node name="SlidingTile5" parent="." unique_id=338763883 node_paths=PackedStringArray("this_portrait") instance=ExtResource("2_yjy8q")]
+offset_left = 144.0
+offset_top = 144.0
+offset_right = 192.0
+offset_bottom = 192.0
+this_portrait = NodePath("..")
+
+[node name="SliderTileMap" parent="SlidingTile5" index="1" unique_id=1903156260]
+tile_map_data = PackedByteArray("AAACAAEAAAABAAAAAAABAAEAAAABAAAAAAABAAAAAAABAAAAAAACAAAAAAABAAAAAAA=")
+
+[node name="PortraitLimits" type="Node2D" parent="." unique_id=969639290]
+position = Vector2(1, -1)
+
+[node name="TopLimit" type="StaticBody2D" parent="PortraitLimits" unique_id=48265058]
+position = Vector2(0, -11)
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PortraitLimits/TopLimit" unique_id=943226488]
+shape = SubResource("SegmentShape2D_q5onr")
+
+[node name="BottomLimit" type="StaticBody2D" parent="PortraitLimits" unique_id=1289871116]
+position = Vector2(0, 204)
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PortraitLimits/BottomLimit" unique_id=1580727471]
+position = Vector2(0, -8)
+shape = SubResource("SegmentShape2D_jhx03")
+
+[node name="LeftLimit" type="StaticBody2D" parent="PortraitLimits" unique_id=1310984716]
+position = Vector2(-11, 0)
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PortraitLimits/LeftLimit" unique_id=1641842024]
+shape = SubResource("SegmentShape2D_o8fc1")
+
+[node name="RightLimit" type="StaticBody2D" parent="PortraitLimits" unique_id=277940274]
+position = Vector2(205, 0)
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PortraitLimits/RightLimit" unique_id=334607844]
+shape = SubResource("SegmentShape2D_xo05s")
+
+[node name="PortraitTrigger" type="Area2D" parent="." unique_id=155845506 node_paths=PackedStringArray("portrait")]
+position = Vector2(-136, 120)
+script = ExtResource("3_wktpe")
+portrait = NodePath("..")
+metadata/_custom_type_script = "uid://dwgrxvi8eh672"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PortraitTrigger" unique_id=446006078]
+shape = SubResource("RectangleShape2D_w7kh3")
+
+[node name="TileFocusFrame" type="Sprite2D" parent="PortraitTrigger" unique_id=1341230953]
+modulate = Color(0, 0, 1, 1)
+texture = ExtResource("4_b8cr2")
+
+[node name="SliderTriggerPrompt" type="Sprite2D" parent="PortraitTrigger" unique_id=593369168]
+position = Vector2(0, -46)
+scale = Vector2(1.895, 1.895)
+texture = SubResource("AtlasTexture_xo05s")
+script = ExtResource("7_tnlxu")
+
+[node name="PortraitTrigger2" type="Area2D" parent="." unique_id=1361044434 node_paths=PackedStringArray("portrait")]
+position = Vector2(232, 120)
+script = ExtResource("3_wktpe")
+portrait = NodePath("..")
+metadata/_custom_type_script = "uid://dwgrxvi8eh672"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PortraitTrigger2" unique_id=361390181]
+shape = SubResource("RectangleShape2D_w7kh3")
+
+[node name="TileFocusFrame" type="Sprite2D" parent="PortraitTrigger2" unique_id=419538345]
+modulate = Color(0, 0, 1, 1)
+texture = ExtResource("4_b8cr2")
+
+[node name="SliderTriggerPrompt" type="Sprite2D" parent="PortraitTrigger2" unique_id=1377130311]
+position = Vector2(0, -46)
+scale = Vector2(1.895, 1.895)
+texture = SubResource("AtlasTexture_xo05s")
+script = ExtResource("7_tnlxu")
+
+[node name="BlankTile" parent="." unique_id=1307859991 node_paths=PackedStringArray("this_portrait") instance=ExtResource("6_b8cr2")]
+this_portrait = NodePath("..")
+
+[node name="BlankTile2" parent="." unique_id=204956591 node_paths=PackedStringArray("this_portrait") instance=ExtResource("6_b8cr2")]
+offset_left = 48.0
+offset_right = 96.0
+offset_bottom = 48.0
+this_portrait = NodePath("..")
+
+[node name="BlankTile3" parent="." unique_id=1736290486 node_paths=PackedStringArray("this_portrait") instance=ExtResource("6_b8cr2")]
+offset_left = 96.0
+offset_right = 144.0
+offset_bottom = 48.0
+this_portrait = NodePath("..")
+
+[node name="BlankTile4" parent="." unique_id=273175659 node_paths=PackedStringArray("this_portrait") instance=ExtResource("6_b8cr2")]
+offset_left = 144.0
+offset_right = 192.0
+offset_bottom = 48.0
+this_portrait = NodePath("..")
+
+[node name="BlankTile5" parent="." unique_id=1590289661 node_paths=PackedStringArray("this_portrait") instance=ExtResource("6_b8cr2")]
+offset_top = 48.0
+offset_right = 48.0
+offset_bottom = 96.0
+this_portrait = NodePath("..")
+
+[node name="BlankTile6" parent="." unique_id=420471588 node_paths=PackedStringArray("this_portrait") instance=ExtResource("6_b8cr2")]
+offset_left = 48.0
+offset_top = 48.0
+offset_right = 96.0
+offset_bottom = 96.0
+this_portrait = NodePath("..")
+
+[node name="BlankTile7" parent="." unique_id=1132380960 node_paths=PackedStringArray("this_portrait") instance=ExtResource("6_b8cr2")]
+offset_left = 96.0
+offset_top = 48.0
+offset_right = 144.0
+offset_bottom = 96.0
+this_portrait = NodePath("..")
+
+[node name="BlankTile8" parent="." unique_id=673300809 node_paths=PackedStringArray("this_portrait") instance=ExtResource("6_b8cr2")]
+offset_left = 144.0
+offset_top = 48.0
+offset_right = 192.0
+offset_bottom = 96.0
+this_portrait = NodePath("..")
+
+[node name="BlankTile9" parent="." unique_id=60561550 node_paths=PackedStringArray("this_portrait") instance=ExtResource("6_b8cr2")]
+offset_top = 96.0
+offset_right = 48.0
+offset_bottom = 144.0
+this_portrait = NodePath("..")
+
+[node name="BlankTile10" parent="." unique_id=618677906 node_paths=PackedStringArray("this_portrait") instance=ExtResource("6_b8cr2")]
+offset_left = 48.0
+offset_top = 96.0
+offset_right = 96.0
+offset_bottom = 144.0
+this_portrait = NodePath("..")
+
+[node name="BlankTile11" parent="." unique_id=1793585148 node_paths=PackedStringArray("this_portrait") instance=ExtResource("6_b8cr2")]
+offset_left = 96.0
+offset_top = 96.0
+offset_right = 144.0
+offset_bottom = 144.0
+this_portrait = NodePath("..")
+
+[node name="BlankTile12" parent="." unique_id=1965263090 node_paths=PackedStringArray("this_portrait") instance=ExtResource("6_b8cr2")]
+offset_left = 144.0
+offset_top = 96.0
+offset_right = 192.0
+offset_bottom = 144.0
+this_portrait = NodePath("..")
+
+[node name="BlankTile13" parent="." unique_id=568500959 node_paths=PackedStringArray("this_portrait") instance=ExtResource("6_b8cr2")]
+offset_top = 144.0
+offset_right = 48.0
+offset_bottom = 192.0
+this_portrait = NodePath("..")
+
+[node name="BlankTile14" parent="." unique_id=554742137 node_paths=PackedStringArray("this_portrait") instance=ExtResource("6_b8cr2")]
+offset_left = 48.0
+offset_top = 144.0
+offset_right = 96.0
+offset_bottom = 192.0
+this_portrait = NodePath("..")
+
+[node name="BlankTile15" parent="." unique_id=1752233341 node_paths=PackedStringArray("this_portrait") instance=ExtResource("6_b8cr2")]
+offset_left = 96.0
+offset_top = 144.0
+offset_right = 144.0
+offset_bottom = 192.0
+this_portrait = NodePath("..")
+
+[node name="BlankTile16" parent="." unique_id=1639894244 node_paths=PackedStringArray("this_portrait") instance=ExtResource("6_b8cr2")]
+offset_left = 144.0
+offset_top = 144.0
+offset_right = 192.0
+offset_bottom = 192.0
+this_portrait = NodePath("..")
+
+[editable path="SlidingTile2"]
+[editable path="SlidingTile3"]
+[editable path="SlidingTile4"]
+[editable path="SlidingTile5"]
