@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://be3tvaqbgxuiw" path="res://globals/audio_manager.gd" id="1_8eshj"]
 [ext_resource type="AudioStream" uid="uid://ccxxic72nf71d" path="res://audio_assets/music/concept_01.mp3" id="1_dd2wf"]
 [ext_resource type="AudioStream" uid="uid://u0chkjmdrv1w" path="res://audio_assets/music/1. Woodland Theme master 2.mp3" id="2_4m8wf"]
-[ext_resource type="AudioStream" uid="uid://delai7hx5kn5r" path="res://audio_assets/music/jungle_concept_01.mp3" id="2_e7vr3"]
-[ext_resource type="AudioStream" uid="uid://dskj33akr77q4" path="res://audio_assets/music/Jungle Theme master 1.mp3" id="3_8ak76"]
+[ext_resource type="AudioStream" uid="uid://dal08obvw5nsm" path="res://audio_assets/music/Jungle_theme_instr_drums_80bpm_5_4.mp3" id="2_abrrb"]
+[ext_resource type="AudioStream" uid="uid://b8dkfb68qld5q" path="res://audio_assets/music/melodic_ambient_theme_86bpm_6_4.mp3" id="4_3ewgl"]
 [ext_resource type="AudioStream" uid="uid://cm0wnm1qgvnng" path="res://audio_assets/music/Fanfare_65BPM_4by4_v2.wav" id="5_8eshj"]
 [ext_resource type="AudioStream" uid="uid://b5vgnq5rsvgxs" path="res://audio_assets/sfx/jumppp11.ogg" id="5_ifagb"]
 [ext_resource type="AudioStream" uid="uid://b4sjqlrqismfo" path="res://audio_assets/sfx/jumppp22.ogg" id="6_8eshj"]
@@ -17,13 +17,13 @@
 [sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_ay5dq"]
 clip_count = 5
 clip_0/name = &"song 1"
-clip_0/stream = ExtResource("2_e7vr3")
+clip_0/stream = ExtResource("2_abrrb")
 clip_0/auto_advance = 0
 clip_1/name = &"song 2"
 clip_1/stream = ExtResource("2_4m8wf")
 clip_1/auto_advance = 0
 clip_2/name = &"song 3"
-clip_2/stream = ExtResource("3_8ak76")
+clip_2/stream = ExtResource("4_3ewgl")
 clip_2/auto_advance = 0
 clip_3/name = &"song 4"
 clip_3/stream = ExtResource("1_dd2wf")
@@ -32,6 +32,12 @@ clip_4/name = &"Success"
 clip_4/stream = ExtResource("5_8eshj")
 clip_4/auto_advance = 0
 _transitions = {
+Vector2i(0, 0): {
+"fade_beats": 4.0,
+"fade_mode": 3,
+"from_time": 0,
+"to_time": 1
+},
 Vector2i(0, 1): {
 "fade_beats": 1.0,
 "fade_mode": 3,
@@ -45,6 +51,12 @@ Vector2i(1, 0): {
 "fade_mode": 3,
 "from_time": 2,
 "hold_previous": true,
+"to_time": 1
+},
+Vector2i(1, 1): {
+"fade_beats": 4.0,
+"fade_mode": 3,
+"from_time": 0,
 "to_time": 1
 },
 Vector2i(1, 2): {
@@ -69,6 +81,12 @@ Vector2i(2, 1): {
 "hold_previous": true,
 "to_time": 1
 },
+Vector2i(2, 2): {
+"fade_beats": 4.0,
+"fade_mode": 3,
+"from_time": 0,
+"to_time": 1
+},
 Vector2i(2, 3): {
 "fade_beats": 1.0,
 "fade_mode": 3,
@@ -76,6 +94,12 @@ Vector2i(2, 3): {
 "from_time": 1,
 "to_time": 1,
 "use_filler_clip": true
+},
+Vector2i(3, 3): {
+"fade_beats": 4.0,
+"fade_mode": 3,
+"from_time": 0,
+"to_time": 1
 }
 }
 

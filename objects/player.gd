@@ -1,7 +1,7 @@
 class_name Player extends CharacterBody2D
-var gravity := 185
-var speed := 450
-var jump_force := 650
+var gravity := 750
+var speed := 180
+var jump_force := 310
 var is_knocked : bool = true:
 	set(value):
 		is_knocked = value
@@ -14,10 +14,8 @@ var waiting_anim : bool = false
 @export var player_anim : AnimatedSprite2D
 
 func _ready() -> void:
-	gravity = DevMode.gravity
-	speed = DevMode.speed
-	jump_force = DevMode.jump_force
-
+	player_anim.animation_changed.connect(func(): player_anim.play())
+	
 func _physics_process(delta: float) -> void:
 	move_and_slide()
 	apply_gravity(delta)
