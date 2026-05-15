@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://dyfhkge1pdcn5" path="res://visual_assets/tile_focus_frame-sheet.png" id="6_rtw2f"]
 [ext_resource type="Texture2D" uid="uid://dbvyphx4mraji" path="res://ui_assets/empty_tile.png" id="7_oa1go"]
 [ext_resource type="Texture2D" uid="uid://4emujurtfw4a" path="res://ui_assets/sound_button_tile.png" id="8_5dd4i"]
+[ext_resource type="Texture2D" uid="uid://balbxm2v5gurf" path="res://visual_assets/turtle.png" id="8_7b55j"]
+[ext_resource type="Texture2D" uid="uid://bkoysr1wg87b6" path="res://visual_assets/player.png" id="9_5pajh"]
 [ext_resource type="Texture2D" uid="uid://cwu6kqkqkte0u" path="res://ui_assets/sound_button_tile_pressed.png" id="9_lgwnu"]
 [ext_resource type="Texture2D" uid="uid://d4lijkj6q44y8" path="res://ui_assets/sound_button_tile_focused.png" id="10_flqon"]
 [ext_resource type="Texture2D" uid="uid://bns8rgvrukjn5" path="res://ui_assets/circle.png" id="11_flqon"]
@@ -51,6 +53,28 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 8.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j7ex8"]
+atlas = ExtResource("9_5pajh")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a8gd2"]
+atlas = ExtResource("9_5pajh")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hstxw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j7ex8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a8gd2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
 }]
 
 [sub_resource type="Animation" id="Animation_5dd4i"]
@@ -443,6 +467,11 @@ position = Vector2(48, 48)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayButton3/Area2D" unique_id=1578481747]
 shape = SubResource("RectangleShape2D_8ln24")
 
+[node name="TurtleSprite" type="Sprite2D" parent="PlayButton3" unique_id=36369302]
+position = Vector2(45, 58)
+scale = Vector2(1.85, 1.85)
+texture = ExtResource("8_7b55j")
+
 [node name="AnimatedFrame" type="AnimatedSprite2D" parent="PlayButton3" unique_id=1511741032]
 visible = false
 position = Vector2(48, 48)
@@ -642,6 +671,13 @@ position = Vector2(48, 48)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayButton8/Area2D" unique_id=751731438]
 shape = SubResource("RectangleShape2D_8ln24")
+
+[node name="PlayerAnim" type="AnimatedSprite2D" parent="PlayButton8" unique_id=1260954005]
+position = Vector2(47.999996, 55.999996)
+scale = Vector2(1.85, 1.85)
+sprite_frames = SubResource("SpriteFrames_hstxw")
+autoplay = "default"
+frame_progress = 0.32343817
 
 [node name="AnimatedFrame" type="AnimatedSprite2D" parent="PlayButton8" unique_id=430971852]
 visible = false

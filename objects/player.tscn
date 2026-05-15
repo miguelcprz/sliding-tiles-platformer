@@ -106,6 +106,7 @@ shape = SubResource("RectangleShape2D_lakw3")
 debug_color = Color(0.6213166, 0.53125185, 0.15755641, 0.41960785)
 
 [node name="PlayerAnim" type="AnimatedSprite2D" parent="." unique_id=266137770]
+position = Vector2(0, 1)
 sprite_frames = SubResource("SpriteFrames_i8sra")
-animation = &"jump_down"
+animation = &"walk"
 autoplay = "idle"

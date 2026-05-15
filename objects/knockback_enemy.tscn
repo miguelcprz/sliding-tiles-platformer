@@ -88,7 +88,7 @@ position = Vector2(0, 21.5)
 shape = SubResource("RectangleShape2D_jhx03")
 
 [node name="EnemyAnim" type="AnimatedSprite2D" parent="." unique_id=1964283203]
-position = Vector2(0, 11)
+position = Vector2(0, 12)
 sprite_frames = SubResource("SpriteFrames_0ns4i")
 autoplay = "default"
 flip_h = true
