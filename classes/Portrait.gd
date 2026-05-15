@@ -24,7 +24,7 @@ func _ready() -> void:
 	all_tiles.append_array(blank_tiles)
 	sliding_mode_changed.connect(give_focus_to_current_tile)
 	update_tiles_neighbors()
-	shuffle_tiles()
+
 	for tile in tiles:
 		if tile.grab_initial_focus:
 			current_tile = tile
@@ -41,14 +41,14 @@ func give_focus_to_current_tile(sliding_on : bool) -> void:
 		current_tile.grab_focus()
 
 
-func shuffle_tiles() -> void:
-	var tiles_initial_positions : Array [Vector2]
-	
-	for tile in tiles:
-		tiles_initial_positions.append(tile.position)
-	
-	tiles_initial_positions.shuffle()
-	
-	for tile_idx in tiles.size():
-		tiles[tile_idx].position = tiles_initial_positions[tile_idx]
+#func shuffle_tiles() -> void:
+	#var tiles_initial_positions : Array [Vector2]
+	#
+	#for tile in tiles:
+		#tiles_initial_positions.append(tile.position)
+	#
+	#tiles_initial_positions.shuffle()
+	#
+	#for tile_idx in tiles.size():
+		#tiles[tile_idx].position = tiles_initial_positions[tile_idx]
 	

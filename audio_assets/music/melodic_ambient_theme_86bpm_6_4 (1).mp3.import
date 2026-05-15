@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dralnmnuuyo87"
+path="res://.godot/imported/melodic_ambient_theme_86bpm_6_4 (1).mp3-b52b774d21a2e60a7f145c6007adb74b.mp3str"
+
+[deps]
+
+source_file="res://audio_assets/music/melodic_ambient_theme_86bpm_6_4 (1).mp3"
+dest_files=["res://.godot/imported/melodic_ambient_theme_86bpm_6_4 (1).mp3-b52b774d21a2e60a7f145c6007adb74b.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=86.0
+beat_count=0
+bar_beats=6

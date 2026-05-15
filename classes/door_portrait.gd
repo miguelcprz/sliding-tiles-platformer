@@ -12,6 +12,18 @@ var is_opened : bool = false:
 
 signal opened
 
+func _ready() -> void:
+	all_tiles.append_array(tiles)
+	all_tiles.append_array(blank_tiles)
+	sliding_mode_changed.connect(give_focus_to_current_tile)
+	shuffle_tiles()
+	update_tiles_neighbors()
+
+	for tile in tiles:
+		if tile.grab_initial_focus:
+			current_tile = tile
+	
+	
 func shuffle_tiles() -> void:
 	add_locked_door_textures()
 	connect_tiles_to_open_door()
