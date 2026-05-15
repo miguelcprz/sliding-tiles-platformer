@@ -9,4 +9,5 @@ func _on_body_entered(body: Node2D) -> void:
 		var tween = create_tween()
 		tween.tween_property(fade_color_rect,"color",Color.WHITE,2.0)
 		await tween.finished
+		AudioManager.switch_song(0)
 		get_tree().call_deferred("change_scene_to_file","res://scenes/main_menu.tscn")
