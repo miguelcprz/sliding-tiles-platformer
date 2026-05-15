@@ -24,17 +24,30 @@ func play_teleport_cutscene(final_pos_marker : Marker2D) -> void:
 	player.velocity = Vector2.ZERO
 	player.ignore_gravity = true
 	var tween = create_tween().set_parallel()
-	tween.tween_property(player,"modulate",Color.TRANSPARENT,1.0)
+	tween.tween_property(player.player_anim,"modulate",Color.TRANSPARENT,1.0)
 	tween.tween_property(top_block,"position:y",0,1.0).set_ease(Tween.EASE_OUT)
 	tween.tween_property(bottom_block,"position:y",300,1.0).set_ease(Tween.EASE_OUT)
 	await tween.finished
 	
+	var stored_cam_left_margin = main_camera.drag_left_margin
+	var stored_cam_right_margin = main_camera.drag_right_margin
+	var stored_cam_top_margin = main_camera.drag_top_margin
+	
 	tween = create_tween().set_parallel()
+	tween.tween_property(main_camera,"drag_left_margin",0,0.5)
+	tween.tween_property(main_camera,"drag_right_margin",0,0.5)
+	tween.tween_property(main_camera,"drag_top_margin",0,0.5)
+	await tween.finished
+	tween = create_tween()
 	tween.tween_property(player,"global_position",final_pos_marker.global_position,5.0)
 	await tween.finished
+	
+	main_camera.drag_left_margin = stored_cam_left_margin
+	main_camera.drag_right_margin = stored_cam_right_margin
+	main_camera.drag_top_margin = stored_cam_top_margin
 
 	tween = create_tween().set_parallel()
-	tween.tween_property(player,"modulate",Color.WHITE,1.0)
+	tween.tween_property(player.player_anim,"modulate",Color.WHITE,1.0)
 	tween.tween_property(top_block,"position:y",-top_block.size.y,1.0).set_ease(Tween.EASE_OUT)
 	tween.tween_property(bottom_block,"position:y",360,1.0).set_ease(Tween.EASE_OUT)
 	await tween.finished

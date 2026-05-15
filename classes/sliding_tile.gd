@@ -96,7 +96,6 @@ func move_right() -> void:
 		tween.tween_property(self,"position:x",position.x + TILE_SIZE.x,SLIDER_MOVE_TIME).set_trans(Tween.TRANS_EXPO)
 		await tween.finished
 		this_portrait.update_tiles_neighbors()
-		is_active = false
 		update_raycasts()
 		is_moving = false
 		
@@ -108,7 +107,6 @@ func move_left() -> void:
 		tween.tween_property(self,"position:x",position.x - TILE_SIZE.x,SLIDER_MOVE_TIME).set_trans(Tween.TRANS_EXPO)
 		await tween.finished
 		this_portrait.update_tiles_neighbors()
-		is_active = false
 		update_raycasts()
 		is_moving = false
 		
@@ -120,7 +118,6 @@ func move_top() -> void:
 		tween.tween_property(self,"position:y",position.y - TILE_SIZE.y,SLIDER_MOVE_TIME).set_trans(Tween.TRANS_EXPO)
 		await tween.finished
 		this_portrait.update_tiles_neighbors()
-		is_active = false
 		update_raycasts()
 		is_moving = false
 		
@@ -132,7 +129,6 @@ func move_bottom() -> void:
 		tween.tween_property(self,"position:y",position.y + TILE_SIZE.y,SLIDER_MOVE_TIME).set_trans(Tween.TRANS_EXPO)
 		await tween.finished
 		this_portrait.update_tiles_neighbors()
-		is_active = false
 		update_raycasts()
 		is_moving = false
 		
@@ -232,11 +228,11 @@ func update_bottom_neighbor() -> void:
 func update_neighbors() -> void:
 	for ray:RayCast2D in position_raycasts:
 		ray.force_raycast_update()
-	
-	update_bottom_neighbor()
-	update_left_neighbor()
-	update_right_neighbor()
-	update_top_neighbor()
+	if !is_active:
+		update_bottom_neighbor()
+		update_left_neighbor()
+		update_right_neighbor()
+		update_top_neighbor()
 
 func change_focus_mode(sliding_mode_on : bool) -> void:
 	is_active = false

@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bns8rgvrukjn5" path="res://ui_assets/circle.png" id="4_nbl5k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o8fc1"]
-size = Vector2(21, 11)
+size = Vector2(11, 11)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jhx03"]
 size = Vector2(36, 11)
@@ -53,7 +53,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3bl4t"]
-size = Vector2(17, 5)
+size = Vector2(21, 5)
 
 [node name="KnockbackEnemy" type="CharacterBody2D" unique_id=971086217 node_paths=PackedStringArray("right_raycast", "left_raycast", "right_enemy_ray", "left_enemy_ray", "player_detect_area")]
 collision_layer = 17
@@ -66,7 +66,7 @@ player_detect_area = NodePath("KnockArea")
 metadata/_custom_type_script = "uid://xcr1bj1p3ran"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1236720881]
-position = Vector2(-0.5, 21.5)
+position = Vector2(0, 21)
 shape = SubResource("RectangleShape2D_o8fc1")
 
 [node name="LeftRay" type="RayCast2D" parent="." unique_id=1879974775]
