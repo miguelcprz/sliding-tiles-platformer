@@ -2,6 +2,7 @@ class_name PuzzleDoor extends Area2D
 
 @export var exit_marker : Marker2D
 @export var this_door_portrait : DoorPortrait
+@export var cut_scene_cam : CutSceneCamera
 
 func _ready() -> void:
 	monitoring = false
@@ -17,16 +18,17 @@ func open_door() -> void:
 
 func teleport(body) -> void:
 	if body is Player:
-		call_deferred("change_player_position",body)
+		call_deferred("change_player_position")
 		
-func change_player_position(player : Player) -> void:
-	player.is_knocked = true
-	player.hide()
-	var tween = create_tween()
-	tween.tween_property(player,"global_position",exit_marker.global_position,1.0)
-	await tween.finished
-	player.is_knocked = false
-	player.show()
+func change_player_position() -> void:
+	cut_scene_cam.play_teleport_cutscene(exit_marker)
+	#player.is_knocked = true
+	#player.hide()
+	#var tween = create_tween()
+	#tween.tween_property(player,"global_position",exit_marker.global_position,1.0)
+	#await tween.finished
+	#player.is_knocked = false
+	#player.show()
 	
 	
 	

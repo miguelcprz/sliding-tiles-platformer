@@ -23,7 +23,7 @@ b = Vector2(0, 192)
 b = Vector2(0, 192)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w7kh3"]
-size = Vector2(48, 48)
+size = Vector2(16, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xo05s"]
 atlas = ExtResource("6_8nw4i")
