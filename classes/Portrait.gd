@@ -8,6 +8,7 @@ var current_tile : SlidingTile
 ##If [code]true[/code], this portrait [SlidingTile]s can be moved.
 var sliding_mode_on : bool = false:
 	set(value):
+		AudioManager.play_tile_mode()
 		sliding_mode_on = value
 		GameManager.sliding_mode_on = value
 		var cam = get_viewport().get_camera_2d()

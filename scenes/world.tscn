@@ -461,11 +461,7 @@ size = Vector2(158, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4kbfs"]
 atlas = ExtResource("30_rup4s")
-region = Rect2(0, 0, 96, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_f17e3"]
-atlas = ExtResource("30_rup4s")
-region = Rect2(96, 0, 96, 96)
+region = Rect2(0, 0, 144, 87)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_x2olw"]
 animations = [{
@@ -475,14 +471,6 @@ animations = [{
 }],
 "loop": true,
 "name": &"closed",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_f17e3")
-}],
-"loop": true,
-"name": &"opened",
 "speed": 5.0
 }]
 
@@ -1505,12 +1493,13 @@ color = Color(0, 0, 0, 1)
 metadata/_edit_use_anchors_ = true
 
 [node name="DoorSprite" type="AnimatedSprite2D" parent="StageChangeDoor" unique_id=1393619728]
-position = Vector2(0, -32)
+position = Vector2(4, -24)
 sprite_frames = SubResource("SpriteFrames_x2olw")
 animation = &"closed"
+autoplay = "closed"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StageChangeDoor" unique_id=387976615]
-position = Vector2(-4, 0)
+position = Vector2(24, 0)
 shape = SubResource("RectangleShape2D_fh13f")
 
 [node name="StageChangeDoor2" type="Area2D" parent="." unique_id=2073167914 node_paths=PackedStringArray("final_pos_marker", "cut_cam", "door_sprite")]
@@ -1530,12 +1519,13 @@ color = Color(0, 0, 0, 1)
 metadata/_edit_use_anchors_ = true
 
 [node name="DoorSprite" type="AnimatedSprite2D" parent="StageChangeDoor2" unique_id=1795306946]
-position = Vector2(0, -32)
+position = Vector2(14, -28)
 sprite_frames = SubResource("SpriteFrames_x2olw")
 animation = &"closed"
+autoplay = "closed"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StageChangeDoor2" unique_id=874310986]
-position = Vector2(-4, 0)
+position = Vector2(16, -3)
 shape = SubResource("RectangleShape2D_fh13f")
 
 [node name="StageTrans1to2" type="Marker2D" parent="." unique_id=586388268]
@@ -2682,7 +2672,7 @@ shape = SubResource("SegmentShape2D_8u370")
 position = Vector2(184, -2859)
 
 [node name="KnockbackEnemy10" parent="." unique_id=1081375101 instance=ExtResource("13_o8fc1")]
-position = Vector2(456, -3036)
+position = Vector2(456, -3034)
 
 [node name="Stage3to4Position" type="Marker2D" parent="." unique_id=535390563]
 position = Vector2(-201.62465, -2701.462)

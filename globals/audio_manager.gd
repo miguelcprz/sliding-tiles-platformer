@@ -6,8 +6,11 @@ extends Node
 @onready var knockback: AudioStreamPlayer = $Knockback
 @onready var door_open: AudioStreamPlayer = $DoorOpen
 @onready var whoosh: AudioStreamPlayer = $Whoosh
-
 @onready var jump_timer: Timer = $JumpTimer
+@onready var select_menu: AudioStreamPlayer = $SelectMenu
+@onready var tile_mode: AudioStreamPlayer = $TileMode
+@onready var pop: AudioStreamPlayer = $Pop
+
 
 func _ready() -> void:
 	jump_timer.timeout.connect(restart_jump_counter)
@@ -16,6 +19,15 @@ var cut_sceen_ready : bool = false
 
 var jump_counter : int = 0
 
+func play_pop() -> void:
+	pop.play()
+
+func play_select_menu() -> void:
+	select_menu.play()
+	
+func play_tile_mode() -> void:
+	tile_mode.play()
+	
 func play_door_open() -> void:
 	door_open.play()
 

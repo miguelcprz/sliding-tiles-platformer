@@ -13,7 +13,14 @@
 [ext_resource type="AudioStream" uid="uid://dd2m75amxndki" path="res://audio_assets/sfx/SFX - Slide 2.wav" id="8_gc6mj"]
 [ext_resource type="AudioStream" uid="uid://dvvtp4ycap0y4" path="res://audio_assets/sfx/SFX - Slide 3.wav" id="9_abrrb"]
 [ext_resource type="AudioStream" uid="uid://wujgsfbvcggb" path="res://audio_assets/sfx/15419__pagancow__dorm-door-opening.wav" id="12_gc6mj"]
-[ext_resource type="AudioStream" uid="uid://cme7cqkm2ncad" path="res://audio_assets/sfx/whoosh.mp3" id="13_abrrb"]
+[ext_resource type="AudioStream" uid="uid://i86j0swgn2yi" path="res://audio_assets/sfx/7. Enemy_Push.wav" id="13_bngg2"]
+[ext_resource type="AudioStream" uid="uid://coq57c5stw5tr" path="res://audio_assets/sfx/1. woosh_1.wav" id="15_qbogh"]
+[ext_resource type="AudioStream" uid="uid://dw4w2yauul20n" path="res://audio_assets/sfx/2. woosh_2.wav" id="16_xvcex"]
+[ext_resource type="AudioStream" uid="uid://3ww1phxdkw56" path="res://audio_assets/sfx/3. woosh_3.wav" id="17_j4m11"]
+[ext_resource type="AudioStream" uid="uid://ce84src7ahfkj" path="res://audio_assets/sfx/4. woosh_4.wav" id="18_ohqg0"]
+[ext_resource type="AudioStream" uid="uid://7j00gxxdkhqf" path="res://audio_assets/sfx/5. Select_1.wav" id="19_h2bwp"]
+[ext_resource type="AudioStream" uid="uid://bcyi03kpc3cy3" path="res://audio_assets/sfx/6. Select_2.wav" id="20_ngs4k"]
+[ext_resource type="AudioStream" uid="uid://4rb3j011uuj6" path="res://audio_assets/sfx/pop.mp3" id="21_qbogh"]
 
 [sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_ay5dq"]
 clip_count = 6
@@ -141,6 +148,13 @@ stream_0/stream = ExtResource("7_e7vr3")
 stream_1/stream = ExtResource("8_gc6mj")
 stream_2/stream = ExtResource("9_abrrb")
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_b170s"]
+streams_count = 4
+stream_0/stream = ExtResource("15_qbogh")
+stream_1/stream = ExtResource("16_xvcex")
+stream_2/stream = ExtResource("17_j4m11")
+stream_3/stream = ExtResource("18_ohqg0")
+
 [node name="AudioManager" type="Node" unique_id=1909915699]
 process_mode = 3
 script = ExtResource("1_8eshj")
@@ -163,7 +177,7 @@ stream = SubResource("AudioStreamRandomizer_vc3qd")
 bus = &"Environment"
 
 [node name="Knockback" type="AudioStreamPlayer" parent="." unique_id=970271755]
-stream = ExtResource("5_ifagb")
+stream = ExtResource("13_bngg2")
 pitch_scale = 2.69
 bus = &"PlayerSounds"
 
@@ -172,9 +186,23 @@ stream = ExtResource("12_gc6mj")
 bus = &"SFX"
 
 [node name="Whoosh" type="AudioStreamPlayer" parent="." unique_id=548687395]
-stream = ExtResource("13_abrrb")
+stream = SubResource("AudioStreamRandomizer_b170s")
 volume_db = -8.0
 bus = &"PlayerSounds"
 
 [node name="JumpTimer" type="Timer" parent="." unique_id=180856782]
 one_shot = true
+
+[node name="SelectMenu" type="AudioStreamPlayer" parent="." unique_id=43845517]
+stream = ExtResource("19_h2bwp")
+volume_db = -5.0
+bus = &"Environment"
+
+[node name="TileMode" type="AudioStreamPlayer" parent="." unique_id=1587425555]
+stream = ExtResource("20_ngs4k")
+bus = &"Environment"
+
+[node name="Pop" type="AudioStreamPlayer" parent="." unique_id=108615962]
+stream = ExtResource("21_qbogh")
+volume_db = -8.0
+bus = &"SFX"

@@ -56,8 +56,9 @@ func try_open_door() -> void:
 	for idx in tiles.size():
 		if tiles[idx].position != correct_positions[idx]:
 			return
-	
+			
+	AudioManager.play_door_open()
+	await AudioManager.door_open.finished
 	for tile in tiles:
 		tile.texture.atlas = DOOR_OPENED_ATLAS
 		is_opened = true
-		AudioManager.play_door_open()

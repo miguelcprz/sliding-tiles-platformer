@@ -72,6 +72,7 @@ func _ready() -> void:
 	player_detector_area.body_exited.connect(unlock_block)
 	this_portrait.sliding_mode_changed.connect(change_focus_mode)
 	focus_entered.connect(set_focus_frame_color_and_visibility)
+	focus_entered.connect(AudioManager.play_pop)
 	focus_entered.connect(this_portrait.set_current_tile.bind(self))
 	focus_exited.connect(set_focus_frame_color_and_visibility)
 		

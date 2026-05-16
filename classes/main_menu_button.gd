@@ -19,6 +19,7 @@ func _ready() -> void:
 	if grab_initial_focus:
 		grab_focus()
 		
+	focus_entered.connect(AudioManager.play_pop)
 func update_neighbors() -> void:
 	var right_nei_set : bool = false
 	var left_nei_set : bool = false

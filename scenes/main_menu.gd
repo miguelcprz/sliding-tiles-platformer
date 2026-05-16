@@ -3,6 +3,7 @@ extends Node2D
 @export var menu_tiles : Array[MainMenuButton]
 
 func start_game() -> void:
+	AudioManager.play_select_menu()
 	black_out.focus_mode = Control.FOCUS_ALL
 	black_out.grab_focus()
 	black_out.mouse_filter = Control.MOUSE_FILTER_STOP
