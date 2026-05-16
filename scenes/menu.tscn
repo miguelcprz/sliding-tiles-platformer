@@ -1,10 +1,44 @@
 [gd_scene format=3 uid="uid://gnvydj8gi6h"]
 
 [ext_resource type="Script" uid="uid://yg1ejak5gpy4" path="res://scenes/menu.gd" id="1_4ytvr"]
-[ext_resource type="Texture2D" uid="uid://d1pn6u7hb4q0m" path="res://ui_assets/sound_icon.png" id="1_mhnvy"]
 [ext_resource type="Script" uid="uid://bf57w0kfn260f" path="res://scenes/sound_slider.gd" id="2_4ytvr"]
-[ext_resource type="Texture2D" uid="uid://df6p6eb63053h" path="res://ui_assets/play_icon.png" id="3_g3eks"]
+[ext_resource type="Texture2D" uid="uid://4emujurtfw4a" path="res://ui_assets/sound_button_tile.png" id="2_13sgg"]
+[ext_resource type="Texture2D" uid="uid://bns8rgvrukjn5" path="res://ui_assets/circle.png" id="3_i6lef"]
 [ext_resource type="Texture2D" uid="uid://cysoodlc1ou2g" path="res://ui_assets/exit_icon.png" id="4_v86rl"]
+[ext_resource type="Texture2D" uid="uid://blc4xn5in0bsh" path="res://ui_assets/play_button_tile.png" id="5_70i5f"]
+[ext_resource type="Texture2D" uid="uid://dhflyptwaxcgy" path="res://ui_assets/play_button_tile_pressed.png" id="6_mj5lg"]
+[ext_resource type="Texture2D" uid="uid://b1dnopnqiibi7" path="res://ui_assets/play_button_tile_focused.png" id="7_ufwb2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6cdou"]
+content_margin_top = 10.0
+bg_color = Color(0.022503233, 0.21163884, 0.19122016, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+expand_margin_left = 4.0
+expand_margin_right = 4.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i42df"]
+bg_color = Color(0.106928594, 0.52741027, 0.48446423, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+expand_margin_left = 4.0
+expand_margin_right = 4.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7jp70"]
+bg_color = Color(0.106928594, 0.52741027, 0.48446423, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+expand_margin_left = 4.0
+expand_margin_right = 4.0
 
 [node name="Menu" type="CanvasLayer" unique_id=1864113270]
 process_mode = 3
@@ -19,10 +53,15 @@ grow_vertical = 2
 color = Color(0, 0, 0, 0.6156863)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2063714298]
-anchors_preset = 14
+anchors_preset = 8
+anchor_left = 0.5
 anchor_top = 0.5
-anchor_right = 1.0
+anchor_right = 0.5
 anchor_bottom = 0.5
+offset_left = -101.0
+offset_top = -123.0
+offset_right = 101.0
+offset_bottom = 123.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 35
@@ -30,26 +69,44 @@ alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1605163669]
 layout_mode = 2
+theme_override_constants/separation = 22
 alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer" unique_id=1361394738]
+custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
-texture = ExtResource("1_mhnvy")
+texture = ExtResource("2_13sgg")
+expand_mode = 3
 
-[node name="SoundSlider" type="HSlider" parent="VBoxContainer/HBoxContainer" unique_id=1065659909]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer" unique_id=1034893136]
+layout_mode = 2
+theme_override_constants/margin_top = 16
+
+[node name="SoundSlider" type="HSlider" parent="VBoxContainer/HBoxContainer/MarginContainer" unique_id=1065659909]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 focus_mode = 0
+theme_override_icons/grabber = ExtResource("3_i6lef")
+theme_override_icons/grabber_highlight = ExtResource("3_i6lef")
+theme_override_icons/grabber_disabled = ExtResource("3_i6lef")
+theme_override_styles/slider = SubResource("StyleBoxFlat_6cdou")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_i42df")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_7jp70")
 max_value = 1.0
 step = 0.1
 script = ExtResource("2_4ytvr")
 
 [node name="ResumeButton" type="TextureButton" parent="VBoxContainer" unique_id=642574020]
+custom_minimum_size = Vector2(96, 96)
 layout_mode = 2
 size_flags_horizontal = 4
 focus_mode = 0
 shortcut_in_tooltip = false
-texture_normal = ExtResource("3_g3eks")
+texture_normal = ExtResource("5_70i5f")
+texture_pressed = ExtResource("6_mj5lg")
+texture_hover = ExtResource("7_ufwb2")
+ignore_texture_size = true
+stretch_mode = 5
 
 [node name="QuitButton" type="TextureButton" parent="VBoxContainer" unique_id=961496447]
 layout_mode = 2
@@ -57,6 +114,6 @@ size_flags_horizontal = 4
 focus_mode = 0
 texture_normal = ExtResource("4_v86rl")
 
-[connection signal="value_changed" from="VBoxContainer/HBoxContainer/SoundSlider" to="VBoxContainer/HBoxContainer/SoundSlider" method="_on_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/HBoxContainer/MarginContainer/SoundSlider" to="VBoxContainer/HBoxContainer/MarginContainer/SoundSlider" method="_on_value_changed"]
 [connection signal="pressed" from="VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

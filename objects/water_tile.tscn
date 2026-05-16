@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://biclyb544prah"]
 
 [ext_resource type="Texture2D" uid="uid://dw7uhlnkvi35e" path="res://visual_assets/waterfall_anim.png" id="1_xf7wx"]
+[ext_resource type="Texture2D" uid="uid://dk3awnid4pmhc" path="res://visual_assets/pebbles.png" id="2_prypd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x2olw"]
 atlas = ExtResource("1_xf7wx")
@@ -88,17 +89,33 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_prypd"]
-size = Vector2(48, 32)
+size = Vector2(48, 48)
 
 [node name="WaterTile" type="AnimatedSprite2D" unique_id=972729921]
 sprite_frames = SubResource("SpriteFrames_d46x8")
 autoplay = "default"
-frame = 9
-frame_progress = 0.8595174
+frame_progress = 0.20062518
 centered = false
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=2139271402]
 position = Vector2(23, 33)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1646589376]
+position = Vector2(1, -9)
 shape = SubResource("RectangleShape2D_prypd")
+
+[node name="Pebbles" type="Sprite2D" parent="." unique_id=240396162]
+texture = ExtResource("2_prypd")
+centered = false
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=1639956409]
+position = Vector2(24, 40)
+amount = 25
+lifetime = 0.3
+emission_shape = 3
+emission_rect_extents = Vector2(24, 1)
+direction = Vector2(0, -1)
+gravity = Vector2(0, 500)
+initial_velocity_min = 50.0
+initial_velocity_max = 100.0
+scale_amount_max = 2.0

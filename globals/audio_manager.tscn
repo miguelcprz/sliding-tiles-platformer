@@ -5,15 +5,14 @@
 [ext_resource type="AudioStream" uid="uid://c6nfftelr4aj0" path="res://audio_assets/music/1. Woodland_Theme_50BPM_4by4.wav" id="3_3ewgl"]
 [ext_resource type="AudioStream" uid="uid://dralnmnuuyo87" path="res://audio_assets/music/melodic_ambient_theme_86bpm_6_4 (1).mp3" id="3_abrrb"]
 [ext_resource type="AudioStream" uid="uid://bsucnxwa1kfw6" path="res://audio_assets/music/menu_theme_70bpm_6_8.mp3" id="5_3ewgl"]
-[ext_resource type="AudioStream" uid="uid://cm0wnm1qgvnng" path="res://audio_assets/music/Fanfare_65BPM_4by4_v2.wav" id="5_8eshj"]
 [ext_resource type="AudioStream" uid="uid://b5vgnq5rsvgxs" path="res://audio_assets/sfx/jumppp11.ogg" id="5_ifagb"]
 [ext_resource type="AudioStream" uid="uid://cxv6vrbr6r333" path="res://audio_assets/music/3. Mountain_Theme_80BPM_4by4.wav" id="5_vc3qd"]
 [ext_resource type="AudioStream" uid="uid://b4sjqlrqismfo" path="res://audio_assets/sfx/jumppp22.ogg" id="6_8eshj"]
 [ext_resource type="AudioStream" uid="uid://dogi6pj6iye66" path="res://audio_assets/sfx/SFX - Slide 1.wav" id="7_e7vr3"]
+[ext_resource type="AudioStream" uid="uid://ome0xknr52xt" path="res://audio_assets/music/2. Transition_65BPM_4by4.wav" id="7_qbogh"]
 [ext_resource type="AudioStream" uid="uid://dd2m75amxndki" path="res://audio_assets/sfx/SFX - Slide 2.wav" id="8_gc6mj"]
 [ext_resource type="AudioStream" uid="uid://dvvtp4ycap0y4" path="res://audio_assets/sfx/SFX - Slide 3.wav" id="9_abrrb"]
 [ext_resource type="AudioStream" uid="uid://wujgsfbvcggb" path="res://audio_assets/sfx/15419__pagancow__dorm-door-opening.wav" id="12_gc6mj"]
-[ext_resource type="AudioStream" uid="uid://i86j0swgn2yi" path="res://audio_assets/sfx/7. Enemy_Push.wav" id="13_bngg2"]
 [ext_resource type="AudioStream" uid="uid://coq57c5stw5tr" path="res://audio_assets/sfx/1. woosh_1.wav" id="15_qbogh"]
 [ext_resource type="AudioStream" uid="uid://dw4w2yauul20n" path="res://audio_assets/sfx/2. woosh_2.wav" id="16_xvcex"]
 [ext_resource type="AudioStream" uid="uid://3ww1phxdkw56" path="res://audio_assets/sfx/3. woosh_3.wav" id="17_j4m11"]
@@ -45,7 +44,7 @@ clip_4/stream = ExtResource("3_abrrb")
 clip_4/auto_advance = 1
 clip_4/next_clip = 4
 clip_5/name = &"Success"
-clip_5/stream = ExtResource("5_8eshj")
+clip_5/stream = ExtResource("7_qbogh")
 clip_5/auto_advance = 0
 _transitions = {
 Vector2i(-1, 5): {
@@ -55,9 +54,9 @@ Vector2i(-1, 5): {
 "to_time": 1
 },
 Vector2i(0, 1): {
-"fade_beats": 8.0,
-"fade_mode": 3,
-"from_time": 1,
+"fade_beats": 0.0,
+"fade_mode": 2,
+"from_time": 2,
 "to_time": 1
 },
 Vector2i(1, 1): {
@@ -177,7 +176,7 @@ stream = SubResource("AudioStreamRandomizer_vc3qd")
 bus = &"Environment"
 
 [node name="Knockback" type="AudioStreamPlayer" parent="." unique_id=970271755]
-stream = ExtResource("13_bngg2")
+stream = ExtResource("5_ifagb")
 pitch_scale = 2.69
 bus = &"PlayerSounds"
 

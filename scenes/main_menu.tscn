@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://bvrcfmm2v3c41" path="res://scenes/main_menu.gd" id="1_wu84c"]
 [ext_resource type="Texture2D" uid="uid://blc4xn5in0bsh" path="res://ui_assets/play_button_tile.png" id="2_8ln24"]
+[ext_resource type="Texture2D" uid="uid://doumi1ji7bejb" path="res://visual_assets/background_spritesheet_level_4_a.png" id="2_j7ex8"]
+[ext_resource type="Texture2D" uid="uid://dxikdf4e564t3" path="res://visual_assets/cipo_level_4.png" id="3_a8gd2"]
 [ext_resource type="Texture2D" uid="uid://dhflyptwaxcgy" path="res://ui_assets/play_button_tile_pressed.png" id="3_rtw2f"]
 [ext_resource type="Texture2D" uid="uid://b1dnopnqiibi7" path="res://ui_assets/play_button_tile_focused.png" id="4_oa1go"]
 [ext_resource type="Script" uid="uid://bhhifottnbv1q" path="res://classes/main_menu_button.gd" id="5_tbmy8"]
@@ -309,8 +311,6 @@ process_mode = 3
 script = ExtResource("1_wu84c")
 menu_tiles = [NodePath("PlayButton"), NodePath("PlayButton2"), NodePath("PlayButton3"), NodePath("PlayButton4"), NodePath("PlayButton6"), NodePath("PlayButton7"), NodePath("PlayButton8"), NodePath("AudioButton"), NodePath("Blank")]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1510423679]
-
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1459373090]
 anchors_preset = 15
 anchor_right = 1.0
@@ -321,7 +321,21 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-color = Color(0.0030197038, 0.027560327, 0.06637781, 1)
+color = Color(0.5129374, 0.7493531, 0.90508056, 1)
+
+[node name="BackgroundSpritesheetLevel4A" type="Sprite2D" parent="." unique_id=1819701093]
+position = Vector2(307, 450)
+texture = ExtResource("2_j7ex8")
+
+[node name="BackgroundSpritesheetLevel4A2" type="Sprite2D" parent="." unique_id=304862282]
+position = Vector2(307, 5)
+texture = ExtResource("2_j7ex8")
+
+[node name="CipoLevel4" type="Sprite2D" parent="." unique_id=680732080]
+position = Vector2(276, 162)
+texture = ExtResource("3_a8gd2")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1510423679]
 
 [node name="PlayButton" type="TextureButton" parent="." unique_id=1540417794 node_paths=PackedStringArray("right_ray", "top_ray", "left_ray", "bottom_ray", "focus_anim")]
 offset_left = 176.0
@@ -821,6 +835,42 @@ max_value = 1.0
 step = 0.1
 value = 0.5
 script = ExtResource("11_lgwnu")
+
+[node name="CPUParticles2D8" type="CPUParticles2D" parent="." unique_id=1038972493]
+position = Vector2(135, 120)
+lifetime = 10.0
+emission_shape = 1
+emission_sphere_radius = 128.0
+gravity = Vector2(0, 5)
+initial_velocity_min = 10.0
+initial_velocity_max = 50.0
+angular_velocity_min = -48.65
+angular_velocity_max = 48.65
+scale_amount_max = 2.0
+
+[node name="CPUParticles2D9" type="CPUParticles2D" parent="." unique_id=901997601]
+position = Vector2(340, 136)
+lifetime = 10.0
+emission_shape = 1
+emission_sphere_radius = 128.0
+gravity = Vector2(0, 5)
+initial_velocity_min = 10.0
+initial_velocity_max = 50.0
+angular_velocity_min = -48.65
+angular_velocity_max = 48.65
+scale_amount_max = 2.0
+
+[node name="CPUParticles2D10" type="CPUParticles2D" parent="." unique_id=208758315]
+position = Vector2(524, 132)
+lifetime = 10.0
+emission_shape = 1
+emission_sphere_radius = 128.0
+gravity = Vector2(0, 5)
+initial_velocity_min = 10.0
+initial_velocity_max = 50.0
+angular_velocity_min = -48.65
+angular_velocity_max = 48.65
+scale_amount_max = 2.0
 
 [connection signal="pressed" from="PlayButton" to="." method="start_game"]
 [connection signal="pressed" from="AudioButton" to="MainMenuVolumeSlider" method="change_visibility"]

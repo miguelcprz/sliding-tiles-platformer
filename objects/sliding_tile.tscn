@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dyfhkge1pdcn5" path="res://visual_assets/tile_focus_frame-sheet.png" id="6_4xnam"]
 
 [sub_resource type="Gradient" id="Gradient_4xnam"]
-colors = PackedColorArray(0.7019608, 1, 0.87058824, 0.39215687, 0.7019608, 1, 0.87058824, 0.39215687)
+colors = PackedColorArray(0.7019608, 1, 0.87058824, 0.6156863, 0.7019608, 1, 0.87058824, 0.6)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_u70ed"]
 gradient = SubResource("Gradient_4xnam")
@@ -183,7 +183,6 @@ debug_color = Color(0.48521996, 0.5875104, 0, 0.37254903)
 metadata/_edit_lock_ = true
 
 [node name="SliderTileMap" type="TileMapLayer" parent="." unique_id=1903156260]
-z_index = 1
 tile_set = SubResource("TileSet_u70ed")
 script = ExtResource("4_4xnam")
 metadata/_custom_type_script = "uid://bx3o5fg6visyj"

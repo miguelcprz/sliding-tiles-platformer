@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bkoysr1wg87b6" path="res://visual_assets/player.png" id="2_ykyjo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lakw3"]
-size = Vector2(21, 27)
+size = Vector2(14, 27)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ykyjo"]
 atlas = ExtResource("2_ykyjo")
@@ -101,7 +101,7 @@ script = ExtResource("1_ykyjo")
 player_anim = NodePath("PlayerAnim")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=467547529]
-position = Vector2(-1.5, 2.5)
+position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_lakw3")
 debug_color = Color(0.6213166, 0.53125185, 0.15755641, 0.41960785)
 
