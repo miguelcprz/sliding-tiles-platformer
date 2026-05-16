@@ -183,6 +183,7 @@ debug_color = Color(0.48521996, 0.5875104, 0, 0.37254903)
 metadata/_edit_lock_ = true
 
 [node name="SliderTileMap" type="TileMapLayer" parent="." unique_id=1903156260]
+z_index = 1
 tile_set = SubResource("TileSet_u70ed")
 script = ExtResource("4_4xnam")
 metadata/_custom_type_script = "uid://bx3o5fg6visyj"

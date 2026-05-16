@@ -200,6 +200,7 @@ bus = &"Environment"
 
 [node name="TileMode" type="AudioStreamPlayer" parent="." unique_id=1587425555]
 stream = ExtResource("20_ngs4k")
+volume_db = -3.0
 bus = &"Environment"
 
 [node name="Pop" type="AudioStreamPlayer" parent="." unique_id=108615962]
