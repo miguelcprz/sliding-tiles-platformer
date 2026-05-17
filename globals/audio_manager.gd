@@ -11,7 +11,6 @@ extends Node
 @onready var tile_mode: AudioStreamPlayer = $TileMode
 @onready var pop: AudioStreamPlayer = $Pop
 
-
 func _ready() -> void:
 	jump_timer.timeout.connect(restart_jump_counter)
 
@@ -58,6 +57,11 @@ func switch_song(new_song_idx : int) -> void:
 		playback.switch_to_clip(curr_song_idx-1)
 	else:
 		playback.switch_to_clip(new_song_idx)
-
 func restart_jump_counter() -> void:
 	jump_counter = 0
+
+
+func _on_loop_timer_timeout() -> void:
+	var playback : AudioStreamPlaybackInteractive = music.get_stream_playback()
+	var curr_song_idx = playback.get_current_clip_index()
+	playback.switch_to_clip(curr_song_idx)

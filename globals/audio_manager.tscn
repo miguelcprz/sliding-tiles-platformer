@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://5bbbqt1ec28w"]
 
 [ext_resource type="Script" uid="uid://be3tvaqbgxuiw" path="res://globals/audio_manager.gd" id="1_8eshj"]
-[ext_resource type="AudioStream" uid="uid://bhwd15kipwawr" path="res://audio_assets/music/Jungle_theme_instr_drums_80bpm_5_4 (1).mp3" id="2_gc6mj"]
-[ext_resource type="AudioStream" uid="uid://c6nfftelr4aj0" path="res://audio_assets/music/1. Woodland_Theme_50BPM_4by4.wav" id="3_3ewgl"]
-[ext_resource type="AudioStream" uid="uid://dralnmnuuyo87" path="res://audio_assets/music/melodic_ambient_theme_86bpm_6_4 (1).mp3" id="3_abrrb"]
+[ext_resource type="AudioStream" uid="uid://cgg85eoc2426" path="res://audio_assets/music/woodland_trimmed2.mp3" id="3_bngg2"]
+[ext_resource type="AudioStream" uid="uid://6q5ws0isby63" path="res://audio_assets/music/ambient_trimmed2.mp3" id="4_qbogh"]
 [ext_resource type="AudioStream" uid="uid://bsucnxwa1kfw6" path="res://audio_assets/music/menu_theme_70bpm_6_8.mp3" id="5_3ewgl"]
 [ext_resource type="AudioStream" uid="uid://b5vgnq5rsvgxs" path="res://audio_assets/sfx/jumppp11.ogg" id="5_ifagb"]
-[ext_resource type="AudioStream" uid="uid://cxv6vrbr6r333" path="res://audio_assets/music/3. Mountain_Theme_80BPM_4by4.wav" id="5_vc3qd"]
+[ext_resource type="AudioStream" uid="uid://bcc4ccl7knnx8" path="res://audio_assets/music/jungle_trimmed2.mp3" id="5_xvcex"]
 [ext_resource type="AudioStream" uid="uid://b4sjqlrqismfo" path="res://audio_assets/sfx/jumppp22.ogg" id="6_8eshj"]
+[ext_resource type="AudioStream" uid="uid://dd0gpf7k0j6x7" path="res://audio_assets/music/montain_trimmed2.mp3" id="6_j4m11"]
 [ext_resource type="AudioStream" uid="uid://dogi6pj6iye66" path="res://audio_assets/sfx/SFX - Slide 1.wav" id="7_e7vr3"]
 [ext_resource type="AudioStream" uid="uid://ome0xknr52xt" path="res://audio_assets/music/2. Transition_65BPM_4by4.wav" id="7_qbogh"]
 [ext_resource type="AudioStream" uid="uid://dd2m75amxndki" path="res://audio_assets/sfx/SFX - Slide 2.wav" id="8_gc6mj"]
@@ -28,19 +28,19 @@ clip_0/stream = ExtResource("5_3ewgl")
 clip_0/auto_advance = 1
 clip_0/next_clip = 0
 clip_1/name = &"song 1"
-clip_1/stream = ExtResource("3_3ewgl")
+clip_1/stream = ExtResource("3_bngg2")
 clip_1/auto_advance = 1
 clip_1/next_clip = 1
 clip_2/name = &"song 2"
-clip_2/stream = ExtResource("2_gc6mj")
+clip_2/stream = ExtResource("4_qbogh")
 clip_2/auto_advance = 1
 clip_2/next_clip = 2
 clip_3/name = &"song 3"
-clip_3/stream = ExtResource("5_vc3qd")
+clip_3/stream = ExtResource("5_xvcex")
 clip_3/auto_advance = 1
 clip_3/next_clip = 3
 clip_4/name = &"song 4"
-clip_4/stream = ExtResource("3_abrrb")
+clip_4/stream = ExtResource("6_j4m11")
 clip_4/auto_advance = 1
 clip_4/next_clip = 4
 clip_5/name = &"Success"
@@ -54,15 +54,15 @@ Vector2i(-1, 5): {
 "to_time": 1
 },
 Vector2i(0, 1): {
-"fade_beats": 0.0,
-"fade_mode": 2,
+"fade_beats": 4.0,
+"fade_mode": 3,
 "from_time": 2,
 "to_time": 1
 },
 Vector2i(1, 1): {
-"fade_beats": 8.0,
-"fade_mode": 2,
-"from_time": 3,
+"fade_beats": 0.0,
+"fade_mode": 3,
+"from_time": 0,
 "to_time": 1
 },
 Vector2i(1, 2): {
@@ -81,9 +81,9 @@ Vector2i(2, 1): {
 "to_time": 1
 },
 Vector2i(2, 2): {
-"fade_beats": 4.0,
-"fade_mode": 2,
-"from_time": 3,
+"fade_beats": 0.0,
+"fade_mode": 3,
+"from_time": 0,
 "to_time": 1
 },
 Vector2i(2, 3): {
@@ -109,8 +109,8 @@ Vector2i(3, 2): {
 "to_time": 1
 },
 Vector2i(3, 3): {
-"fade_beats": 4.0,
-"fade_mode": 2,
+"fade_beats": 0.0,
+"fade_mode": 3,
 "from_time": 0,
 "to_time": 1
 },
@@ -126,6 +126,12 @@ Vector2i(4, 0): {
 "fade_beats": 4.0,
 "fade_mode": 2,
 "from_time": 1,
+"to_time": 1
+},
+Vector2i(4, 4): {
+"fade_beats": 0.0,
+"fade_mode": 3,
+"from_time": 0,
 "to_time": 1
 },
 Vector2i(5, -1): {
