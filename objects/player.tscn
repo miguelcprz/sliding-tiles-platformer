@@ -95,10 +95,11 @@ animations = [{
 "speed": 6.0
 }]
 
-[node name="Player" type="CharacterBody2D" unique_id=1805631389 node_paths=PackedStringArray("player_anim") groups=["player"]]
+[node name="Player" type="CharacterBody2D" unique_id=1805631389 node_paths=PackedStringArray("player_anim", "coyote_timer") groups=["player"]]
 collision_layer = 5
 script = ExtResource("1_ykyjo")
 player_anim = NodePath("PlayerAnim")
+coyote_timer = NodePath("CoyoteTimer")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=467547529]
 position = Vector2(0, 2)
@@ -110,3 +111,7 @@ position = Vector2(0, 1)
 sprite_frames = SubResource("SpriteFrames_i8sra")
 animation = &"walk"
 autoplay = "idle"
+
+[node name="CoyoteTimer" type="Timer" parent="." unique_id=1399895505]
+
+[connection signal="timeout" from="CoyoteTimer" to="." method="_on_coyote_timer_timeout"]

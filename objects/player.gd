@@ -2,6 +2,7 @@ class_name Player extends CharacterBody2D
 var gravity := 750
 var speed := 180
 var jump_force := 300
+var is_coyote_time : bool = true
 var is_knocked : bool = true:
 	set(value):
 		is_knocked = value
@@ -10,6 +11,7 @@ var is_knocked : bool = true:
 
 var ignore_gravity : bool = false
 const KNOCK_FORCE = Vector2(300,-200)
+const COYOTE_TIME = 0.1
 var waiting_anim : bool = false
 @export var player_anim : AnimatedSprite2D
 
@@ -23,6 +25,8 @@ var waiting_anim : bool = false
 
 @export var level_4_marker : Marker2D
 
+@export var coyote_timer : Timer
+
 func _ready() -> void:
 	player_anim.animation_changed.connect(func(): player_anim.play())
 	set_initial_location()
@@ -32,6 +36,7 @@ func _physics_process(delta: float) -> void:
 	apply_gravity(delta)
 	movement_methods(delta)
 	manage_animations()
+	manage_coyote_timer()
 
 func movement_methods(_delta:float) -> void:
 	if not GameManager.sliding_mode_on and not is_knocked:
@@ -92,9 +97,11 @@ func move() -> void:
 	velocity.x = direction*speed
 
 func jump() -> void:
-	if is_on_floor() and Input.is_action_just_pressed("ui_accept"):
-		velocity.y = -jump_force
-		AudioManager.play_jump()
+	if Input.is_action_just_pressed("ui_accept"):
+		if is_on_floor() or is_coyote_time:
+			velocity.y = -jump_force
+			AudioManager.play_jump()
+			is_coyote_time = false
 	
 
 func set_initial_location() -> void:
@@ -119,3 +126,12 @@ func flip_sprite() -> void:
 		
 	elif velocity.x < 0:
 		player_anim.flip_h = true
+
+func manage_coyote_timer() -> void:
+	if is_on_floor():
+		is_coyote_time = true
+	if Input.is_action_just_pressed("ui_accept"):
+		is_coyote_time = false
+
+func _on_coyote_timer_timeout() -> void:
+	is_coyote_time = false
