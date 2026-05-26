@@ -11,7 +11,7 @@ var is_knocked : bool = true:
 
 var ignore_gravity : bool = false
 const KNOCK_FORCE = Vector2(300,-200)
-const COYOTE_TIME = 0.1
+const COYOTE_TIME = 0.3
 var waiting_anim : bool = false
 @export var player_anim : AnimatedSprite2D
 
@@ -132,6 +132,8 @@ func manage_coyote_timer() -> void:
 		is_coyote_time = true
 	if Input.is_action_just_pressed("ui_accept"):
 		is_coyote_time = false
+	if !is_on_floor() and coyote_timer.time_left == 0:
+		coyote_timer.start(COYOTE_TIME)
 
 func _on_coyote_timer_timeout() -> void:
 	is_coyote_time = false
