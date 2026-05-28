@@ -24,6 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://balbxm2v5gurf" path="res://visual_assets/turtle.png" id="14_xo05s"]
 [ext_resource type="Script" uid="uid://cm3dkjyyli6e6" path="res://objects/turtle.gd" id="15_7t5mc"]
 [ext_resource type="Script" uid="uid://cqx8gvjcuw311" path="res://objects/cut_scene_camera.gd" id="15_dss4m"]
+[ext_resource type="PackedScene" uid="uid://7kc5ugyym7s2" path="res://objects/checkpoint_area.tscn" id="16_3l05q"]
 [ext_resource type="PackedScene" uid="uid://gnvydj8gi6h" path="res://scenes/menu.tscn" id="16_dss4m"]
 [ext_resource type="Script" uid="uid://wh53ukaaaf0l" path="res://classes/door_portrait.gd" id="18_pm21f"]
 [ext_resource type="PackedScene" uid="uid://i6wxb0n2l15h" path="res://objects/sliding_tile.tscn" id="19_2lf6f"]
@@ -48,6 +49,9 @@
 [ext_resource type="Script" uid="uid://bx3o5fg6visyj" path="res://objects/slider_tile_map.gd" id="44_1jxku"]
 [ext_resource type="Texture2D" uid="uid://ty3pqjdjig6w" path="res://visual_assets/tile_frame.png" id="45_1dgkn"]
 [ext_resource type="Texture2D" uid="uid://dyfhkge1pdcn5" path="res://visual_assets/tile_focus_frame-sheet.png" id="46_e68xj"]
+[ext_resource type="Texture2D" uid="uid://r5re42g6qad1" path="res://visual_assets/look_down_anim.png" id="50_1jxku"]
+[ext_resource type="Texture2D" uid="uid://71e18qbm6epy" path="res://visual_assets/go_to_checkpoint_prompt.png" id="51_1dgkn"]
+[ext_resource type="Script" uid="uid://co67o3yi63snm" path="res://objects/go_to_checkpoint_prompt.gd" id="52_1dgkn"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_i7141"]
 font_color = Color(0, 0, 0, 1)
@@ -595,6 +599,50 @@ b = Vector2(0, 250)
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_8u370"]
 b = Vector2(240, 0)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_e68xj"]
+atlas = ExtResource("50_1jxku")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5hglh"]
+atlas = ExtResource("50_1jxku")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qg546"]
+atlas = ExtResource("50_1jxku")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pf35h"]
+atlas = ExtResource("50_1jxku")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_iexy4"]
+animations = [{
+"frames": [{
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_e68xj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5hglh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qg546")
+}, {
+"duration": 10.0,
+"texture": SubResource("AtlasTexture_pf35h")
+}],
+"loop": true,
+"name": &"default",
+"speed": 9.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_npbic"]
+atlas = ExtResource("13_jhx03")
+region = Rect2(545, 69, 13, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e6ckp"]
+atlas = ExtResource("13_jhx03")
+region = Rect2(341, 35, 13, 14)
+
 [node name="World" type="Node2D" unique_id=1711283331]
 texture_filter = 1
 script = ExtResource("1_k0juu")
@@ -720,6 +768,7 @@ repeat_size = Vector2(640, 0)
 repeat_times = 15
 
 [node name="Sprite2D" type="Sprite2D" parent="Stage1Backgrounds/Foreground1" unique_id=958032701]
+position = Vector2(0, 107)
 texture = ExtResource("4_ts3gi")
 centered = false
 
@@ -1204,6 +1253,18 @@ metadata/_custom_type_script = "uid://chmwqc2l3v48q"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SongSwitchTrigger" unique_id=1055292334]
 shape = SubResource("RectangleShape2D_w7kh3")
 
+[node name="CheckpointArea" parent="." unique_id=1715372227 instance=ExtResource("16_3l05q")]
+position = Vector2(-354, -697)
+
+[node name="CheckpointArea4" parent="." unique_id=37553464 instance=ExtResource("16_3l05q")]
+position = Vector2(560, -1288)
+
+[node name="CheckpointArea2" parent="." unique_id=1491264499 instance=ExtResource("16_3l05q")]
+position = Vector2(311, -887)
+
+[node name="CheckpointArea3" parent="." unique_id=188955985 instance=ExtResource("16_3l05q")]
+position = Vector2(415, -2054)
+
 [node name="KnockbackEnemy" parent="." unique_id=971086217 instance=ExtResource("13_o8fc1")]
 position = Vector2(-80, 232)
 patrol_speed = 40
@@ -1223,10 +1284,6 @@ patrol_speed = 60
 [node name="KnockbackEnemy2" parent="." unique_id=1983927028 instance=ExtResource("13_o8fc1")]
 position = Vector2(557, -40)
 patrol_speed = 80
-
-[node name="KnockbackEnemy3" parent="." unique_id=226201117 instance=ExtResource("13_o8fc1")]
-position = Vector2(410, -200)
-patrol_speed = 100
 
 [node name="KnockbackEnemy4" parent="." unique_id=1412612580 instance=ExtResource("13_o8fc1")]
 position = Vector2(-105, -744)
@@ -3090,9 +3147,33 @@ autoplay = true
 max_distance = 600.0
 bus = &"Environment"
 
+[node name="LookDownAnim" type="AnimatedSprite2D" parent="." unique_id=467439325]
+position = Vector2(364, -230)
+sprite_frames = SubResource("SpriteFrames_iexy4")
+autoplay = "default"
+frame_progress = 0.026123222
+
+[node name="Sprite2D" type="Sprite2D" parent="LookDownAnim" unique_id=2060346405]
+position = Vector2(39, -2)
+scale = Vector2(1.895, 1.895)
+texture = SubResource("AtlasTexture_npbic")
+
+[node name="GoToCheckpointPrompt" type="Sprite2D" parent="." unique_id=1308576659]
+visible = false
+position = Vector2(-363, -758)
+texture = ExtResource("51_1dgkn")
+script = ExtResource("52_1dgkn")
+
+[node name="Sprite2D" type="Sprite2D" parent="GoToCheckpointPrompt" unique_id=1714492797]
+position = Vector2(26, 1)
+scale = Vector2(1.895, 1.895)
+texture = SubResource("AtlasTexture_e6ckp")
+
 [connection signal="value_changed" from="UI/DebugControllers/SpeedSlider" to="UI/DebugControllers" method="_on_speed_slider_value_changed"]
 [connection signal="value_changed" from="UI/DebugControllers/GravitySlider" to="UI/DebugControllers" method="_on_gravity_slider_value_changed"]
 [connection signal="value_changed" from="UI/DebugControllers/JumpForceSlider" to="UI/DebugControllers" method="_on_jump_force_slider_value_changed"]
+[connection signal="body_entered" from="CheckpointArea" to="GoToCheckpointPrompt" method="show_checkpoint_prompt"]
+[connection signal="body_entered" from="CheckpointArea4" to="GoToCheckpointPrompt" method="show_checkpoint_prompt"]
 [connection signal="body_entered" from="Turtle" to="Turtle" method="_on_body_entered"]
 
 [editable path="Portrait4x4_1"]

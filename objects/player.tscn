@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dfsch7g4xlkcq" path="res://objects/player.gd" id="1_ykyjo"]
 [ext_resource type="Texture2D" uid="uid://bkoysr1wg87b6" path="res://visual_assets/player.png" id="2_ykyjo"]
+[ext_resource type="Script" uid="uid://cfvxcyrtufq08" path="res://objects/checkpoint_progress.gd" id="3_uxov2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lakw3"]
 size = Vector2(14, 27)
@@ -95,11 +96,18 @@ animations = [{
 "speed": 6.0
 }]
 
-[node name="Player" type="CharacterBody2D" unique_id=1805631389 node_paths=PackedStringArray("player_anim", "coyote_timer") groups=["player"]]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ykyjo"]
+load_path = "res://.godot/imported/circle.png-92d305ae710199419380a7064ad6f976.ctex"
+
+[node name="Player" type="CharacterBody2D" unique_id=1805631389 node_paths=PackedStringArray("player_anim", "coyote_timer", "look_down_timer", "checkpoint_timer", "collision_shape", "checkpoint_progress") groups=["player"]]
 collision_layer = 5
 script = ExtResource("1_ykyjo")
 player_anim = NodePath("PlayerAnim")
 coyote_timer = NodePath("CoyoteTimer")
+look_down_timer = NodePath("LookDownTimer")
+checkpoint_timer = NodePath("CheckpointTimer")
+collision_shape = NodePath("CollisionShape2D")
+checkpoint_progress = NodePath("CheckpointProgress")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=467547529]
 position = Vector2(0, 2)
@@ -113,5 +121,23 @@ animation = &"walk"
 autoplay = "idle"
 
 [node name="CoyoteTimer" type="Timer" parent="." unique_id=1399895505]
+
+[node name="LookDownTimer" type="Timer" parent="." unique_id=1329103824]
+
+[node name="CheckpointTimer" type="Timer" parent="." unique_id=1576940826]
+
+[node name="CheckpointProgress" type="TextureProgressBar" parent="." unique_id=331922148]
+visible = false
+offset_left = -4.0
+offset_top = -24.000002
+offset_right = 36.0
+offset_bottom = 15.999998
+scale = Vector2(0.455, 0.455)
+step = 0.01
+fill_mode = 4
+texture_under = SubResource("CompressedTexture2D_ykyjo")
+texture_progress = SubResource("CompressedTexture2D_ykyjo")
+tint_under = Color(0, 0, 0, 1)
+script = ExtResource("3_uxov2")
 
 [connection signal="timeout" from="CoyoteTimer" to="." method="_on_coyote_timer_timeout"]

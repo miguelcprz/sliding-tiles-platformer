@@ -21,6 +21,7 @@ func _ready() -> void:
 
 func play_teleport_cutscene(final_pos_marker : Marker2D) -> void:
 	player.is_knocked = true
+	player.set_new_checkpoint(final_pos_marker.global_position)
 	player.velocity = Vector2.ZERO
 	player.ignore_gravity = true
 	var tween = create_tween().set_parallel()

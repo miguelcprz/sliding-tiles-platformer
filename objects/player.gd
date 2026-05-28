@@ -12,7 +12,11 @@ var is_knocked : bool = true:
 var ignore_gravity : bool = false
 const KNOCK_FORCE = Vector2(300,-200)
 const COYOTE_TIME = 0.3
+const LOOK_DOWN_TIME = 0.8
+const CHECKPOINT_TIME = 0.8
 var waiting_anim : bool = false
+var is_looking_down : bool = false
+var last_check_point_position : Vector2
 @export var player_anim : AnimatedSprite2D
 
 @export_enum("level_1","level_2","level_3","level_4") var start_location = "level_1"
@@ -27,9 +31,18 @@ var waiting_anim : bool = false
 
 @export var coyote_timer : Timer
 
+@export var look_down_timer : Timer
+
+@export var checkpoint_timer : Timer
+
+@export var collision_shape : CollisionShape2D
+
+@export var checkpoint_progress : TextureProgressBar
+
 func _ready() -> void:
 	player_anim.animation_changed.connect(func(): player_anim.play())
 	set_initial_location()
+	checkpoint_progress.max_value = CHECKPOINT_TIME
 	
 func _physics_process(delta: float) -> void:
 	move_and_slide()
@@ -37,6 +50,33 @@ func _physics_process(delta: float) -> void:
 	movement_methods(delta)
 	manage_animations()
 	manage_coyote_timer()
+	look_down()
+	go_to_checkpoint()
+
+func set_new_checkpoint(checkpoint : Vector2) -> void:
+	if checkpoint.y < last_check_point_position.y:
+		last_check_point_position = checkpoint
+
+func go_to_checkpoint() -> void:
+	if Input.is_action_pressed("go_to_checkpoint") and !GameManager.sliding_mode_on and !is_knocked:
+		if Input.is_action_just_pressed("go_to_checkpoint"):
+			checkpoint_timer.start(CHECKPOINT_TIME)
+			checkpoint_progress.show()
+	if Input.is_action_just_released("go_to_checkpoint") and checkpoint_timer.time_left != 0:
+		checkpoint_timer.stop()
+		checkpoint_progress.hide()
+		return
+		
+	await checkpoint_timer.timeout
+	if is_knocked == false:
+		checkpoint_progress.hide()
+		collision_shape.disabled = true
+		is_knocked = true
+		var tween =  create_tween()
+		tween.tween_property(self,"global_position",last_check_point_position,0.5)
+		await tween.finished
+		is_knocked = false
+		collision_shape.disabled = false
 
 func movement_methods(_delta:float) -> void:
 	if not GameManager.sliding_mode_on and not is_knocked:
@@ -97,12 +137,41 @@ func move() -> void:
 	velocity.x = direction*speed
 
 func jump() -> void:
-	if Input.is_action_just_pressed("ui_accept"):
+	if Input.is_action_just_pressed("ui_accept") or Input.is_action_just_pressed("ui_up"):
 		if is_on_floor() or is_coyote_time:
 			velocity.y = -jump_force
 			AudioManager.play_jump()
 			is_coyote_time = false
-	
+			
+		if is_looking_down:
+			offset_main_camera(Vector2.ZERO)
+			is_looking_down = false
+
+func look_down() -> void:
+	if Input.is_action_pressed("ui_down") and (
+		!GameManager.sliding_mode_on) and (
+		!is_looking_down) and (
+		global_position.y < level_1_marker.global_position.y-100) and (
+		!is_knocked):
+		
+		if Input.is_action_just_pressed("ui_down"):
+			look_down_timer.start(LOOK_DOWN_TIME)
+			if  not look_down_timer.timeout.is_connected(offset_main_camera.bind(Vector2(0,100))):
+				look_down_timer.timeout.connect(offset_main_camera.bind(Vector2(0,100)),4)
+				look_down_timer.timeout.connect(func():is_looking_down = true,4)
+			
+	if Input.is_action_just_released("ui_down"):
+		look_down_timer.stop()
+		return
+		
+		
+	elif Input.is_action_pressed("ui_up") and !GameManager.sliding_mode_on and is_looking_down:
+		offset_main_camera(Vector2.ZERO)
+		is_looking_down = false
+		
+func offset_main_camera(cam_offset : Vector2) -> void:
+	var tween = create_tween()
+	tween.tween_property(get_viewport().get_camera_2d(),"offset",cam_offset,0.5)
 
 func set_initial_location() -> void:
 	if not OS.has_feature("editor"):
@@ -116,7 +185,9 @@ func set_initial_location() -> void:
 		global_position = level_4_marker.global_position
 	else:
 		global_position = level_1_marker.global_position
-
+	
+	last_check_point_position = global_position
+	
 func flip_sprite() -> void:
 	if velocity.x == 0:
 		return
